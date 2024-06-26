@@ -9,6 +9,23 @@ class House extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'slug',
+        'description',
+        'rooms',
+        'beds',
+        'bathrooms',
+        'square_mt',
+        'address',
+        'thumb',
+        'available',
+        'category_id',
+        'message_id',
+        'user_id',
+        'price_per_night'
+    ];
+
     public function category()
     {
         return $this->belongsTo(Category::class);
