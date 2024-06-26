@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\House;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\Plan;
 use App\Models\Service;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -23,6 +24,7 @@ class HouseSeeder extends Seeder
         $user_ids = User::all()->pluck('id')->all();
         $category_ids = Category::all()->pluck('id')->all();
         $service_ids = Service::all()->pluck('id')->all();
+        $plan_ids = Plan::all()->pluck('id')->all();
 
         for ($i = 0; $i < 25; $i++) {
             $new_house = new House();
@@ -45,6 +47,9 @@ class HouseSeeder extends Seeder
 
             $rand_service_ids = $faker->randomElements($service_ids, null);
             $new_house->services()->attach($rand_service_ids);
+
+            $rand_plan_id = $faker->optional()->randomElement($plan_ids);
+            $new_house->plans()->attach($rand_plan_id);
         }
     }
 }
