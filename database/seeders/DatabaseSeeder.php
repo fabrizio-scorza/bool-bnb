@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             ServiceSeeder::class,
             CategorySeeder::class,
             UserSeeder::class,
+            HouseSeeder::class
 
         ]);
     }

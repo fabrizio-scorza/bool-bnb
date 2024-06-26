@@ -21,7 +21,6 @@ class House extends Model
         'thumb',
         'available',
         'category_id',
-        'message_id',
         'user_id',
         'price_per_night'
     ];
