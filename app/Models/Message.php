@@ -8,9 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Message extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'email',
+        'text',
+    ];
 
     public function houses()
     {
-        return $this->hasMany(House::class);
+        return $this->belongsTo(House::class);
     }
 }

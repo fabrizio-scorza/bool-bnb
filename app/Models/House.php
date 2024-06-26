@@ -30,9 +30,9 @@ class House extends Model
     {
         return $this->belongsTo(Category::class);
     }
-    public function message()
+    public function messages()
     {
-        return $this->belongsTo(Message::class);
+        return $this->hasMany(Message::class);
     }
     public function user()
     {
