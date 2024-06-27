@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('house_id');
             $table->string('email', 100);
+            $table->string('name', 100)->nullable();
+            $table->string('surname', 100)->nullable();
             $table->text('text');
             $table->timestamps();
 

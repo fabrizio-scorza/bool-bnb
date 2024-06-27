@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\Plan;
 use App\Models\Service;
+use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
@@ -39,6 +40,8 @@ class HouseSeeder extends Seeder
             $new_house->bathrooms = rand(1, 4);
             $new_house->square_mt = rand(30, 1000);
             $new_house->address = $faker->address();
+            $new_house->latitude = $faker->randomFloat(8, 41.7, 42.2);
+            $new_house->longitude = $faker->randomFloat(8, 12.4, 12.9);
             $new_house->thumb = $faker->url();
             $new_house->available = $faker->boolean();
             $new_house->price_per_night = $faker->randomFloat(2, 25, 1500);
@@ -49,7 +52,20 @@ class HouseSeeder extends Seeder
             $new_house->services()->attach($rand_service_ids);
 
             $rand_plan_id = $faker->optional()->randomElement($plan_ids);
-            $new_house->plans()->attach($rand_plan_id);
+
+            if ($rand_plan_id) {
+                $plan = Plan::find($rand_plan_id);
+                $created_at = Carbon::now();
+                $expires_at = $created_at->copy()->addHours($plan->length);
+
+                $new_house->plans()->attach(
+                    $rand_plan_id,
+                    [
+                        'created_at' => $created_at,
+                        'expires_at' => $expires_at,
+                    ]
+                );
+            }
         }
     }
 }

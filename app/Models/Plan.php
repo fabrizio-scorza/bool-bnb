@@ -11,6 +11,6 @@ class Plan extends Model
 
     public function houses()
     {
-        return $this->belongsToMany(House::class);
+        return $this->belongsToMany(House::class)->withPivot('created_at', 'expires_at')->withTimestamps();
     }
 }

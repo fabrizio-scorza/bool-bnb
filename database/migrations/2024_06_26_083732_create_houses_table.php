@@ -23,6 +23,8 @@ return new class extends Migration
             $table->tinyInteger('bathrooms')->unsigned();
             $table->smallInteger('square_mt')->unsigned();
             $table->text('address');
+            $table->decimal('latitude', $precision = 11, $scale = 8);
+            $table->decimal('longitude', $precision = 11, $scale = 8);
             $table->string('thumb', 255);
             $table->boolean('available')->default(1);
             $table->decimal('price_per_night', $precision = 6, $scale = 2)->unsigned();
