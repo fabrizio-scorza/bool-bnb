@@ -24,8 +24,11 @@
             <div class="card">
                 <div class="card-body row">
                     <div class="col-6">
-                        <span>Dettagli Appartamento</span>
+                        <span>Dettagli</span>
                         <ul class="list-unstyled">
+                            <li>
+                                {{$house->category->name ?? ''}}
+                            </li>
                             <li>
                                 <span>R</span>
                                 {{$house->rooms}}

@@ -9,7 +9,7 @@
         <h2 class="fs-4 text-secondary">
             I Miei Appartamenti
         </h2>
-        <button class="ms-auto">Crea Nuovo</button>
+        <button class="ms-auto"><a href="{{route('admin.houses.create')}}" class="link-underline link-underline-opacity-0">Crea Nuovo</a></button>
     </div>
 </div>
 <div class="container py-4">

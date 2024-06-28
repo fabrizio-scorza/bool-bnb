@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\House;
 use App\Models\Service;
 use Illuminate\Http\Request;
@@ -27,6 +28,10 @@ class HouseController extends Controller
     public function create()
     {
         //
+        $services = Service::all();
+        $categories = Category::all();
+
+        return view('admin.houses.create', compact('services', 'categories'));
     }
 
     /**
