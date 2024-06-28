@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\HasSlug;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class House extends Model
 {
-    use HasFactory;
+    use HasFactory, HasSlug;
 
     protected $fillable = [
         'title',
@@ -22,7 +23,9 @@ class House extends Model
         'available',
         'category_id',
         'user_id',
-        'price_per_night'
+        'price_per_night',
+        'latitude',
+        'longitude'
     ];
 
     public function category()

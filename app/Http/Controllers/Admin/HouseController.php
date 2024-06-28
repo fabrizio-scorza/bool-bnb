@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreHouseRequest;
 use App\Models\Category;
 use App\Models\House;
 use App\Models\Service;
@@ -37,9 +38,27 @@ class HouseController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreHouseRequest $request)
     {
         //
+        $form_data = $request->validated();
+        $form_data['slug'] = House::getSlug($form_data['title']);
+        $form_data['user_id'] = Auth::user()->id;
+
+        $form_data['latitude'] = 41.85698;
+        $form_data['longitude'] = 14.85698;
+
+        if ($request->has('category')) {
+            $form_data['category_id'] = $request->category;
+        }
+
+        $new_house = House::create($form_data);
+
+        if ($request->has('services')) {
+            $new_house->services()->attach($request->services);
+        }
+
+        return to_route('admin.houses.show', $new_house);
     }
 
     /**
