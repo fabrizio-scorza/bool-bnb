@@ -75,5 +75,7 @@
 <div class="container">
     <p>{{$house->description}}</p>
 </div>
-{{-- <test-componert></test-componert> --}}
+<div>
+    <map-component></map-component>
+</div>
 @endsection
