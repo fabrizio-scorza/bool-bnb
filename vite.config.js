@@ -7,7 +7,13 @@ import vue from "@vitejs/plugin-vue";
 
 export default defineConfig({
     plugins: [
-        vue(),
+        vue({
+            template: {
+                compilerOptions: {
+                    isCustomElement: (tag) => ['test-components'].includes(tag),
+                }
+            }
+        }),
         laravel({
             // edit the first value of the array input to point to our new sass files and folder.
             input: ['resources/scss/app.scss', 'resources/js/app.js'],

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\House;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,9 +40,10 @@ class HouseController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(House $house)
     {
         //
+        return view('admin.houses.show', compact('house'));
     }
 
     /**

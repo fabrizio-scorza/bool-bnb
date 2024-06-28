@@ -3,9 +3,10 @@
 @section('title', '- I Miei Appartamenti')    
 
 @section('content')
+
 <div class="container">
-    <div class="d-flex align-items-center">
-        <h2 class="fs-4 text-secondary my-5">
+    <div class="d-flex align-items-center my-5">
+        <h2 class="fs-4 text-secondary">
             I Miei Appartamenti
         </h2>
         <button class="ms-auto">Crea Nuovo</button>
@@ -17,10 +18,10 @@
          <div class="col d-flex align-items-stretch">
             <div class="card flex-fill">
                 <div class="card-header">
-                    <a href="" class="link-underline link-underline-opacity-0">{{Str::limit($house->title, 60)}}</a>
+                    <a href="{{route('admin.houses.show', $house)}}" class="link-underline link-underline-opacity-0">{{Str::limit($house->title, 60)}}</a>
                 </div>                
                 <div class="card-body">
-                    <img src="{{$house->thumb}}" alt="immagine appartamento">
+                    <img src="{{$house->thumb}}" alt="Immagine Appartamento">
                     <div>
                         {{$house->price_per_night}}€
                     </div>
@@ -40,4 +41,5 @@
         @endforeach        
     </div>
 </div>
+
 @endsection
