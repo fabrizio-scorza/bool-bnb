@@ -11,7 +11,7 @@
         <h2 class="fs-4 text-secondary pe-5">
             {{$house->title}}
         </h2>
-        <button class="ms-auto me-3">Modifica</button>
+        <button class="ms-auto me-3"><a href="{{route('admin.houses.edit',$house)}}">Modifica</a></button>
         <button >Elimina</button>
     </div>
 </div>

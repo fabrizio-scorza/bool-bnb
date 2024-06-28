@@ -28,7 +28,7 @@
                 </div>
                 <div class="card-footer d-flex justify-content-between">
                     <div>
-                        <button class="me-3">Modifica</button>
+                        <button class="me-3"><a href="{{route('admin.houses.edit',$house)}}">Modifica</a></button>
                         <button>Elimina</button>
                     </div>
                     <div>

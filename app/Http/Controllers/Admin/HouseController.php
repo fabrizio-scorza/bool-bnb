@@ -73,9 +73,14 @@ class HouseController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(House $house)
     {
         //
+        $house->load(['services']);
+        $services = Service::all();
+        $categories = Category::all();
+
+        return view('admin.houses.edit', compact('house', 'services', 'categories'));
     }
 
     /**
