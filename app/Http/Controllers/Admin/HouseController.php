@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\House;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HouseController extends Controller
 {
@@ -13,7 +15,9 @@ class HouseController extends Controller
     public function index()
     {
         //
-        return view('admin.houses.index');
+        $logged_user_id = Auth::user()->id;
+        $houses = House::where('user_id', $logged_user_id)->get();
+        return view('admin.houses.index', compact('houses'));
     }
 
     /**

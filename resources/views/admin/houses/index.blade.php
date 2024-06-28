@@ -4,26 +4,40 @@
 
 @section('content')
 <div class="container">
-    <h2 class="fs-4 text-secondary my-4">
-        {{ __('Dashboard') }}
-    </h2>
-    <div class="row justify-content-center">
-        <div class="col">
-            <div class="card">
-                <div class="card-header">{{ __('User Dashboard') }}</div>
-
+    <div class="d-flex align-items-center">
+        <h2 class="fs-4 text-secondary my-5">
+            I Miei Appartamenti
+        </h2>
+        <button class="ms-auto">Crea Nuovo</button>
+    </div>
+</div>
+<div class="container py-4">
+    <div class="row row-cols-4">
+        @foreach ($houses as $house)
+         <div class="col d-flex align-items-stretch">
+            <div class="card flex-fill">
+                <div class="card-header">
+                    <a href="" class="link-underline link-underline-opacity-0">{{Str::limit($house->title, 60)}}</a>
+                </div>                
                 <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
+                    <img src="{{$house->thumb}}" alt="immagine appartamento">
+                    <div>
+                        {{$house->price_per_night}}€
                     </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                    <test-components></test-components>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <div>
+                        <button class="me-3">Modifica</button>
+                        <button>Elimina</button>
+                    </div>
+                    <div>
+                        <a href="" class="me-3 link-underline link-underline-opacity-0">St</a>
+                        <a href="" class="link-underline link-underline-opacity-0">Sp</a>
+                    </div>    
                 </div>
             </div>
-        </div>
+        </div>   
+        @endforeach        
     </div>
 </div>
 @endsection
