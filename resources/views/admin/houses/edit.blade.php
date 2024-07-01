@@ -85,10 +85,10 @@
 
           <div class="form-group">
             <h4>Visibilità annuncio nella ricerca</h4>
-            <input type="radio"  id="available" name="is-available" value="1" @checked( old('is-available' == 1, $house->available == 1))>
-            <label for="available">Visibile</label>
-            <input type="radio"  id="not-available" name="is-available" value="0" @checked(old('is-available' == 0, $house->available == 0))>
-            <label for="not-available">Non Visibile</label>            
+            <input type="radio"  id="1" name="available" value="1" {{ old('available', $house->available) == '1' ? 'checked' : '' }}>
+            <label for="1">Visibile</label>
+            <input type="radio"  id="0" name="available" value="0" {{ old('available', $house->available) == '0' ? 'checked' : '' }}>
+            <label for="0">Non Visibile</label>            
         </div>
         <button type="submit" class="btn btn-primary">Salva</button>
 
