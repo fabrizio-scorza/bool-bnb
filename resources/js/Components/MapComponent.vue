@@ -1,4 +1,5 @@
 <script>
+import { store } from "../store";
 import tt from "@tomtom-international/web-sdk-maps"
 
 export default {
@@ -16,7 +17,7 @@ export default {
             const longitude = 12.47;
 
             const map = tt.map({
-                key: "0GaJeIIm0LI9Q7jst1IQIUzSO9jDa8m6",
+                key: store.api_key,
                 container: "map",
                 center: [longitude, latitude],
                 zoom: 12

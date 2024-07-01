@@ -42,10 +42,11 @@
             <input type="number" min="30" max="1000" class="form-control" id="square_mt" name="square_mt" placeholder="30-1000" value="{{ old('square-mt') }}">
         </div>
 
-        <div class="form-group">
+        <address-component></address-component>
+        {{-- <div class="form-group">
             <label for="address">Inserici l'indirizzo</label>
             <input type="text" class="form-control" id="address" placeholder="indirizzo del tuo alloggio" name="address" value="{{ old('address') }}" maxlength="255">
-        </div>
+        </div> --}}
 
         <div class="form-group">
             <label for="thumb">Inserisci l'immagine di copertina</label>
