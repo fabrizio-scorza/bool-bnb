@@ -29,7 +29,7 @@
                 <div class="card-footer d-flex justify-content-between">
                     <div>
                         <button class="me-3"><a href="{{route('admin.houses.edit',$house)}}">Modifica</a></button>
-                        <button>Elimina</button>
+                        <button data-bs-toggle="modal" data-bs-target="#modal-{{$house->id}}" class="">Elimina</button>
                     </div>
                     <div>
                         <a href="" class="me-3 link-underline link-underline-opacity-0">St</a>
@@ -38,6 +38,31 @@
                 </div>
             </div>
         </div>   
+
+        <div class="modal" id="modal-{{$house->id}}" tabindex="-1" aria-labelledby="modal-label" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Elimina</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ">
+                  <p>Cliccando su "Si" eliminerai definitivamente l'annuncio</p>
+                </div>
+                <div class="modal-footer border-0">
+                  <button type="button" class="" data-bs-dismiss="modal">No</button>
+                  <form action="{{ route('admin.houses.destroy', $house) }}" method="POST">
+                            
+                    @csrf
+                    @method('DELETE')
+    
+                    <button class="">Si</button>
+                
+                    </form> 
+                </div>
+              </div>
+            </div>
+        </div>
         @endforeach        
     </div>
 </div>

@@ -115,8 +115,11 @@ class HouseController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(House $house)
     {
         //
+        $house->delete();
+
+        return to_route('admin.houses.index');
     }
 }
