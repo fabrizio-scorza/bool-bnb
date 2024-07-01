@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreHouseRequest;
+use App\Http\Requests\UpdateHouseRequest;
 use App\Models\Category;
 use App\Models\House;
 use App\Models\Service;
@@ -86,10 +87,30 @@ class HouseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateHouseRequest $request, House $house)
     {
         //
+        $form_data = $request->validated();
+
+        $form_data['slug'] = House::getSlug($form_data['title']);
+        $form_data['latitude'] = 41.85698;
+        $form_data['longitude'] = 14.85698;
+
+        if ($request->has('category')) {
+            $form_data['category_id'] = $request->category;
+        }
+
+        $house->update($form_data);
+
+        if ($request->has('services')) {
+            $house->services()->sync($request->services);
+        } else {
+            $house->services()->detach();
+        }
+
+        return to_route('admin.houses.show', $house);
     }
+
 
     /**
      * Remove the specified resource from storage.

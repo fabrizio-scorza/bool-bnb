@@ -31,7 +31,6 @@ class StoreHouseRequest extends FormRequest
             'square_mt' => 'required|integer',
             'address' => 'required|string|max:255',
             'thumb' => 'nullable|url',
-            // 'available' => 'required|boolean',
             'price_per_night' => 'required|numeric|min:1|max:9999.99',
             'user_id' => 'exist:users,id',
             'category_id' => 'nullable|exists:categories,id',

@@ -82,8 +82,15 @@
               @endforeach
             </div>
           </div>
-          
-        <button type="submit" class="btn btn-primary">Crea</button>
+
+          <div class="form-group">
+            <h4>Visibilità annuncio nella ricerca</h4>
+            <input type="radio"  id="available" name="is-available" value="1" @checked( old('is-available' == 1, $house->available == 1))>
+            <label for="available">Visibile</label>
+            <input type="radio"  id="not-available" name="is-available" value="0" @checked(old('is-available' == 0, $house->available == 0))>
+            <label for="not-available">Non Visibile</label>            
+        </div>
+        <button type="submit" class="btn btn-primary">Salva</button>
 
     </form>
     <div class="container"> 
