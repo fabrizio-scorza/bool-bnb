@@ -19,7 +19,7 @@
                     <div class="col">
                         <div class="card">
                             <div class="card-header">
-                            {{$message->house_id}}
+                            {{$message->house->title}}
                             </div>
                             <div class="card-body">
                             <blockquote class="blockquote mb-0">

@@ -13,6 +13,7 @@ class PageController extends Controller
     public function plans()
     {
         $plans = Plan::all();
+
         return view('admin.plans.index', compact('plans'));
     }
 
@@ -20,7 +21,11 @@ class PageController extends Controller
     {
         $logged_user_id = Auth::user()->id;
         $houses = House::where('user_id', $logged_user_id)->get();
-        $messages = Message::where();
+        $house_ids = $houses->pluck('id');
+        $messages = Message::whereIn('house_id', $house_ids)->get();
+
+
+
         return view('admin.messages.index', compact('messages'));
     }
 }
