@@ -79,7 +79,7 @@
     <p>{{$house->description}}</p>
 </div>
 <div>
-    <map-component></map-component>
+    <map-component :house='@json($house)'><map-component/>
 </div>
 
 <div class="modal" id="modal-{{$house->id}}" tabindex="-1" aria-labelledby="modal-label" aria-hidden="true">
