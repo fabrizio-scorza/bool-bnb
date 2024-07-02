@@ -33,10 +33,10 @@ class HouseSeeder extends Seeder
             $new_house->title = $faker->paragraph(2);
             $new_house->slug = Str::slug($new_house->title);
             $new_house->user_id = $faker->randomElement($user_ids);
-            $new_house->category_id = $faker->optional()->randomElement($category_ids);
+            $new_house->category_id = $faker->optional(weight: 0.9)->randomElement($category_ids);
             $new_house->description = $faker->paragraph(6);
             $new_house->rooms = rand(1, 15);
-            $new_house->beds = rand(1, 20);
+            $new_house->beds = rand(1, 45);
             $new_house->bathrooms = rand(1, 4);
             $new_house->square_mt = rand(30, 1000);
             $new_house->address = $faker->address();
