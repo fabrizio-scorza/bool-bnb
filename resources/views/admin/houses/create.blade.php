@@ -39,7 +39,7 @@
 
         <div class="form-group">
             <label for="square_mt">Inserisci i metri quadri</label>
-            <input type="number" min="30" max="1000" class="form-control" id="square_mt" name="square_mt" placeholder="30-1000" value="{{ old('square-mt') }}">
+            <input type="number" min="30" max="1000" class="form-control" id="square_mt" name="square_mt" placeholder="30-1000" value="{{ old('square_mt') }}">
         </div>
 
         <address-component></address-component>
