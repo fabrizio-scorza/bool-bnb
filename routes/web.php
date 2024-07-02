@@ -25,6 +25,7 @@ Route::middleware(['auth', 'verified'])
     ->group(function () {
         Route::resource('houses', HouseController::class);
         Route::get('plans', [PageController::class, 'plans'])->name('plans');
+        Route::get('messages', [PageController::class, 'messages'])->name('messages');
     });
 
 require __DIR__ . '/auth.php';
