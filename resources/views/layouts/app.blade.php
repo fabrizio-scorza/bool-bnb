@@ -37,6 +37,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{url('/') }}">{{ __('Home') }}</a>
                         </li>
+                        <li>
+                            <a class=" nav-link" href="{{route('admin.plans')}}">Piani</a>                    
+                        </li>
+                        <li>
+                            <a class=" nav-link" href="{{route('admin.messages')}}">I miei messaggi</a>                    
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

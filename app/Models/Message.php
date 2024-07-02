@@ -14,7 +14,7 @@ class Message extends Model
         'text',
     ];
 
-    public function houses()
+    public function house()
     {
         return $this->belongsTo(House::class);
     }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\HouseController;
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,8 @@ Route::middleware(['auth', 'verified'])
     ->prefix('admin')
     ->group(function () {
         Route::resource('houses', HouseController::class);
+        Route::get('plans', [PageController::class, 'plans'])->name('plans');
+        Route::get('messages', [PageController::class, 'messages'])->name('messages');
     });
 
 require __DIR__ . '/auth.php';
