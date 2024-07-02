@@ -53,11 +53,15 @@ class HouseController extends Controller
             $form_data['category_id'] = $request->category;
         }
 
+        // dd($form_data);
+
         $new_house = House::create($form_data);
 
         if ($request->has('services')) {
             $new_house->services()->attach($request->services);
         }
+
+        
 
         return to_route('admin.houses.show', $new_house);
     }

@@ -51,10 +51,8 @@ export default {
         </div>
     </div>
     <div class="form-group mb-4 ">
-        <label for="latitude">Latitudine</label>
-        <input type="text" id="latitude" name="latitude" :value="latitude">
-        <label for="longitude">Longitudine</label>
-        <input type="text" id="longitude" name="longitude" readonly :value="longitude">
+        <input type="hidden" id="latitude" name="latitude" :value="latitude">
+        <input type="hidden" id="longitude" name="longitude" readonly :value="longitude">
     </div>
 </template>
 
