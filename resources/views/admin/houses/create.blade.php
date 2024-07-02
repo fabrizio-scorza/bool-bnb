@@ -12,34 +12,36 @@
     <form action="{{route('admin.houses.store')}}" method="POST">
         @csrf
 
-        <div class="form-group">
-            <label for="title">Titolo Annuncio</label>
-            <input type="text" class="form-control" id="title" placeholder="Il titolo del tuo alloggio" name="title" value="{{ old('title') }}" maxlength="255">
+        <div class="form-group mb-4">
+            <label for="title">Titolo Annuncio *</label>
+            <input type="text" required class="form-control" id="title" placeholder="Il titolo del tuo alloggio" name="title" value="{{ old('title') }}" maxlength="255">
         </div>
 
-          <div class="form-group">
+          <div class="form-group mb-4">
             <label for="description">Descrizione</label>
             <textarea name="description" id="description" cols="80" rows="5" placeholder="Scrivi un annuncio accattivante per rendere il tuo alloggio più..." class="form-control">{{ old('description') }}</textarea>
           </div>
 
-        <div class="form-group">
-            <label for="rooms">Inserisci il numero di stanze</label>
-            <input type="number" min="1" max="30" class="form-control" id="rooms" name="rooms" placeholder="1-30" value="{{ old('rooms') }}">
-        </div>
-
-        <div class="form-group">
-            <label for="beds">Inserisci il numero di posti letto</label>
-            <input type="number" min="1" max="90" class="form-control" id="beds" name="beds" placeholder="1-90" value="{{ old('beds') }}">
-        </div>
-
-        <div class="form-group">
-            <label for="bathrooms">Inserisci il numero di bagni</label>
-            <input type="number" min="1" max="10" class="form-control" id="bathrooms" name="bathrooms" placeholder="1-10" value="{{ old('bathrooms') }}">
-        </div>
-
-        <div class="form-group">
-            <label for="square_mt">Inserisci i metri quadri</label>
-            <input type="number" min="30" max="1000" class="form-control" id="square_mt" name="square_mt" placeholder="30-1000" value="{{ old('square_mt') }}">
+        <div class="row row-cols-4 mb-4">
+            <div class="form-group">
+                <label for="rooms">Inserisci il numero di stanze *</label>
+                <input type="number" required min="1" max="30" class="form-control" id="rooms" name="rooms" placeholder="1-30" value="{{ old('rooms') }}">
+            </div>
+    
+            <div class="form-group">
+                <label for="beds">Inserisci il numero di posti letto *</label>
+                <input type="number" required min="1" max="90" class="form-control" id="beds" name="beds" placeholder="1-90" value="{{ old('beds') }}">
+            </div>
+    
+            <div class="form-group">
+                <label for="bathrooms">Inserisci il numero di bagni *</label>
+                <input type="number" required min="1" max="10" class="form-control" id="bathrooms" name="bathrooms" placeholder="1-10" value="{{ old('bathrooms') }}">
+            </div>
+    
+            <div class="form-group">
+                <label for="square_mt">Inserisci i metri quadri *</label>
+                <input type="number" required min="30" max="1000" class="form-control" id="square_mt" name="square_mt" placeholder="30-1000" value="{{ old('square_mt') }}">
+            </div>
         </div>
 
         <address-component></address-component>
@@ -48,18 +50,18 @@
             <input type="text" class="form-control" id="address" placeholder="indirizzo del tuo alloggio" name="address" value="{{ old('address') }}" maxlength="255">
         </div> --}}
 
-        <div class="form-group">
-            <label for="thumb">Inserisci l'immagine di copertina</label>
-            <input type="url" class="form-control" id="thumb" placeholder="http://..." name="thumb"
+        <div class="form-group mb-4">
+            <label for="thumb">Inserisci l'immagine di copertina *</label>
+            <input type="url" required class="form-control" id="thumb" placeholder="http://..." name="thumb"
             value="{{ old('thumb') }}">
         </div>
 
-        <div class="form-group">
-            <label for="price_per_night">Inserisci il prezzo per notte</label>
-            <input type="number" min="1" max="9999.99" step="0.01" class="form-control" id="price_per_night" name="price_per_night" placeholder="1-9999.99 €" value="{{ old('price_per_night') }}">
+        <div class="form-group mb-4">
+            <label for="price_per_night">Inserisci il prezzo per notte *</label>
+            <input type="number" required min="1" max="9999.99" step="0.01" class="form-control" id="price_per_night" name="price_per_night" placeholder="1-9999.99 €" value="{{ old('price_per_night') }}">
         </div>
 
-        <div class="form-group">
+        <div class="form-group mb-4">
             <label for="category_id" class="form-label">Categoria</label>
             <select class="form-control" name="category_id" id="category_id">
               <option value="">-- Seleziona Categoria--</option>
@@ -71,7 +73,7 @@
 
         </select>
         
-        <div class="form-group mb-3" id="checklist">
+        <div class="form-group mb-4" id="checklist">
             <label for="checklist">Servizi Aggiuntivi</label>
             <div class="d-flex gap-3 py-2">
               @foreach ($services as $service)

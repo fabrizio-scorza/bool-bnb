@@ -31,9 +31,9 @@ export default {
 </script>
 
 <template>
-    <div class="form-group">
-        <label for="address">Inserici l'indirizzo</label>
-        <input type="search" v-model="address" class="form-control" id="address"
+    <div class="form-group mb-4">
+        <label for="address">Inserici l'indirizzo *</label>
+        <input type="search" required v-model="address" class="form-control" id="address"
             placeholder="indirizzo del tuo alloggio" name="address" maxlength="255" @keyup="fetchData(address)">
         <div class="form-control">
             <ul class="list-unstyled">
