@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+{{-- I miei appartamenti --}}
 @section('title', '- I Miei Appartamenti')    
 
 @section('content')
