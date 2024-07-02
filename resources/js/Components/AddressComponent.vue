@@ -2,8 +2,9 @@
 import { store } from '../store';
 import axios from 'axios';
 delete axios.defaults.headers.common['X-Requested-With'];
-export default {
 
+export default {
+    emits: ['coordinates-updated'],
     data() {
         return {
             store,
@@ -17,8 +18,14 @@ export default {
         fetchData(fetchAdderess) {
             axios.get(`https://api.tomtom.com/search/2/geocode/${fetchAdderess}.json?key=${store.api_key}&typehead=true`).then((res) => {
                 store.addresses = res.data.results
-                console.log(res.data.results)
-            })
+
+                if (res.data.results.length > 0) {
+
+                    this.latitude = res.data.results[0].position.lat
+                    this.longitude = res.data.results[0].position.lon
+                    console.log(this.latitude, this.longitude)
+                }
+            });
         },
         setValue(value_address) {
             this.address = value_address;
@@ -43,8 +50,11 @@ export default {
             </ul>
         </div>
     </div>
-    <div>
-
+    <div class="form-group mb-4 ">
+        <label for="latitude">Latitudine</label>
+        <input type="text" id="latitude" name="latitude" :value="latitude">
+        <label for="longitude">Longitudine</label>
+        <input type="text" id="longitude" name="longitude" readonly :value="longitude">
     </div>
 </template>
 
