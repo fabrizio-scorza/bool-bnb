@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateHouseRequest;
 use App\Models\Category;
 use App\Models\House;
 use App\Models\Service;
+use Dotenv\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -94,8 +95,9 @@ class HouseController extends Controller
     public function update(UpdateHouseRequest $request, House $house)
     {
         //
-        $form_data = $request->validated();
 
+
+        $form_data = $request->validated();
         $form_data['slug'] = House::getSlug($form_data['title']);
         // $form_data['latitude'] = 41.85698;
         // $form_data['longitude'] = 14.85698;
