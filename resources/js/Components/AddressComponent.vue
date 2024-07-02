@@ -9,12 +9,14 @@ export default {
             store,
             address: "",
             latitude: 0,
-            longitude: 0
+            longitude: 0,
+            setVisible: false
         }
     },
 
     methods: {
         fetchData(fetchAdderess) {
+            this.setVisible = true;
             axios.get(`https://api.tomtom.com/search/2/geocode/${fetchAdderess}.json?key=${store.api_key}&typehead=true`).then((res) => {
                 store.addresses = res.data.results
                 console.log(res.data.results)
@@ -23,7 +25,7 @@ export default {
         setValue(value_address) {
             this.address = value_address;
             this.fetchData(value_address);
-
+            this.setVisible = false;
         }
     }
 }
@@ -35,7 +37,7 @@ export default {
         <label for="address">Inserici l'indirizzo</label>
         <input type="search" v-model="address" class="form-control" id="address"
             placeholder="indirizzo del tuo alloggio" name="address" maxlength="255" @keyup="fetchData(address)">
-        <div class="form-control">
+        <div :class="setVisible ? 'is-visible' : 'not-visible'" class="form-control">
             <ul class="list-unstyled">
                 <li v-for="address in store.addresses" @click="setValue(address.address.freeformAddress)" class="value">
                     {{ address.address.freeformAddress }}
@@ -51,5 +53,13 @@ export default {
 <style lang="scss" scoped>
 .value {
     cursor: pointer;
+}
+
+.is-visible {
+    display: block;
+}
+
+.not-visible {
+    display: none;
 }
 </style>
