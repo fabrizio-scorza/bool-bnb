@@ -48,4 +48,8 @@ class House extends Model
     {
         return $this->belongsToMany(Plan::class)->withPivot('created_at', 'expires_at')->withTimestamps();
     }
+    public function views()
+    {
+        return $this->hasMany(View::class);
+    }
 }
