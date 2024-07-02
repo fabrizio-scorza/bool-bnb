@@ -2,8 +2,9 @@
 import { store } from '../store';
 import axios from 'axios';
 delete axios.defaults.headers.common['X-Requested-With'];
-export default {
 
+export default {
+    emits: ['coordinates-updated'],
     data() {
         return {
             store,
@@ -19,8 +20,14 @@ export default {
             this.setVisible = true;
             axios.get(`https://api.tomtom.com/search/2/geocode/${fetchAdderess}.json?key=${store.api_key}&typehead=true`).then((res) => {
                 store.addresses = res.data.results
-                console.log(res.data.results)
-            })
+
+                if (res.data.results.length > 0) {
+
+                    this.latitude = res.data.results[0].position.lat
+                    this.longitude = res.data.results[0].position.lon
+                    console.log(this.latitude, this.longitude)
+                }
+            });
         },
         setValue(value_address) {
             this.address = value_address;
@@ -33,9 +40,9 @@ export default {
 </script>
 
 <template>
-    <div class="form-group">
-        <label for="address">Inserici l'indirizzo</label>
-        <input type="search" v-model="address" class="form-control" id="address"
+    <div class="form-group mb-4">
+        <label for="address">Inserici l'indirizzo *</label>
+        <input type="search" required v-model="address" class="form-control" id="address"
             placeholder="indirizzo del tuo alloggio" name="address" maxlength="255" @keyup="fetchData(address)">
         <div :class="setVisible ? 'is-visible' : 'not-visible'" class="form-control">
             <ul class="list-unstyled">
@@ -45,8 +52,9 @@ export default {
             </ul>
         </div>
     </div>
-    <div>
-
+    <div class="form-group mb-4 ">
+        <input type="hidden" id="latitude" name="latitude" :value="latitude">
+        <input type="hidden" id="longitude" name="longitude" readonly :value="longitude">
     </div>
 </template>
 

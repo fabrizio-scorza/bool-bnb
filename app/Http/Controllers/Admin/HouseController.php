@@ -46,18 +46,22 @@ class HouseController extends Controller
         $form_data['slug'] = House::getSlug($form_data['title']);
         $form_data['user_id'] = Auth::user()->id;
 
-        $form_data['latitude'] = 41.85698;
-        $form_data['longitude'] = 14.85698;
+        // $form_data['latitude'] = 41.85698;
+        // $form_data['longitude'] = 14.85698;
 
         if ($request->has('category')) {
             $form_data['category_id'] = $request->category;
         }
+
+        // dd($form_data);
 
         $new_house = House::create($form_data);
 
         if ($request->has('services')) {
             $new_house->services()->attach($request->services);
         }
+
+        
 
         return to_route('admin.houses.show', $new_house);
     }
@@ -93,8 +97,8 @@ class HouseController extends Controller
         $form_data = $request->validated();
 
         $form_data['slug'] = House::getSlug($form_data['title']);
-        $form_data['latitude'] = 41.85698;
-        $form_data['longitude'] = 14.85698;
+        // $form_data['latitude'] = 41.85698;
+        // $form_data['longitude'] = 14.85698;
 
         if ($request->has('category')) {
             $form_data['category_id'] = $request->category;
