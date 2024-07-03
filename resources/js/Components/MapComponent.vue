@@ -3,7 +3,6 @@ import { store } from "../store";
 import tt from "@tomtom-international/web-sdk-maps"
 
 export default {
-    props: ['house'],
     data() {
         return {
         }
@@ -14,8 +13,8 @@ export default {
     },
     methods: {
         loadMap() {
-            const latitude = this.house.latitude;
-            const longitude = this.house.longitude;
+            const latitude = 41.87;
+            const longitude = 12.47;
 
             const map = tt.map({
                 key: store.api_key,
