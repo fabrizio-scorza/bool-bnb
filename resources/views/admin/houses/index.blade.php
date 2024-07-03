@@ -9,9 +9,15 @@
         <h2 class="fs-4 text-secondary">
             I Miei Appartamenti
         </h2>
+       
         <button class="ms-auto"><a href="{{route('admin.houses.create')}}" class="link-underline link-underline-opacity-0">Crea Nuovo</a></button>
-        
-        <button><a href="{{route( 'admin.houses.index', ['trash' => 1 ])}}" class="link-underline link-underline-opacity-0">Cestino</a></button>
+        <div>
+            @if(request('trash'))
+            <button><a href="{{route( 'admin.houses.index')}}" class="link-underline link-underline-opacity-0">Torna alla pagina</a></button>
+            @else <button><a href="{{route( 'admin.houses.index', ['trash' => 1 ])}}" class="link-underline link-underline-opacity-0">Cestino</a></button>
+            @endif
+        </div>
+       
         
             
     </div>
