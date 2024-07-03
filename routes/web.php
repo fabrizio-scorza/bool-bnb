@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\HouseController;
 use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\VueController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [VueController::class, 'homepage'])->name('homepage');
 
 Route::middleware(['auth', 'verified'])
     ->name('admin.')
