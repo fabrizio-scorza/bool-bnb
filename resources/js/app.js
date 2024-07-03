@@ -14,6 +14,7 @@ import Homepage from './Pages/Homepage.vue';
 const app = createApp({});
 app.component("map-component", MapComponent);
 app.component("address-component", AddressComponent);
+app.component("homepage", Homepage);
 app.mount("#app");
 
 // Validazione della conferma password lato client al momento della registrazione dell'utente

@@ -22,74 +22,71 @@
 </head>
 
 <body>
-    <div id="app">
 
+    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <div class="container">        
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">        
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Left Side Of Navbar -->
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('/') }}">{{ __('Homepage') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('/') }}">{{ __('Ricerca Avanzata') }}</a>
+                    </li>
+                </ul>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{url('/') }}">{{ __('Homepage') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{url('/') }}">{{ __('Ricerca Avanzata') }}</a>
-                        </li>
-                    </ul>
+                <!-- Right Side Of Navbar -->
+                <ul class="navbar-nav ml-auto">
+                    <!-- Authentication Links -->
+                    @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('Accedi') }}</a>
+                    </li>
+                    @if (Route::has('register'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Registrati') }}</a>
+                    </li>
+                    @endif
+                    @else
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Accedi') }}</a>
-                        </li>
-                        @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Registrati') }}</a>
-                        </li>
-                        @endif
-                        @else
+                    <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.houses.index') }}">{{__('I Miei Appartamenti')}}</a>
+                    </li>                       
 
-                        <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.houses.index') }}">{{__('I Miei Appartamenti')}}</a>
-                        </li>                       
+                    <li class="nav-item">
+                        <a class=" nav-link" href="{{route('admin.messages')}}">I miei messaggi</a>                    
+                    </li>
 
-                        <li class="nav-item">
-                            <a class=" nav-link" href="{{route('admin.messages')}}">I miei messaggi</a>                    
-                        </li>
+                    <li class="nav-item">
+                        <a class=" nav-link" href="{{route('admin.plans')}}">Piani</a>                    
+                    </li>
 
-                        <li class="nav-item">
-                            <a class=" nav-link" href="{{route('admin.plans')}}">Piani</a>                    
-                        </li>
+                    <li class="nav-item"> 
+                            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
+                                {{ __('Esci') }}
+                            </a>
 
-                        <li class="nav-item"> 
-                                <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Esci') }}
-                                </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-
-                        @endguest
-                    </ul>
-                </div>
+                    @endguest
+                </ul>
             </div>
-        </nav>
+        </div>
+    </nav>
 
-        <main class="">
-            @yield('content')
-        </main>
-    </div>
+    <main class="" id="app">
+        @yield('content')
+    </main>
 </body>
 
 </html>
