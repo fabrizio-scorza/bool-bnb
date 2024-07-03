@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\HouseController;
-use App\Http\Controllers\Admin\AdminPageController;
 use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\VueController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [VueController::class, 'homepage'])->name('homepage');
 
 Route::middleware(['auth', 'verified'])
     ->name('admin.')
@@ -27,6 +25,10 @@ Route::middleware(['auth', 'verified'])
         Route::resource('houses', HouseController::class);
         Route::get('plans', [PageController::class, 'plans'])->name('plans');
         Route::get('messages', [PageController::class, 'messages'])->name('messages');
+
+        Route::post('/houses/{house}/restore', [HouseController::class, 'restore'])->name('houses.restore');
     });
+
+
 
 require __DIR__ . '/auth.php';

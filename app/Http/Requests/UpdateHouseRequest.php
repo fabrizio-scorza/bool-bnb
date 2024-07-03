@@ -31,6 +31,8 @@ class UpdateHouseRequest extends FormRequest
             'square_mt' => 'required|integer|min:30|max:1000',
             'address' => 'required|string|max:255',
             'thumb' => 'nullable|url',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
             'available' => 'required|boolean',
             'price_per_night' => 'required|numeric|min:1|max:9999.99',
             'user_id' => 'exist:users,id',
