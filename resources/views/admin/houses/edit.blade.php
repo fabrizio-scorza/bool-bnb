@@ -94,6 +94,13 @@
             <input type="radio"  id="0" name="available" value="0" {{ old('available', $house->available) == '0' ? 'checked' : '' }}>
             <label for="0">Non Visibile</label>            
         </div>
+
+        <div class="mb-4 fw-lighter">
+            <p>
+                I campi contrassegnati con l'asterisco (*) sono obbligatori
+            </p>
+        </div>
+        
         <button type="submit" class="btn btn-primary">Salva</button>
 
     </form>

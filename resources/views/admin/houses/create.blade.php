@@ -89,7 +89,13 @@
                       </div>
                   @endforeach
                 </div>
-              </div>
+            </div>
+
+            <div class="mb-4 fw-lighter">
+                <p>
+                    I campi contrassegnati con l'asterisco (*) sono obbligatori
+                </p>
+            </div>
               
             <button type="submit" class="btn btn-primary">Crea</button>
     
