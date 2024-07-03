@@ -23,6 +23,8 @@ Route::middleware(['auth', 'verified'])
     ->prefix('admin')
     ->group(function () {
         Route::resource('houses', HouseController::class);
+
+        Route::post('/houses/{house}/restore', [HouseController::class, 'restore'])->name('houses.restore');
     });
 
 

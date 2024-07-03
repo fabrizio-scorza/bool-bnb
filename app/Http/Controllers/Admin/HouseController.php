@@ -131,5 +131,13 @@ class HouseController extends Controller
 
     public function restore($id)
     {
+
+        $house = House::withTrashed()->find($id);
+
+        if ($house->trashed()) {
+            $house->restore();
+        }
+
+        return back();
     }
 }

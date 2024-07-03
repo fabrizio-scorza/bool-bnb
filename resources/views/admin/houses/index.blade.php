@@ -9,7 +9,6 @@
         <h2 class="fs-4 text-secondary">
             I Miei Appartamenti
         </h2>
-        @if()
         <button class="ms-auto"><a href="{{route('admin.houses.create')}}" class="link-underline link-underline-opacity-0">Crea Nuovo</a></button>
         
         <button><a href="{{route( 'admin.houses.index', ['trash' => 1 ])}}" class="link-underline link-underline-opacity-0">Cestino</a></button>
@@ -36,8 +35,11 @@
                         @auth
                             @if($house->user_id === Auth::id() && !$house ->trashed())
                                 <button class="me-3"><a href="{{route('admin.houses.edit',$house)}}">Modifica</a></button>
-                            @elseif($house->user_id === Auth::id()  && $house ->trashed() )
-                            <button class="me-3"><a href="{{route('admin.houses.edit',$house)}}">Ripristina</a></button>
+                            @elseif($house->user_id === Auth::id() && $house ->trashed())
+                            <form action="{{ route('admin.houses.restore', $house)}}" method="POST">
+                                @csrf
+                                <button>Ripristina</button>
+                            </form>
                             @endif    
                         @endauth
 
