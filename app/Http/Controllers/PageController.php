@@ -1,17 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\House;
 use App\Models\Message;
-use App\Models\Plan;
 use Illuminate\Http\Request;
+use App\Models\Plan;
 use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
-    //
     public function plans()
     {
         $plans = Plan::all();

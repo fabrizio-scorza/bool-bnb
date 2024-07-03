@@ -1,8 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\HouseController;
-use App\Http\Controllers\Admin\AdminPageController;
-use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*
