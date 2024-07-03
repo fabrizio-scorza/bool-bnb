@@ -1,15 +1,17 @@
-<!-- <?php
+<?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\House;
 use App\Models\Message;
-use Illuminate\Http\Request;
 use App\Models\Plan;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
+    //
     public function plans()
     {
         $plans = Plan::all();
@@ -28,4 +30,4 @@ class PageController extends Controller
 
         return view('admin.messages.index', compact('messages'));
     }
-} -->
+}
