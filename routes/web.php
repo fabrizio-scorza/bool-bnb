@@ -26,6 +26,10 @@ Route::middleware(['auth', 'verified'])
         Route::resource('houses', HouseController::class);
         Route::get('plans', [PageController::class, 'plans'])->name('plans');
         Route::get('messages', [PageController::class, 'messages'])->name('messages');
+
+        Route::post('/houses/{house}/restore', [HouseController::class, 'restore'])->name('houses.restore');
     });
+
+
 
 require __DIR__ . '/auth.php';

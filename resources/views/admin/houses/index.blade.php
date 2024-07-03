@@ -9,7 +9,17 @@
         <h2 class="fs-4 text-secondary">
             I Miei Appartamenti
         </h2>
+       
         <button class="ms-auto"><a href="{{route('admin.houses.create')}}" class="link-underline link-underline-opacity-0">Crea Nuovo</a></button>
+        <div>
+            @if(request('trash'))
+            <button><a href="{{route( 'admin.houses.index')}}" class="link-underline link-underline-opacity-0">Torna alla pagina</a></button>
+            @else <button><a href="{{route( 'admin.houses.index', ['trash' => 1 ])}}" class="link-underline link-underline-opacity-0">Cestino</a></button>
+            @endif
+        </div>
+       
+        
+            
     </div>
 </div>
 <div class="container py-4">
@@ -28,8 +38,24 @@
                 </div>
                 <div class="card-footer d-flex justify-content-between">
                     <div>
-                        <button class="me-3"><a href="{{route('admin.houses.edit',$house)}}">Modifica</a></button>
-                        <button data-bs-toggle="modal" data-bs-target="#modal-{{$house->id}}" class="">Elimina</button>
+                        @auth
+                            @if($house->user_id === Auth::id() && !$house ->trashed())
+                                <button class="me-3"><a href="{{route('admin.houses.edit',$house)}}">Modifica</a></button>
+                            @elseif($house->user_id === Auth::id() && $house ->trashed())
+                            <form action="{{ route('admin.houses.restore', $house)}}" method="POST">
+                                @csrf
+                                <button>Ripristina</button>
+                            </form>
+                            @endif    
+                        @endauth
+
+                        @auth
+                            @if($house->user_id === Auth::id() && !$house ->trashed())
+                                 <button data-bs-toggle="modal" data-bs-target="#modal-{{$house->id}}" class="">Elimina</button>
+                            @endif    
+                        @endauth
+                        
+                        
                     </div>
                     <div>
                         <a href="" class="me-3 link-underline link-underline-opacity-0">St</a>

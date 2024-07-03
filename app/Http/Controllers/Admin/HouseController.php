@@ -17,11 +17,17 @@ class HouseController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        $logged_user_id = Auth::user()->id;
-        $houses = House::where('user_id', $logged_user_id)->get();
+        if ($request->has('trash')) {
+            $logged_user_id = Auth::user()->id;
+            $houses = House::onlyTrashed()->where('user_id', $logged_user_id)->get();
+        } else {
+            $logged_user_id = Auth::user()->id;
+            $houses = House::where('user_id', $logged_user_id)->get();
+        }
+
+
         return view('admin.houses.index', compact('houses'));
     }
 
@@ -136,5 +142,17 @@ class HouseController extends Controller
         $house->delete();
 
         return to_route('admin.houses.index');
+    }
+
+    public function restore($id)
+    {
+
+        $house = House::withTrashed()->find($id);
+
+        if ($house->trashed()) {
+            $house->restore();
+        }
+
+        return back();
     }
 }
