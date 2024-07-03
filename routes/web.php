@@ -25,4 +25,6 @@ Route::middleware(['auth', 'verified'])
         Route::resource('houses', HouseController::class);
     });
 
+
+
 require __DIR__ . '/auth.php';
