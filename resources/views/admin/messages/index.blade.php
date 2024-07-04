@@ -3,8 +3,9 @@
 @section('title','Messaggi')
 
 @section('content')
+<section class="messages">
     <div class="container">
-        <h2 class="text-center mt-2 mb-5">
+        <h2 class="text-center mt-2 mb-4">
             I messaggi ai miei annunci
         </h2>
     </div>
@@ -33,4 +34,5 @@
             @endif
         </div>
     </div>
+</section>
 @endsection

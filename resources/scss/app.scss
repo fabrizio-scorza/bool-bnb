@@ -11,13 +11,16 @@
 
 //BACK-END CASE
 //Index case
-@use"./partials/houses/index.scss";
+@use"./partials/houses/houses_index.scss";
 
 //Create ed Edit delle case 
-@use"./partials/houses/create-edit.scss";
+@use"./partials/houses/houses_create-edit.scss";
 
 //Show delle case 
-@use"./partials/houses/show.scss";
+@use"./partials/houses/houses_show.scss";
+
+//BACK-END MESSAGGI
+@use"./partials/messages/messages_index.scss";
 
 
 
