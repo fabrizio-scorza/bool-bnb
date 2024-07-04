@@ -82,9 +82,9 @@ export default {
         </div>
     </section>
     <section class="searchbar">
-        <div class="container">
+        <div class="container position-relative">
             <address-component></address-component>
-            <a href="#search" @click="searchHouses(houses)">Cerca</a>
+            <a href="#search" @click="searchHouses(houses)" class="search-link"> &#x1F50D; Cerca</a>
         </div>
     </section>
     <section class="sponsored">
@@ -191,5 +191,12 @@ export default {
 
 .slide {
     width: 800px;
+}
+
+.search-link{
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    right: 45px;
 }
 </style>
