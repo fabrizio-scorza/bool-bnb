@@ -6,12 +6,29 @@ export default {
         return {
             store,
             closeHouses: [],
+            currentSlideIndex: 0,
+            sponsored_houses: [],
         }
     },
-    methods: {
-        isHidden(sponsored_house) {
-            return !(sponsored_house.plans && sponsored_house.plans.length);
+    computed: {
+
+        sponsored() {
+            this.houses.forEach(house => {
+                if (house.plans && house.plans.length) {
+                    this.sponsored_houses.push(house)
+                }
+            })
+            return this.sponsored_houses;
         },
+    },
+    methods: {
+        showPrevSlide() {
+            this.currentSlideIndex = (this.currentSlideIndex === 0) ? this.sponsored_houses.length - 1 : this.currentSlideIndex - 1;
+        },
+        showNextSlide() {
+            this.currentSlideIndex = (this.currentSlideIndex === this.sponsored_houses.length - 1) ? 0 : this.currentSlideIndex + 1;
+        },
+
         searchHouses(houses) {
             // cercare dentro l'array houses la latitudine e longitudine in un raggio di 20km del risultato di store addresses
             this.closeHouses = [];
@@ -90,7 +107,7 @@ export default {
             <a href="#search" @click="searchHouses(houses)" class="search-link"> &#x1F50D; Cerca</a>
         </div>
     </section>
-    <section class="sponsored">
+    <!-- <section class="sponsored">
         <div class="container">
             <div class="row row-gap-4">
                 <div class="col-3 d-flex align-items-stretch" v-for="sponsored_house in houses"
@@ -179,6 +196,50 @@ export default {
                 </div>
             </div>
         </div>
+    </section> -->
+
+    <section class="sponsored">
+        <div class="container">
+            <div class="row row-gap-4 position-relative">
+
+
+                <div class="col-4 d-flex align-items-stretch" v-for="(sponsored_house, index) in sponsored"
+                    :key="sponsored_house.id"
+                    :class="(index === currentSlideIndex || index === currentSlideIndex + 1 || index === currentSlideIndex + 2) ? 'active' : 'hidden'">
+                    <div class="card flex-fill">
+                        <div class="card-header">
+                            <a href="" class="link-underline link-underline-opacity-0">
+                                {{ sponsored_house.title }}
+                            </a>
+                        </div>
+
+                        <div class="card-body">
+                            <img :src="sponsored_house.thumb" alt="Immagine Appartamento">
+                            <div>
+                                {{ sponsored_house.price_per_night }}€
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <button class="carousel-control-prev" @click="showPrevSlide">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" @click="showNextSlide">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            <!-- <div v-for="(sponsored_house, index) in houses"
+                :class="[isHidden(sponsored_house) ? 'hidden' : '', (index === currentSlideIndex) ? 'active' : 'hidden']"
+                :key="sponsored_house.id">
+                {{ sponsored_house.title }}
+
+            </div> -->
+
+        </div>
     </section>
 
 </template>
@@ -213,5 +274,21 @@ export default {
     transform: translateY(-50%);
     top: 50%;
     right: 45px;
+}
+
+.carousel {
+    position: relative;
+}
+
+.active {
+    display: block;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
 }
 </style>
