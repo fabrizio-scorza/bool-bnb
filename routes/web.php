@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [VueController::class, 'homepage'])->name('homepage');
+Route::get('/advanced-search', [VueController::class, 'advancedSearch'])->name('advanced');
 
 Route::middleware(['auth', 'verified'])
     ->name('admin.')

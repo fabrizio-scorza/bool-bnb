@@ -20,4 +20,14 @@ class VueController extends Controller
         $houses = House::with('plans')->get();
         return view('homepage', compact('logged_user_id', 'houses'));
     }
+    public function advancedSearch()
+    {
+        $logged_user_id = null;
+        if (Auth::user() != null) {
+            $logged_user_id = Auth::user()->id;
+        }
+
+        $houses = House::with('plans')->get();
+        return view('advancedSearch', compact('logged_user_id', 'houses'));
+    }
 }
