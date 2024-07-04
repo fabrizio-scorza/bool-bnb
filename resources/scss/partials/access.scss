@@ -2,7 +2,6 @@
 
 .login, .register, .reset, .verify, .forgot, .confirm{
 
-    background-color:var(--white);
     height: 100%;
 
     //CARD
@@ -22,14 +21,6 @@
     }
 
     //BOTTONI
-
-    button{
-        background-color: var(--purple);
-        color: var(--white);
-        &:hover{
-            background-color: var(--yellow);
-        }
-    }
 
     a{
         color: var(--white);

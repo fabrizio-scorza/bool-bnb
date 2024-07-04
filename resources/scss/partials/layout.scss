@@ -8,22 +8,19 @@
     --white:#f5f5f5;
 }
 
-//BODY
-body{
-    background-color: var(--white);
-}
-
-//IMMAGINI
+//RESET
 img{
     max-width: 100%;
 }
 
-//BOTTONI
-button{
-    padding: 0.375rem 0.75rem;
-    border-radius: 6px;
-    font-size: 1rem;
-    border: none;
+a{
+    color: currentColor;
+    text-decoration: none;
+}
+
+//BODY
+body{
+    background-color: var(--white);
 }
 
 //INPUT

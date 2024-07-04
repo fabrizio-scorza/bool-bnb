@@ -28,26 +28,4 @@
 
     }
 
-    //BOTTONI
-    button{
-        background-color: var(--purple);
-        color: var(--white);
-
-        &.bg_orange{
-            background-color: var(--orange);
-        }
-
-        &:hover{
-            background-color: var(--yellow);
-        }
-
-        a{
-            color: var(--white);
-        }
-
-    }
-
-    // .yellow{
-    //     background-color: var(--yellow);
-    // }
 }

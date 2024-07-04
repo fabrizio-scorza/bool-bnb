@@ -1,0 +1,21 @@
+button{
+
+    padding: 0.375rem 0.75rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    border: none;
+    background-color: var(--purple);
+    color: var(--white);
+
+    &.bg_orange{
+        background-color: var(--orange);
+    }
+
+    &:hover{
+        background-color: var(--yellow);
+    }
+
+    a{
+        color: var(--white);
+    }
+}

@@ -3,14 +3,21 @@
 //Colori e regole generali
 @use "./partials/layout.scss";
 
+//Bottoni
+@use "./partials/buttons.scss";
+
 //Login, reigistrazione e altre pagine della cartella 'auth'
 @use"./partials/access.scss";
 
+//BACK-END CASE
 //Index case
 @use"./partials/houses/index.scss";
 
 //Create ed Edit delle case 
 @use"./partials/houses/create-edit.scss";
+
+//Show delle case 
+@use"./partials/houses/show.scss";
 
 
 

@@ -36,7 +36,7 @@
                         <a class="nav-link" href="{{url('/') }}">{{ __('Homepage') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('/') }}">{{ __('Ricerca Avanzata') }}</a>
+                        <a class="nav-link" href="{{url('/') }}">{{ __('Ricerca avanzata') }}</a>
                     </li>
                 </ul>
 
@@ -55,7 +55,7 @@
                     @else
 
                     <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.houses.index') }}">{{__('I Miei Appartamenti')}}</a>
+                            <a class="nav-link" href="{{ route('admin.houses.index') }}">{{__('I Miei appartamenti')}}</a>
                     </li>                       
 
                     <li class="nav-item">

@@ -34,8 +34,8 @@
                     </div>                
                     <div class="card-body text-center">
                         <img src="{{$house->thumb}}" alt="Immagine Appartamento">
-                        <div>
-                            {{$house->price_per_night}}€
+                        <div class="text-start my-1">
+                            {{$house->price_per_night}}€ a notte
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-between">
@@ -75,7 +75,7 @@
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body ">
-                      <p>Cliccando su "Si" eliminerai definitivamente l'annuncio</p>
+                      <p>Vuoi spostare questo annuncio nel cestino?</p>
                     </div>
                     <div class="modal-footer border-0">
                       <button type="button" class="" data-bs-dismiss="modal">No</button>
@@ -84,7 +84,7 @@
                         @csrf
                         @method('DELETE')
         
-                        <button class="">Si</button>
+                        <button class="bg_orange">Si</button>
                     
                         </form> 
                     </div>
