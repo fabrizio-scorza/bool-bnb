@@ -44,18 +44,12 @@
                     <input type="number" required min="30" max="1000" class="form-control" id="square_mt" name="square_mt" placeholder="30-1000" value="{{ old('square_mt') }}">
                 </div>
             </div>
-    
-            <address-component></address-component>
-            {{-- <div class="form-group">
-                <label for="address">Inserici l'indirizzo</label>
-                <input type="text" class="form-control" id="address" placeholder="indirizzo del tuo alloggio" name="address" value="{{ old('address') }}" maxlength="255">
-            </div> --}}
-    
-
-        
-
-
-
+            
+            <div class="form-group mb-4">
+                <label for="address">Inserici l'indirizzo *</label>
+                <address-component></address-component>
+            </div>
+                     
             <div class="form-group mb-4">
                 <label for="thumb">Inserisci l'immagine di copertina *</label>
                 <input type="url" required class="form-control" id="thumb" placeholder="http://..." name="thumb"
