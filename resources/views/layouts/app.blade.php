@@ -36,7 +36,6 @@
                         <a class="nav-link" href="{{url('/') }}">{{ __('Homepage') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('/') }}">{{ __('Ricerca avanzata') }}</a>
                         <a class="nav-link" href="{{url('/advanced-search') }}">{{ __('Ricerca Avanzata') }}</a>
                     </li>
                 </ul>

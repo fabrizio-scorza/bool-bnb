@@ -44,19 +44,21 @@ export default {
 </script>
 
 <template>
-    <input type="search" required v-model="address" class="form-control" id="address"
-        placeholder="Via Nazionale 1, Roma" name="address" maxlength="255" @keyup="fetchData(address)"
-        @keyup.delete="hiddenOnDelete()">
-    <div :class="setVisible ? 'is-visible' : 'not-visible'" class="form-control">
-        <ul class="list-unstyled">
-            <li v-for="address in store.addresses" @click="setValue(address.address.freeformAddress)" class="value">
-                {{ address.address.freeformAddress }}
-            </li>
-        </ul>
-    </div>
-    <div class="form-group mb-4 ">
-        <input type="hidden" id="latitude" name="latitude" readonly :value="latitude">
-        <input type="hidden" id="longitude" name="longitude" readonly :value="longitude">
+    <div class="position-relative">
+        <input type="search" required v-model="address" class="form-control" id="address"
+            placeholder="Via Nazionale 1, Roma" name="address" maxlength="255" @keyup="fetchData(address)"
+            @keyup.delete="hiddenOnDelete()">
+        <div :class="setVisible ? 'is-visible' : 'not-visible'" class="form-control position-absolute z-1">
+            <ul class="list-unstyled">
+                <li v-for="address in store.addresses" @click="setValue(address.address.freeformAddress)" class="value">
+                    {{ address.address.freeformAddress }}
+                </li>
+            </ul>
+        </div>
+        <div class="form-group mb-4 ">
+            <input type="hidden" id="latitude" name="latitude" readonly :value="latitude">
+            <input type="hidden" id="longitude" name="longitude" readonly :value="longitude">
+        </div>
     </div>
 </template>
 

@@ -84,7 +84,7 @@ export default {
     <section class="searchbar">
         <div class="container">
             <address-component></address-component>
-            <a href="#" @click="searchHouses(houses)">Cerca</a>
+            <a href="#search" @click="searchHouses(houses)">Cerca</a>
         </div>
     </section>
     <section class="sponsored">
@@ -135,7 +135,7 @@ export default {
                         </div>
                     </div>
                 </div>
-                <div class="col-3 d-flex align-items-stretch" v-for="house in closeHouses" :key="house.id">
+                <div id="#search" class="col-3 d-flex align-items-stretch" v-for="house in closeHouses" :key="house.id">
                     <div class="card flex-fill">
                         <div class="card-header">
                             <a href="" class="link-underline link-underline-opacity-0">
