@@ -87,7 +87,7 @@ export default {
             <a href="#search" @click="searchHouses(houses)">Cerca</a>
         </div>
     </section>
-    <section class="sponsored">
+    <!-- <section class="sponsored">
         <div class="container">
             <div class="row row-gap-4">
                 <div class="col-3 d-flex align-items-stretch" v-for="sponsored_house in houses"
@@ -116,11 +116,6 @@ export default {
                                             Modifica
                                         </a>
                                     </button>
-                                    <form action="" method="POST">
-                                        <button>
-                                            Ripristina
-                                        </button>
-                                    </form>
                                     <button data-bs-toggle="modal" data-bs-target="#modal-{{$house->id}}" class="">
                                         Elimina
                                     </button>
@@ -135,7 +130,14 @@ export default {
                         </div>
                     </div>
                 </div>
-                <div id="#search" class="col-3 d-flex align-items-stretch" v-for="house in closeHouses" :key="house.id">
+            </div>
+        </div>
+    </section> -->
+    <section class="searched">
+        <div class="container">
+            <div class="row row-gap-4">
+                <div id="#search" class="col-3 d-flex align-items-stretch" v-for="house in closeHouses" :key="house.id"
+                    :class="house.plans.length ? 'order-1' : 'order-2'">
                     <div class="card flex-fill">
                         <div class="card-header">
                             <a href="" class="link-underline link-underline-opacity-0">
@@ -157,11 +159,6 @@ export default {
                                         Modifica
                                     </a>
                                 </button>
-                                <form action="" method="POST">
-                                    <button>
-                                        Ripristina
-                                    </button>
-                                </form>
                                 <button data-bs-toggle="modal" data-bs-target="#modal-{{$house->id}}" class="">
                                     Elimina
                                 </button>
@@ -176,6 +173,7 @@ export default {
                 </div>
             </div>
         </div>
+
     </section>
 
 </template>
