@@ -21,9 +21,9 @@
     <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.5.0/maps/maps.css'>
 </head>
 
-<body>
+<body class="d-flex flex-column vh-100">
 
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <nav class="navbar navbar-expand-md py-3 ">
         <div class="container">        
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
@@ -84,7 +84,7 @@
         </div>
     </nav>
 
-    <main class="" id="app">
+    <main class="flex-grow-1" id="app">
         @yield('content')
     </main>
 </body>

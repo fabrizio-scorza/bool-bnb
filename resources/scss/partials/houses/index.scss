@@ -1,0 +1,54 @@
+.index{
+
+    //LAYOUT GENERALE
+    background-color: whitesmoke;
+    height: 100%;
+    color: var(--black);
+
+    //CARDS
+    .card{
+        --bs-card-border-color: var(--purple);
+
+        .card-header{
+            background-color: var(--purple);
+            color: whitesmoke;
+            a{
+                color: whitesmoke;
+            }
+        }
+
+        .card-body{
+            img{
+                background-size: cover;
+            }
+        }
+
+        .card-footer{
+            background-color: var(--lavander);
+        }
+
+    }
+
+    //BOTTONI
+    button{
+        background-color: var(--purple);
+        color: whitesmoke;
+
+        &.bg_orange{
+            background-color: var(--orange);
+        }
+
+        &:hover{
+            background-color: var(--yellow);
+        }
+
+        a{
+            color: whitesmoke;
+        }
+
+    }
+
+    // .yellow{
+    //     background-color: var(--yellow);
+    // }
+}

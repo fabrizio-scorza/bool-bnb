@@ -11,8 +11,8 @@
     <div class="container">
         <div class="row row-cols-1">
             @if($messages->isEmpty())
-                <div class="d-flex text-center align-items-center">
-                    <h2>Nessun messaggio da visualizzare</h2>
+                <div class=" my-5 text-center ">
+                    <h3>Nessun messaggio da visualizzare</h3>
                 </div>
             @else
                 @foreach ($messages as $message)

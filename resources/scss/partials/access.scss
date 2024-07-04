@@ -1,0 +1,50 @@
+//GRAFICA COMUNE A TUTTE LE PAGINE
+
+.login, .register, .reset, .verify, .forgot, .confirm{
+
+    background-color: whitesmoke;
+    height: 100%;
+
+    //CARD
+    .card{
+        color: var(--black);
+        --bs-card-border-color: var(--purple);
+    }
+    
+    .card-header{
+        background-color: var(--purple);
+        color: whitesmoke;
+    }
+
+    .card-body{
+        background-color: var(--lavander);
+        padding-top: 50px;
+    }
+
+    //BOTTONI
+
+    button{
+        background-color: var(--purple);
+        color: whitesmoke;
+        &:hover{
+            background-color: var(--yellow);
+        }
+    }
+
+    a{
+        color: whitesmoke;
+        &:hover{
+            color: var(--purple);
+        }
+        // &:active{
+        //     color: red;
+        // }
+    }
+
+}
+
+//REGISTER
+
+.attention{
+    color: white;
+}

@@ -1,0 +1,17 @@
+button{
+    background-color: var(--purple);
+    color: whitesmoke;
+
+    &.bg_orange{
+        background-color: var(--orange);
+    }
+
+    &:hover{
+        background-color: var(--yellow);
+    }
+
+    a{
+        color: whitesmoke;
+    }
+
+}

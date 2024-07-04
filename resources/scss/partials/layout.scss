@@ -1,10 +1,36 @@
 //COLORI
-
 :root{
     --black: #383b4a;
     --purple:#6b557c;
     --lavander:#a290b8;
     --yellow:#e5a95b;
     --orange:#c75756;
-
 }
+
+//IMMAGINI
+img{
+    max-width: 100%;
+}
+
+//BOTTONI
+button{
+    padding: 0.375rem 0.75rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    border: none;
+}
+
+//INPUT
+
+// .form-control::placeholder { 
+//     color: #E79B28;
+//     opacity: 1; 
+// }
+
+.form-control:focus {
+    //background-color: var(--lavander);
+    color: var(--black);   
+}
+
+
+

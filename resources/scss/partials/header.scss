@@ -1,0 +1,15 @@
+.navbar{
+    background-color: var(--purple);
+
+    button{
+        color: whitesmoke;
+        border: whitesmoke;
+    }
+
+    a{
+        color: whitesmoke;
+        &:hover{
+            color: var(--yellow);
+        }
+    }
+}

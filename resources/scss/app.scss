@@ -1,1 +1,30 @@
-@import '~bootstrap/scss/bootstrap'
+@use "~bootstrap/scss/bootstrap";
+
+//Colori e regole generali
+@use "./partials/layout.scss";
+
+//Login, reigistrazione e altre pagine della cartella 'auth'
+@use"./partials/access.scss";
+
+//Index case
+@use"./partials/houses/index.scss";
+
+//Create ed Edit delle case 
+@use"./partials/houses/create-edit.scss";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Header e footer
+@use "./partials/header.scss";
