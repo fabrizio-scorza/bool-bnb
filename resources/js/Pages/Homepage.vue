@@ -62,44 +62,47 @@ export default {
 
 <template>
     <section class="carousel py-5">
-        
-            <div >
-                <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active" data-bs-interval="8000">
-                            <img src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg"
-                                class="d-block w-100" alt="...">
-                            <h2 class="text-white carousel-text">Questo è il nostro sito. Vi offriamo la possibilità di cercare alloggi per godervi le vostre vacanze!</h2>
-                        </div>
-                        <div class="carousel-item" data-bs-interval="8000">
-                            <img src="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg"
-                                class="d-block w-100" alt="...">
-                                <h2 class="text-white carousel-text">Potrai beneficiare di tutti i tipi di servizi offerti.</h2>
-                        </div>
-                        <div class="carousel-item" data-bs-interval="8000">
-                            <img src="https://images.pexels.com/photos/1438832/pexels-photo-1438832.jpeg"
-                                class="d-block w-100" alt="...">
-                                <h2 class="text-white carousel-text">Cerca l'alloggio più adatto alle tue esigenze, troverai tutte le categorie che desideri.</h2>
-                        </div>
-                        <div class="carousel-item" data-bs-interval="8000">
-                            <img src="https://images.pexels.com/photos/1396132/pexels-photo-1396132.jpeg"
-                                class="d-block w-100" alt="...">
-                                <h2 class="text-white carousel-text">Siamo presenti in tutto il mondo. Inizia la tua ricerca adesso!</h2>
-                        </div>
+
+        <div>
+            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="8000">
+                        <img src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg"
+                            class="d-block w-100" alt="...">
+                        <h2 class="text-white carousel-text">Questo è il nostro sito. Vi offriamo la possibilità di
+                            cercare alloggi per godervi le vostre vacanze!</h2>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+                    <div class="carousel-item" data-bs-interval="8000">
+                        <img src="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg"
+                            class="d-block w-100" alt="...">
+                        <h2 class="text-white carousel-text">Potrai beneficiare di tutti i tipi di servizi offerti.</h2>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="8000">
+                        <img src="https://images.pexels.com/photos/1438832/pexels-photo-1438832.jpeg"
+                            class="d-block w-100" alt="...">
+                        <h2 class="text-white carousel-text">Cerca l'alloggio più adatto alle tue esigenze, troverai
+                            tutte le categorie che desideri.</h2>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="8000">
+                        <img src="https://images.pexels.com/photos/1396132/pexels-photo-1396132.jpeg"
+                            class="d-block w-100" alt="...">
+                        <h2 class="text-white carousel-text">Siamo presenti in tutto il mondo. Inizia la tua ricerca
+                            adesso!</h2>
+                    </div>
                 </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
-        
+        </div>
+
     </section>
     <section class="searchbar">
         <div class="container position-relative">
@@ -107,98 +110,7 @@ export default {
             <a href="#search" @click="searchHouses(houses)" class="search-link"> &#x1F50D; Cerca</a>
         </div>
     </section>
-    <!-- <section class="sponsored">
-        <div class="container">
-            <div class="row row-gap-4">
-                <div class="col-3 d-flex align-items-stretch" v-for="sponsored_house in houses"
-                    :class="[isHidden(sponsored_house) ? 'hidden' : '']" :key="sponsored_house.id">
-                    <div v-if="sponsored_house.plans && sponsored_house.plans.length" class="card flex-fill">
-                        <div v-for="plan in sponsored_house.plans" :key="plan.id">
-                            <div class="card-header">
-                                <a href="" class="link-underline link-underline-opacity-0">
-                                    {{ sponsored_house.title }}
-                                </a>
-                            </div>
-
-                            <div class="card-body">
-                                <img :src="sponsored_house.thumb" alt="Immagine Appartamento">
-                                <div>
-                                    {{ sponsored_house.price_per_night }}€
-                                </div>
-                            </div>
-
-
-                            <div v-if="sponsored_house.user_id == logged_user"
-                                class="card-footer d-flex justify-content-between">
-                                <div>
-                                    <button class="me-3">
-                                        <a href="">
-                                            Modifica
-                                        </a>
-                                    </button>
-                                    <form action="" method="POST">
-                                        <button>
-                                            Ripristina
-                                        </button>
-                                    </form>
-                                    <button data-bs-toggle="modal" data-bs-target="#modal-{{$house->id}}" class="">
-                                        Elimina
-                                    </button>
-                                </div>
-
-                                <div>
-                                    <a href="" class="me-3 link-underline link-underline-opacity-0">St</a>
-                                    <a href="" class="link-underline link-underline-opacity-0">Sp</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div id="#search" class="col-3 d-flex align-items-stretch" v-for="house in closeHouses" :key="house.id">
-                    <div class="card flex-fill">
-                        <div class="card-header">
-                            <a href="" class="link-underline link-underline-opacity-0">
-                                {{ house.title }}
-                            </a>
-                        </div>
-
-                        <div class="card-body">
-                            <img :src="house.thumb" alt="Immagine Appartamento">
-                            <div>
-                                {{ house.price_per_night }}€
-                            </div>
-                        </div>
-
-                        <div v-if="house.user_id == logged_user" class="card-footer d-flex justify-content-between">
-                            <div>
-                                <button class="me-3">
-                                    <a href="">
-                                        Modifica
-                                    </a>
-                                </button>
-                                <form action="" method="POST">
-                                    <button>
-                                        Ripristina
-                                    </button>
-                                </form>
-                                <button data-bs-toggle="modal" data-bs-target="#modal-{{$house->id}}" class="">
-                                    Elimina
-                                </button>
-                            </div>
-
-                            <div>
-                                <a href="" class="me-3 link-underline link-underline-opacity-0">St</a>
-                                <a href="" class="link-underline link-underline-opacity-0">Sp</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-    <section class="sponsored">
+    <section class="sponsored my-5">
         <div class="container">
             <div class="row row-gap-4 position-relative">
 
@@ -232,16 +144,50 @@ export default {
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
-            <!-- <div v-for="(sponsored_house, index) in houses"
-                :class="[isHidden(sponsored_house) ? 'hidden' : '', (index === currentSlideIndex) ? 'active' : 'hidden']"
-                :key="sponsored_house.id">
-                {{ sponsored_house.title }}
-
-            </div> -->
-
         </div>
     </section>
+    <section class="searched pt-5">
+        <div class="container">
+            <div class="row row-gap-4">
+                <div id="#search" class="col-3 d-flex align-items-stretch" v-for="house in closeHouses" :key="house.id"
+                    :class="house.plans.length ? 'order-1' : 'order-2'">
+                    <div class="card flex-fill">
+                        <div class="card-header">
+                            <a href="" class="link-underline link-underline-opacity-0">
+                                {{ house.title }}
+                            </a>
+                        </div>
 
+                        <div class="card-body">
+                            <img :src="house.thumb" alt="Immagine Appartamento">
+                            <div>
+                                {{ house.price_per_night }}€
+                            </div>
+                        </div>
+
+                        <div v-if="house.user_id == logged_user" class="card-footer d-flex justify-content-between">
+                            <div>
+                                <button class="me-3">
+                                    <a href="">
+                                        Modifica
+                                    </a>
+                                </button>
+                                <button data-bs-toggle="modal" data-bs-target="#modal-{{$house->id}}" class="">
+                                    Elimina
+                                </button>
+                            </div>
+
+                            <div>
+                                <a href="" class="me-3 link-underline link-underline-opacity-0">St</a>
+                                <a href="" class="link-underline link-underline-opacity-0">Sp</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
 </template>
 
 <style lang="scss" scoped>
@@ -254,12 +200,13 @@ export default {
 }
 
 .slide {
-    img{
+    img {
         height: 450px;
         object-fit: cover;
         position: relative;
     }
-    .carousel-text{
+
+    .carousel-text {
         position: absolute;
         transform: translateY(-50%);
         top: 25%;
@@ -269,7 +216,7 @@ export default {
     }
 }
 
-.search-link{
+.search-link {
     position: absolute;
     transform: translateY(-50%);
     top: 50%;
