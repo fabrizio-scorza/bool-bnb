@@ -44,27 +44,30 @@ export default {
 </script>
 
 <template>
-    <section class="carousel">
-        <div class="container">
-            <div class="d-flex justify-content-center">
+    <section class="carousel py-5">
+        
+            <div >
                 <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active" data-bs-interval="8000">
-                            <img src="https://www.produceshop.it/blog/wp-content/uploads/2021/09/MicrosoftTeams-image-54-930x620.jpg"
-                                class="d-block w-100 position-relative" alt="...">
-                            <!-- <h2 class="position-absolute top-50 start-0 text-white">Questo è il nostro sito!</h2> -->
+                            <img src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg"
+                                class="d-block w-100" alt="...">
+                            <h2 class="text-white carousel-text">Questo è il nostro sito. Vi offriamo la possibilità di cercare alloggi per godervi le vostre vacanze!</h2>
                         </div>
                         <div class="carousel-item" data-bs-interval="8000">
-                            <img src="https://www.produceshop.it/blog/wp-content/uploads/2021/09/MicrosoftTeams-image-55-930x620.jpg"
+                            <img src="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg"
                                 class="d-block w-100" alt="...">
+                                <h2 class="text-white carousel-text">Potrai beneficiare di tutti i tipi di servizi offerti.</h2>
                         </div>
                         <div class="carousel-item" data-bs-interval="8000">
-                            <img src="https://www.produceshop.it/blog/wp-content/uploads/2021/09/MicrosoftTeams-image-56-930x620.jpg"
+                            <img src="https://images.pexels.com/photos/1438832/pexels-photo-1438832.jpeg"
                                 class="d-block w-100" alt="...">
+                                <h2 class="text-white carousel-text">Cerca l'alloggio più adatto alle tue esigenze, troverai tutte le categorie che desideri.</h2>
                         </div>
                         <div class="carousel-item" data-bs-interval="8000">
-                            <img src="https://www.produceshop.it/blog/wp-content/uploads/2021/09/MicrosoftTeams-image-51-930x620.jpg"
+                            <img src="https://images.pexels.com/photos/1396132/pexels-photo-1396132.jpeg"
                                 class="d-block w-100" alt="...">
+                                <h2 class="text-white carousel-text">Siamo presenti in tutto il mondo. Inizia la tua ricerca adesso!</h2>
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
@@ -79,12 +82,12 @@ export default {
                     </button>
                 </div>
             </div>
-        </div>
+        
     </section>
     <section class="searchbar">
-        <div class="container">
+        <div class="container position-relative">
             <address-component></address-component>
-            <a href="#search" @click="searchHouses(houses)">Cerca</a>
+            <a href="#search" @click="searchHouses(houses)" class="search-link"> &#x1F50D; Cerca</a>
         </div>
     </section>
     <section class="sponsored">
@@ -190,6 +193,25 @@ export default {
 }
 
 .slide {
-    width: 800px;
+    img{
+        height: 450px;
+        object-fit: cover;
+        position: relative;
+    }
+    .carousel-text{
+        position: absolute;
+        transform: translateY(-50%);
+        top: 25%;
+        left: 300px;
+        width: 500px;
+        background-color: rgba($color: #000000, $alpha: 0.6);
+    }
+}
+
+.search-link{
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    right: 45px;
 }
 </style>
