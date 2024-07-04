@@ -27,8 +27,9 @@ class HouseController extends Controller
             $houses = House::where('user_id', $logged_user_id)->get();
         }
 
+        $trashed = House::onlyTrashed()->count();
 
-        return view('admin.houses.index', compact('houses'));
+        return view('admin.houses.index', compact('houses', 'trashed'));
     }
 
     /**
@@ -154,5 +155,15 @@ class HouseController extends Controller
         }
 
         return back();
+    }
+
+    public function forceDestroy($id)
+    {
+        // dd($id);
+        $house = House::withTrashed()->find($id);
+        if ($house->trashed()) {
+            $house->forceDelete();
+            return back();
+        }
     }
 }
