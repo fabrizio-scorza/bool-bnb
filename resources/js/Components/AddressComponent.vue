@@ -5,16 +5,29 @@ delete axios.defaults.headers.common['X-Requested-With'];
 
 export default {
     emits: ['coordinates-updated'],
+    props: {
+        initialAddress: {
+            type: String,
+            default: ''
+        },
+        initialLatitude: {
+            type: Number,
+            default: 0
+        },
+        initialLongitude: {
+            type: Number,
+            default: 0
+        }
+    },
     data() {
         return {
             store,
-            address: "",
-            latitude: 0,
-            longitude: 0,
+            address: this.initialAddress,
+            latitude: this.initialLatitude,
+            longitude: this.initialLongitude,
             setVisible: false
         }
     },
-
     methods: {
         fetchData(fetchAdderess) {
             this.setVisible = true;
@@ -40,6 +53,7 @@ export default {
         }
     }
 }
+
 
 </script>
 

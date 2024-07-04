@@ -47,7 +47,11 @@
                    </div>
                </div>  
        
-               <address-component></address-component>
+                <address-component
+                    :initial-address="'{{ old('address', $house->address) }}'"
+                    :initial-latitude="{{ old('latitude', $house->latitude) }}"
+                    :initial-longitude="{{ old('longitude', $house->longitude) }}"
+                ></address-component>
                {{-- <div class="form-group">
                    <label for="address">Inserici l'indirizzo</label>
                    <input type="text" class="form-control" id="address" placeholder="indirizzo del tuo alloggio" name="address" value="{{ old('address', $house->address) }}" maxlength="255">
