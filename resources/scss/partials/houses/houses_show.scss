@@ -1,0 +1,13 @@
+.show{
+    h2{
+        color: var(--purple);
+    }
+
+    .card{
+        --bs-card-border-color: var(--purple);
+
+        h5{
+            color: var(--purple);
+        }
+    }
+}

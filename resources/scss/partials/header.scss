@@ -1,0 +1,15 @@
+.navbar{
+    background-color: var(--purple);
+
+    button{
+        color: var(--white);
+        border: var(--white);
+    }
+
+    a{
+        color: var(--white);
+        &:hover{
+            color: var(--yellow);
+        }
+    }
+}

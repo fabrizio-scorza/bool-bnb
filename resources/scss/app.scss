@@ -1,1 +1,40 @@
-@import '~bootstrap/scss/bootstrap'
+@use "~bootstrap/scss/bootstrap";
+
+//Colori e regole generali
+@use "./partials/layout.scss";
+
+//Bottoni
+@use "./partials/buttons.scss";
+
+//Login, reigistrazione e altre pagine della cartella 'auth'
+@use"./partials/access.scss";
+
+//BACK-END CASE
+//Index case
+@use"./partials/houses/houses_index.scss";
+
+//Create ed Edit delle case 
+@use"./partials/houses/houses_create-edit.scss";
+
+//Show delle case 
+@use"./partials/houses/houses_show.scss";
+
+//BACK-END MESSAGGI
+@use"./partials/messages/messages_index.scss";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Header e footer
+@use "./partials/header.scss";

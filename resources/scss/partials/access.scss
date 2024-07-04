@@ -1,0 +1,41 @@
+//GRAFICA COMUNE A TUTTE LE PAGINE
+
+.login, .register, .reset, .verify, .forgot, .confirm{
+
+    height: 100%;
+
+    //CARD
+    .card{
+        color: var(--black);
+        --bs-card-border-color: var(--purple);
+    }
+    
+    .card-header{
+        background-color: var(--purple);
+        color: var(--white);
+    }
+
+    .card-body{
+        background-color: var(--lavander);
+        padding-top: 50px;
+    }
+
+    //BOTTONI
+
+    a{
+        color: var(--white);
+        &:hover{
+            color: var(--purple);
+        }
+        // &:active{
+        //     color: red;
+        // }
+    }
+
+}
+
+//REGISTER
+
+.attention{
+    color: var(--white);
+}

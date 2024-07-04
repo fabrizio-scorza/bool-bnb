@@ -4,14 +4,16 @@
 
 @section('content')
 
+<section class="index">
+
 <div class="container">
-    <div class="d-flex align-items-center my-5">
+    <div class="d-flex align-items-center py-5">
         @if(request('trash'))
-        <h2 class="fs-4 text-secondary">
+        <h2>
             I Miei Appartamenti Eliminati
         </h2>
         @else
-        <h2 class="fs-4 text-secondary">
+        <h2>
             I Miei Appartamenti
         </h2>
         @endif
@@ -31,7 +33,7 @@
     </div>
 </div>
 <div class="container py-4">
-    <div class="row row-cols-4">
+    <div class="row row-cols-4 row-gap-4">
         @foreach ($houses as $house)
          <div class="col d-flex align-items-stretch">
             <div class="card flex-fill">
@@ -43,10 +45,10 @@
                     @endif
                     
                 </div>                
-                <div class="card-body">
+                <div class="card-body text-center">
                     <img src="{{$house->thumb}}" alt="Immagine Appartamento">
-                    <div>
-                        {{$house->price_per_night}}€
+                    <div class="text-start my-1">
+                        {{$house->price_per_night}}€ a notte
                     </div>
                 </div>
                 <div class="card-footer d-flex justify-content-between">
@@ -64,9 +66,9 @@
 
                         @auth
                             @if($house->user_id === Auth::id() && !$house ->trashed())
-                                 <button data-bs-toggle="modal" data-bs-target="#modal-{{$house->id}}" class="">Elimina</button>
+                                 <button class="bg_orange" data-bs-toggle="modal" data-bs-target="#modal-{{$house->id}}" class="">Elimina</button>
                             @elseif($house->user_id === Auth::id() && $house ->trashed())
-                                 <button data-bs-toggle="modal" data-bs-target="#trash_house-{{$house->id}}" class="text-start">Elimina <br> definitivamente</button>
+                                 <button class="bg_orange" data-bs-toggle="modal" data-bs-target="#trash_house-{{$house->id}}" class="text-start">Elimina</button>
                             @endif    
                         @endauth
                         
@@ -97,7 +99,7 @@
                     @csrf
                     @method('DELETE')
     
-                    <button class="">Si</button>
+                    <button class="bg_orange">Si</button>
                 
                     </form> 
                 </div>
@@ -122,7 +124,7 @@
                     @csrf
                     @method('DELETE')
     
-                    <button class="">Si</button>
+                    <button class="bg_orange">Si</button>
                 
                     </form> 
                 </div>
@@ -133,4 +135,5 @@
     </div>
 </div>
 
+</section>
 @endsection

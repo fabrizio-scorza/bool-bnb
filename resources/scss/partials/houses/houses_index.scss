@@ -1,0 +1,31 @@
+.index{
+
+    //LAYOUT GENERALE
+    height: 100%;
+    color: var(--black);
+
+    //CARDS
+    .card{
+        --bs-card-border-color: var(--purple);
+
+        .card-header{
+            background-color: var(--purple);
+            color: var(--white);
+            a{
+                color: var(--white);
+            }
+        }
+
+        .card-body{
+            img{
+                background-size: cover;
+            }
+        }
+
+        .card-footer{
+            background-color: var(--lavander);
+        }
+
+    }
+
+}
