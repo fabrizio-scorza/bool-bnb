@@ -135,11 +135,11 @@ export default {
 
                     </div>
                 </div>
-                <button class="carousel-control-prev" @click="showPrevSlide">
+                <button class="carousel-control-prev z-0" @click="showPrevSlide">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" @click="showNextSlide">
+                <button class="carousel-control-next z-0" @click="showNextSlide">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>

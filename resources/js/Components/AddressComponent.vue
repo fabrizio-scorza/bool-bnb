@@ -25,7 +25,8 @@ export default {
             address: this.initialAddress,
             latitude: this.initialLatitude,
             longitude: this.initialLongitude,
-            setVisible: false
+            setVisible: false,
+            activeIndex: null,
         }
     },
     methods: {
@@ -50,6 +51,12 @@ export default {
             if (this.address == '') {
                 this.setVisible = false;
             }
+        },
+        setActive(index) {
+            this.activeIndex = index;
+        },
+        clearActive() {
+            this.activeIndex = null;
         }
     }
 }
@@ -64,7 +71,10 @@ export default {
             @keyup.delete="hiddenOnDelete()">
         <div :class="setVisible ? 'is-visible' : 'not-visible'" class="form-control position-absolute z-1">
             <ul class="list-unstyled">
-                <li v-for="address in store.addresses" @click="setValue(address.address.freeformAddress)" class="value">
+                <li v-for="(address, index) in store.addresses" @click="setValue(address.address.freeformAddress)" class="value"
+                    @mouseenter="setActive(index)"
+                    @mouseleave="clearActive"
+                    :class="{'bg-light-gray': activeIndex === index}">
                     {{ address.address.freeformAddress }}
                 </li>
             </ul>
@@ -79,6 +89,7 @@ export default {
 <style lang="scss" scoped>
 .value {
     cursor: pointer;
+
 }
 
 .is-visible {
@@ -87,5 +98,9 @@ export default {
 
 .not-visible {
     display: none;
+}
+
+.bg-light-gray {
+    background-color: lightgray;
 }
 </style>
