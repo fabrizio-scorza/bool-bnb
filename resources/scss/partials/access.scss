@@ -2,7 +2,7 @@
 
 .login, .register, .reset, .verify, .forgot, .confirm{
 
-    background-color: whitesmoke;
+    background-color:var(--white);
     height: 100%;
 
     //CARD
@@ -13,7 +13,7 @@
     
     .card-header{
         background-color: var(--purple);
-        color: whitesmoke;
+        color: var(--white);
     }
 
     .card-body{
@@ -25,14 +25,14 @@
 
     button{
         background-color: var(--purple);
-        color: whitesmoke;
+        color: var(--white);
         &:hover{
             background-color: var(--yellow);
         }
     }
 
     a{
-        color: whitesmoke;
+        color: var(--white);
         &:hover{
             color: var(--purple);
         }
@@ -46,5 +46,5 @@
 //REGISTER
 
 .attention{
-    color: white;
+    color: var(--white);
 }

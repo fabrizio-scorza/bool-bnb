@@ -1,7 +1,6 @@
 .index{
 
     //LAYOUT GENERALE
-    background-color: whitesmoke;
     height: 100%;
     color: var(--black);
 
@@ -11,9 +10,9 @@
 
         .card-header{
             background-color: var(--purple);
-            color: whitesmoke;
+            color: var(--white);
             a{
-                color: whitesmoke;
+                color: var(--white);
             }
         }
 
@@ -32,7 +31,7 @@
     //BOTTONI
     button{
         background-color: var(--purple);
-        color: whitesmoke;
+        color: var(--white);
 
         &.bg_orange{
             background-color: var(--orange);
@@ -43,7 +42,7 @@
         }
 
         a{
-            color: whitesmoke;
+            color: var(--white);
         }
 
     }

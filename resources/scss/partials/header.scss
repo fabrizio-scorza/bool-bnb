@@ -2,12 +2,12 @@
     background-color: var(--purple);
 
     button{
-        color: whitesmoke;
-        border: whitesmoke;
+        color: var(--white);
+        border: var(--white);
     }
 
     a{
-        color: whitesmoke;
+        color: var(--white);
         &:hover{
             color: var(--yellow);
         }

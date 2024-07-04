@@ -1,17 +1,31 @@
-button{
-    background-color: var(--purple);
-    color: whitesmoke;
+.create, .edit{
 
-    &.bg_orange{
-        background-color: var(--orange);
+    margin: 20px 0;
+    
+    h3{
+        margin: 20px 0;
     }
 
-    &:hover{
-        background-color: var(--yellow);
+    label{
+        color: var(--purple);
     }
 
-    a{
-        color: whitesmoke;
+    input{
+        border-color: var(--lavander);
     }
 
+    button{
+        background-color: var(--purple);
+        color: var(--white);
+    
+        &:hover{
+            background-color: var(--yellow);
+        }
+    
+        a{
+            color: var(--white);
+        }
+    
+    }
 }
+

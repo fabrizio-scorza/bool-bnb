@@ -84,7 +84,7 @@
         </div>
     </nav>
 
-    <main class="flex-grow-1" id="app">
+    <main class="flex-grow-1 pb-5" id="app">
         @yield('content')
     </main>
 </body>
