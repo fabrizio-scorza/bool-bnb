@@ -30,9 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const confirmPassword = document.getElementById("password-confirm").value;
 
             if (password !== confirmPassword) {
-                
-                
-                document.body.insertBefore(password-error);
+                alert("Le password non corrispondono.");
                 event.preventDefault();
             }
         });
