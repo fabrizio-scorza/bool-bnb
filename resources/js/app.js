@@ -18,24 +18,3 @@ app.component("address-component", AddressComponent);
 app.component("homepage", Homepage);
 app.component("advanced-search", AdvancedSearch);
 app.mount("#app");
-
-// Validazione della conferma password lato client al momento della registrazione dell'utente
-document.addEventListener("DOMContentLoaded", function () {
-
-    const form = document.getElementById("registrationForm");
-
-    if (form) {
-        form.addEventListener("submit", function (event) {
-            const password = document.getElementById("password").value;
-            const confirmPassword = document.getElementById("password-confirm").value;
-
-            if (password !== confirmPassword) {
-                
-                
-                document.body.insertBefore(password-error);
-                event.preventDefault();
-            }
-        });
-    }
-
-})

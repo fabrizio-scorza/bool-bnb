@@ -44,7 +44,7 @@
                                 <label for="date_of_birth" class="col-md-4 col-form-label text-md-right">Data di nascita</label>
     
                                 <div class="col-md-6">
-                                    <input type="date" name="date_of_birth" class="form-control @error('date_of_birth') is-invalid @enderror" id="date_of_birth" value="{{old('date_of_birth')}}" >
+                                    <input type="date" name="date_of_birth" class="form-control @error('date_of_birth') is-invalid @enderror" id="date_of_birth" value="{{ old('date_of_birth') }}" >
                                     @error('date_of_birth')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -75,7 +75,7 @@
     
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}.</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
                                 </div>
@@ -89,12 +89,8 @@
                                 </div>
                             </div>
                             
-                            
-    
-                            <div class="mb-4 fw-lighter attention">
-                                <p>
-                                    I campi contrassegnati con l'asterisco (*) sono obbligatori
-                                </p>
+                            <div class="mb-4">
+                                <ul id="errorList" class="text-danger"></ul>
                             </div>
     
                             <div class="mx-5 text-center">
@@ -105,10 +101,72 @@
                                 </div>
                             </div>
                         </form>
+                        
                     </div>
                 </div>
             </div>
+            
         </div>
     </div>
 </section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('registrationForm');
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            validateForm();
+        });
+
+        function validateForm() {
+            const name = document.getElementById('name').value;
+            const surname = document.getElementById('surname').value;
+            const dateOfBirth = document.getElementById('date_of_birth').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('password-confirm').value;
+
+            let errors = [];
+
+            if (!email.trim()) {
+                errors.push('Il campo Indirizzo email è obbligatorio.');
+            } else if (!isValidEmail(email)) {
+                errors.push('Inserisci un indirizzo email valido.');
+            }
+
+            if (!password.trim()) {
+                errors.push('Il campo Password è obbligatorio.');
+            } else if (password.length < 8) {
+                errors.push('La password deve contenere almeno 8 caratteri.');
+            }
+
+            if (password !== confirmPassword) {
+                errors.push('Le password non corrispondono.');
+            }
+
+            if (errors.length > 0) {
+                showErrors(errors);
+            } else {
+                form.submit();
+            }
+        }
+
+        function isValidEmail(email) {
+            const re = /\S+@\S+\.\S+/;
+            return re.test(email);
+        }
+
+        function showErrors(errors) {
+            const errorList = document.getElementById('errorList');
+            errorList.innerHTML = '';
+
+            errors.forEach(error => {
+                const li = document.createElement('li');
+                li.textContent = error;
+                errorList.appendChild(li);
+            });
+        }
+    });
+</script>
+
 @endsection
