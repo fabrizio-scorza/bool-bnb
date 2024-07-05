@@ -53,10 +53,10 @@ export default {
 </script>
 
 <template>
-    <section class="searchbar">
-        <div class="container">
+    <section class="searchbar py-4">
+        <div class="container position-relative">
             <address-component></address-component>
-            <a href="#" @click="searchHouses(houses, store.addresses[0].position.lat, store.addresses[0].position.lon)">Cerca</a>
+            <a class="search-link" a href="#" @click="searchHouses(houses, store.addresses[0].position.lat, store.addresses[0].position.lon)"> &#x1F50D; Cerca</a>
         </div>
     </section>
     <section class="filter">
@@ -98,5 +98,12 @@ export default {
 
 .hidden {
     display: none !important;
+}
+
+.search-link {
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    right: 45px;
 }
 </style>
