@@ -12,7 +12,7 @@
             <h3>Crea Un Nuovo Annuncio</h3>
         </div>
         <div class="container">
-            <form action="{{route('admin.houses.store')}}" method="POST">
+            <form id="create-form" action="{{route('admin.houses.store')}}" method="POST" onsubmit="return validateCheckboxes()">
                 @csrf
         
                 <div class="form-group mb-4">
@@ -89,6 +89,7 @@
                               </div>
                           @endforeach
                         </div>
+                        <span id="services-error" class="text-danger fw-bold" style="display: none;">Devi selezionare almeno un servizio aggiuntivo.</span>
                     </div>
                 </div>
                 
@@ -117,4 +118,35 @@
        
     </section>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        function validateCheckboxes() {
+            const checkboxes = document.querySelectorAll('input[name="services[]"]');
+            const isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+
+            const errorSpan = document.getElementById('services-error');
+
+            if (!isChecked) {
+                errorSpan.style.display = 'block';
+                return false;
+            }else{
+                errorSpan.style.display = 'none';
+                return true;
+            }
+
+        }
+
+        const form = document.querySelector('#create-form');
+
+        if (form) {
+            form.addEventListener('submit', function(event) {
+                if (!validateCheckboxes()) {
+                    event.preventDefault();
+                }
+            });
+        }
+    });
+</script>
+
 @endsection   
