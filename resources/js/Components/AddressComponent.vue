@@ -39,10 +39,13 @@ export default {
 
                     this.latitude = res.data.results[0].position.lat
                     this.longitude = res.data.results[0].position.lon
+                    sessionStorage.setItem('latitude', JSON.stringify(this.latitude));
+                    sessionStorage.setItem('longitude', JSON.stringify(this.longitude));
                 }
             });
         },
         setValue(value_address) {
+            sessionStorage.setItem('address', JSON.stringify(value_address));
             this.address = value_address;
             this.fetchData(value_address);
             this.setVisible = false;

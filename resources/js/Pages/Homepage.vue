@@ -1,15 +1,19 @@
 <script>
 import { store } from '../store';
 export default {
-    props: ['houses', 'logged_user'],
+    props: ['houses', 'logged_user', 'search_route'],
     data() {
         return {
             store,
-            closeHouses: [],
             currentSlideIndex: 0,
             sponsored_houses: [],
+           
+            
         }
     },
+    created(){
+            console.log('console log di store:' + store.closeHouses)
+        },
     computed: {
 
         sponsored() {
@@ -29,33 +33,6 @@ export default {
             this.currentSlideIndex = (this.currentSlideIndex === this.sponsored_houses.length - 1) ? 0 : this.currentSlideIndex + 1;
         },
 
-        searchHouses(houses) {
-            // cercare dentro l'array houses la latitudine e longitudine in un raggio di 20km del risultato di store addresses
-            this.closeHouses = [];
-            let latitude = store.addresses[0].position.lat;
-            let longitude = store.addresses[0].position.lon;
-            houses.forEach((house) => {
-                if (this.distanceFromCenter(latitude, longitude, house.latitude, house.longitude) < 20) {
-                    this.closeHouses.push(house)
-                }
-            });
-        },
-        deg2rad(deg) {
-            return deg * (Math.PI / 180);
-        },
-        distanceFromCenter(lat1, lon1, lat2, lon2) {
-            const R = 6371; //raggio della terra
-            //panico e paura
-            const dLat = this.deg2rad(lat2 - lat1);
-            const dLon = this.deg2rad(lon2 - lon1);
-
-            const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
-
-            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-            //distanza in chilometri
-            const distance = R * c;
-            return distance;
-        }
     }
 }
 </script>
@@ -107,7 +84,9 @@ export default {
     <section class="searchbar">
         <div class="container position-relative">
             <address-component></address-component>
-            <a href="#search" @click="searchHouses(houses)" class="search-link"> &#x1F50D; Cerca</a>
+            <a class="search-link" :href="search_route" > &#x1F50D; Cerca</a>
+            
+            
         </div>
     </section>
     <section class="sponsored my-5">
@@ -146,7 +125,7 @@ export default {
             </div>
         </div>
     </section>
-    <section class="searched pt-5">
+    <!-- <section class="searched pt-5">
         <div class="container">
             <div class="row row-gap-4">
                 <div id="#search" class="col-3 d-flex align-items-stretch" v-for="house in closeHouses" :key="house.id"
@@ -171,7 +150,7 @@ export default {
             </div>
         </div>
 
-    </section>
+    </section> -->
 </template>
 
 <style lang="scss" scoped>
