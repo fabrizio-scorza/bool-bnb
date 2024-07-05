@@ -19,7 +19,7 @@
     <div class="container">
         <div class="row">
             <div class="col-8">
-                <img src="{{$house->thumb}}" alt="Immagine Appartamento">  
+                <img src="./img/{{$house->thumb}}" alt="Immagine Appartamento">  
             </div>
             <div class="col-4">
                 <div class="card">

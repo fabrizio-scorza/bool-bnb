@@ -69,7 +69,7 @@ class HouseController extends Controller
             $new_house->services()->attach($request->services);
         }
 
-        
+
 
         return to_route('admin.houses.show', $new_house);
     }
@@ -83,7 +83,7 @@ class HouseController extends Controller
         if ($house->user_id !== Auth::id()) {
             return to_route('admin.houses.index');
         }
-        
+
         return view('admin.houses.show', compact('house'));
     }
 
@@ -157,13 +157,13 @@ class HouseController extends Controller
         return back();
     }
 
-    public function forceDestroy($id)
-    {
-        // dd($id);
-        $house = House::withTrashed()->find($id);
-        if ($house->trashed()) {
-            $house->forceDelete();
-            return back();
-        }
-    }
+    // public function forceDestroy($id)
+    // {
+    //     // dd($id);
+    //     $house = House::withTrashed()->find($id);
+    //     if ($house->trashed()) {
+    //         $house->forceDelete();
+    //         return back();
+    //     }
+    // }
 }

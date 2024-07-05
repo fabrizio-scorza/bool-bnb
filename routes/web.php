@@ -28,7 +28,7 @@ Route::middleware(['auth', 'verified'])
         Route::get('messages', [PageController::class, 'messages'])->name('messages');
 
         Route::post('/houses/{house}/restore', [HouseController::class, 'restore'])->name('houses.restore');
-        Route::delete('/houses/{house}/forceDestroy', [HouseController::class, 'forceDestroy'])->name('houses.forceDestroy');
+        // Route::delete('/houses/{house}/forceDestroy', [HouseController::class, 'forceDestroy'])->name('houses.forceDestroy');
     });
 
 
