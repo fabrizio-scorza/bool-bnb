@@ -14,6 +14,7 @@ export default {
     created(){
             console.log('console log di store:' + store.closeHouses)
         },
+
     computed: {
 
         sponsored() {
