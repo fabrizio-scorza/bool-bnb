@@ -165,23 +165,7 @@ export default {
                             </div>
                         </div>
 
-                        <div v-if="house.user_id == logged_user" class="card-footer d-flex justify-content-between">
-                            <div>
-                                <button class="me-3">
-                                    <a href="">
-                                        Modifica
-                                    </a>
-                                </button>
-                                <button data-bs-toggle="modal" data-bs-target="#modal-{{$house->id}}" class="">
-                                    Elimina
-                                </button>
-                            </div>
 
-                            <div>
-                                <a href="" class="me-3 link-underline link-underline-opacity-0">St</a>
-                                <a href="" class="link-underline link-underline-opacity-0">Sp</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
