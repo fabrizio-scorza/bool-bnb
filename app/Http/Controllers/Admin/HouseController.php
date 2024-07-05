@@ -11,6 +11,7 @@ use App\Models\Service;
 use Dotenv\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class HouseController extends Controller
 {
@@ -53,6 +54,15 @@ class HouseController extends Controller
         $form_data = $request->validated();
         $form_data['slug'] = House::getSlug($form_data['title']);
         $form_data['user_id'] = Auth::user()->id;
+
+        //controllo se il file è stato inviato
+        if ($request->hasFile('thumb')) {
+            $image_path = Storage::disk('public')->put('thumb_images', $request->thumb);
+            // dd($image_path);
+            //andiamo a salvare la nostra thumb
+            $form_data['thumb'] = $image_path;
+        }
+
 
         // $form_data['latitude'] = 41.85698;
         // $form_data['longitude'] = 14.85698;
@@ -166,4 +176,5 @@ class HouseController extends Controller
     //         return back();
     //     }
     // }
+
 }

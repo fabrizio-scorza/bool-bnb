@@ -30,7 +30,7 @@ class UpdateHouseRequest extends FormRequest
             'bathrooms' => 'required|integer|min:1|max:10',
             'square_mt' => 'required|integer|min:30|max:1000',
             'address' => 'required|string|max:255',
-            'thumb' => 'nullable|url',
+            'thumb' => 'nullable|image',
             'latitude' => 'required|numeric',
             'longitude' => 'required|numeric',
             'available' => 'required|boolean',

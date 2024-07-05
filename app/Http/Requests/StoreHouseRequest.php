@@ -31,7 +31,7 @@ class StoreHouseRequest extends FormRequest
                 'bathrooms' => 'required|integer|min:1|max:10',
                 'square_mt' => 'required|integer',
                 'address' => 'required|string|max:255',
-                'thumb' => 'nullable|url',
+                'thumb' => 'nullable|image',
                 'latitude' => 'required|numeric',
                 'longitude' => 'required|numeric',
                 'price_per_night' => 'required|numeric|min:1|max:9999.99',

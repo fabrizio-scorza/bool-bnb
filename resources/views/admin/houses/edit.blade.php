@@ -57,11 +57,16 @@
                    <input type="text" class="form-control" id="address" placeholder="indirizzo del tuo alloggio" name="address" value="{{ old('address', $house->address) }}" maxlength="255">
                </div> --}}
        
-               <div class="form-group mb-4">
+               {{-- <div class="form-group mb-4">
                    <label for="thumb">Inserisci l'immagine di copertina *</label>
                    <input type="url" required class="form-control" id="thumb" placeholder="http://..." name="thumb"
                    value="{{ old('thumb', $house->thumb) }}">
-               </div>
+               </div> --}}
+
+               <div class="form-group mb-4">
+                <label for="thumb" class="form-label">Inserisci l'immagine di copertina *</label>
+                <input required class="form-control" type="file" id="thumb" name="thumb" >
+              </div>
                
                <div class="row row-cols-3">
                    <div class="form-group">
