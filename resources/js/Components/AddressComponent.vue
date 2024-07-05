@@ -68,7 +68,7 @@ export default {
     <div class="position-relative">
         <input type="search" required v-model="address" class="form-control" id="address"
             placeholder="Via Nazionale 1, Roma" name="address" maxlength="255" @keyup="fetchData(address)"
-            @keyup.delete="hiddenOnDelete()">
+            @keyup.delete="hiddenOnDelete()" @keyup.esc="hiddenOnDelete()">
         <div :class="setVisible ? 'is-visible' : 'not-visible'" class="form-control position-absolute z-1">
             <ul class="list-unstyled">
                 <li v-for="(address, index) in store.addresses" @click="setValue(address.address.freeformAddress)" class="value"
