@@ -67,8 +67,8 @@
                             @auth
                                 @if($house->user_id === Auth::id() && !$house ->trashed())
                                     <button class="bg_orange" data-bs-toggle="modal" data-bs-target="#modal-{{$house->id}}" class="">Elimina</button>
-                                @elseif($house->user_id === Auth::id() && $house ->trashed())
-                                    <button class="bg_orange" data-bs-toggle="modal" data-bs-target="#trash_house-{{$house->id}}" class="text-start">Elimina</button>
+                                {{-- @elseif($house->user_id === Auth::id() && $house ->trashed())
+                                    <button class="bg_orange" data-bs-toggle="modal" data-bs-target="#trash_house-{{$house->id}}" class="text-start">Elimina</button> --}}
                                 @endif    
                             @endauth
                             
@@ -107,7 +107,7 @@
                 </div>
             </div>
 
-            <div class="modal" id="trash_house-{{$house->id}}" tabindex="-1" aria-labelledby="modal-label" aria-hidden="true">
+            {{-- <div class="modal" id="trash_house-{{$house->id}}" tabindex="-1" aria-labelledby="modal-label" aria-hidden="true">
                 <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -130,7 +130,7 @@
                     </div>
                 </div>
                 </div>
-            </div>
+            </div> --}}
             @endforeach        
         </div>
     </div>
