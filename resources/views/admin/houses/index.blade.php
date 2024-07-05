@@ -46,7 +46,11 @@
                         
                     </div>                
                     <div class="card-body text-center">
-                        <img src="./img/{{$house->thumb}}" alt="Immagine Appartamento">
+                        @if($house->thumb)
+                        <figure>
+                            <img src="{{ asset('storage/' . $house->thumb)}}" alt="Immagine Appartamento">
+                        </figure>
+                        @endif
                         <div class="text-start my-1">
                             {{$house->price_per_night}}€ a notte
                         </div>

@@ -13,6 +13,8 @@
         </div>
         <div class="container">
             <form id="create-form" action="{{route('admin.houses.store')}}" method="POST" onsubmit="return validateCheckboxes()">
+            <form action="{{route('admin.houses.store')}}" method="POST"
+            enctype="multipart/form-data">
                 @csrf
         
                 <div class="form-group mb-4">
@@ -58,11 +60,15 @@
                 </div> --}}
         
                 
-                <div class="form-group mb-4">
+                {{-- <div class="form-group mb-4">
                     <label for="thumb">Inserisci l'immagine di copertina *</label>
                     <input type="url" required class="form-control" id="thumb" placeholder="http://..." name="thumb"
                     value="{{ old('thumb') }}">
-                </div>
+                </div> --}}
+                <div class="form-group mb-4">
+                    <label for="thumb" class="form-label">Inserisci l'immagine di copertina</label>
+                    <input required class="form-control" type="file" id="thumb" name="thumb" value="{{ old('thumb') }}">
+                  </div>
                 
                 <div class="row row-cols-3 mb-4">
                     <div class="form-group">

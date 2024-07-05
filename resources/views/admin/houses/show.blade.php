@@ -19,7 +19,12 @@
     <div class="container">
         <div class="row">
             <div class="col-8">
-                <img src="./img/{{$house->thumb}}" alt="Immagine Appartamento">  
+                {{-- <img src="./img/{{$house->thumb}}" alt="Immagine Appartamento">   --}}
+                @if($house->thumb)
+                <figure>
+                    <img src="{{ asset('storage/' . $house->thumb)}}" alt="Immagine Appartamento">
+                </figure>
+                @endif
             </div>
             <div class="col-4">
                 <div class="card">
