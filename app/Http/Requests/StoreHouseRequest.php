@@ -37,7 +37,7 @@ class StoreHouseRequest extends FormRequest
                 'price_per_night' => 'required|numeric|min:1|max:9999.99',
                 'user_id' => 'exist:users,id',
                 'category_id' => 'nullable|exists:categories,id',
-                'services' => 'exists:services,id'
+                'services' => 'required|exists:services,id'
             ];
     }
     public function messages()
@@ -68,6 +68,7 @@ class StoreHouseRequest extends FormRequest
             'price_per_night.numeric' => 'Il campo prezzo per notte deve essere un numero',
             'price_per_night.min' => 'Il campo prezzo per notte deve avere un valore minimo di 1',
             'price_per_night.max' => 'Il campo prezzo per notte deve un valore massimo di 9999.99',
+            'services.required' => 'Nella sezione servizi almeno un campo è obbligatorio'
         ];
     }
 }
