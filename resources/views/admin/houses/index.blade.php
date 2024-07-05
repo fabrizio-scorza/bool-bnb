@@ -46,7 +46,7 @@
                         
                     </div>                
                     <div class="card-body text-center">
-                        <img src="{{$house->thumb}}" alt="Immagine Appartamento">
+                        <img src="./img/{{$house->thumb}}" alt="Immagine Appartamento">
                         <div class="text-start my-1">
                             {{$house->price_per_night}}€ a notte
                         </div>

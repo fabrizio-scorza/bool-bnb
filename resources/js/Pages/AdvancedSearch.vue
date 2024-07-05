@@ -69,7 +69,7 @@ export default {
                             </div>
 
                             <div class="card-body">
-                                <img :src="sponsored_house.thumb" alt="Immagine Appartamento">
+                                <img :src="'./img/' + sponsored_house.thumb" alt="Immagine Appartamento">
                                 <div>
                                     {{ sponsored_house.price_per_night }}€
                                 </div>
@@ -113,7 +113,7 @@ export default {
                         </div>
 
                         <div class="card-body">
-                            <img :src="house.thumb" alt="Immagine Appartamento">
+                            <img :src="'./img/' + house.thumb" alt="Immagine Appartamento">
                             <div>
                                 {{ house.price_per_night }}€
                             </div>
