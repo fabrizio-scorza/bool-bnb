@@ -9,9 +9,9 @@
         </h2>
     </div>
     <div class="container">
-        <div class="row d-flex justify-content-center">
+        <div class="row row-gap-3 row-cols-1 row-cols-md-3 d-flex justify-content-center">
             @foreach ($plans as $plan)
-            <div class="col-3">
+            <div class="col">
                 <div class="card mb-3">
                     <div class="card-body text-center">
                         <h5 class="card-title">{{$plan->name}}</h5>

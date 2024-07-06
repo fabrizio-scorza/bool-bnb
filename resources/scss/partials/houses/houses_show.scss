@@ -1,6 +1,31 @@
 .show{
-    h2{
-        color: var(--purple);
+
+    //SHOW TITLE
+    .show_title{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+
+        h2{
+            color: var(--purple);
+            text-align: center;
+            padding-right: 0px;
+        }
+
+        
+
+        @media screen and (min-width: 768px){
+            flex-direction: row;
+            justify-content: space-between;
+
+            h2{
+            padding-right: 20px;
+
+            }
+            
+
+        }
     }
 
     .card{

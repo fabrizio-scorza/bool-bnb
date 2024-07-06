@@ -8,17 +8,19 @@
 
 <section class="show">
     <div class="container">
-        <div class="d-flex align-items-center my-5">
-            <h2 class="pe-5">
+        <div class="show_title my-5">
+            <h2>
                 {{$house->title}}
             </h2>
-            <button class="ms-auto me-3"><a href="{{route('admin.houses.edit',$house)}}">Modifica</a></button>
-            <button data-bs-toggle="modal" data-bs-target="#modal-{{$house->id}}" class="bg_orange">Elimina</button>
+            <div class=" d-flex justify-content-evenly gap-3">
+                <button><a href="{{route('admin.houses.edit',$house)}}">Modifica</a></button>
+                <button data-bs-toggle="modal" data-bs-target="#modal-{{$house->id}}" class="bg_orange">Elimina</button>
+            </div>
         </div>
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-8">
+            <div class="col-12 col-lg-8">
                 {{-- <img src="./img/{{$house->thumb}}" alt="Immagine Appartamento">   --}}
                 @if($house->thumb)
                 <figure>
@@ -26,7 +28,7 @@
                 </figure>
                 @endif
             </div>
-            <div class="col-4">
+            <div class="col-12 col-lg-4">
                 <div class="card">
                     <div class="card-body row">
                         <div class="col-6">

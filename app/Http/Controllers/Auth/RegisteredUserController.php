@@ -51,7 +51,9 @@ class RegisteredUserController extends Controller
             'date_of_birth' => ['nullable', 'date', function ($attribute, $value, $fail) {
                 if ($value) {
                     $date = Carbon::parse($value);
-                    if ($date->diffInYears(Carbon::now()) < 18) {
+                    if ($date->isFuture()) {
+                        $fail('La data di nascita non può essere successiva alla data odierna');
+                    } elseif ($date->diffInYears(Carbon::now()) < 18) {
                         $fail('Devi essere maggiorenne per registrarti.');
                     }
                 }

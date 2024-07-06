@@ -66,8 +66,8 @@ export default {
     </section>
     <section class="searched pt-5">
         <div class="container">
-            <div class="row row-gap-4">
-                <div id="#search" class="col-3 d-flex align-items-stretch" v-for="house in store.closeHouses" :key="house.id"
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4  row-gap-4 center">
+                <div id="#search" class="col-8 m-auto m-sm-0 d-flex align-items-stretch" v-for="house in store.closeHouses" :key="house.id"
                     :class="house.plans.length ? 'order-1' : 'order-2'">
                     <div class="card flex-fill">
                         <div class="card-header">

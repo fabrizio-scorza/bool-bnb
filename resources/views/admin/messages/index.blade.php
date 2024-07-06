@@ -17,7 +17,7 @@
                 </div>
             @else
                 @foreach ($messages as $message)
-                    <div class="col">
+                    <div class="col m-auto m-sm-0">
                         <div class="card mb-3">
                             <div class="card-header">
                             {{$message->house->title}}
