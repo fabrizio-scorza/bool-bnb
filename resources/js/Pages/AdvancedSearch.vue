@@ -14,9 +14,9 @@
     </section>
     <section class="searched">
         <div class="container">
-            <div v-if="noResult" class="no-result">
-                Non ci sono risultati alla ricerca
-            </div>
+            <h3 v-if="noResult" class="no-result">
+                La ricerca non ha prodotto risultati.
+            </h3>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4  row-gap-4 center">
                 <div id="search" class="col-8 m-auto m-sm-0 d-flex align-items-stretch" v-for="house in store.closeHouses" :key="house.id"
                     :class="house.plans.length ? 'order-1' : 'order-2'">
@@ -111,9 +111,8 @@ export default {
 }
 
 .no-result {
-    color: var(--lavander);
-    font-weight: bold;
-    font-size: 35px;
+    color: var(--purple);
     margin-top: 20px;
+    text-align: center;
 }
 </style>
