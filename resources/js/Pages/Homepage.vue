@@ -1,5 +1,6 @@
 <script>
 import { store } from '../store';
+import axios from 'axios';
 export default {
     props: ['houses', 'logged_user', 'search_route'],
     data() {
@@ -7,14 +8,15 @@ export default {
             store,
             currentSlideIndex: 0,
             sponsored_houses: [],
-           
-            
+            sponsoredHousesData: {},
+
+
         }
     },
-    created(){
-            console.log('console log di store:' + store.closeHouses)
-        },
-
+    created() {
+        console.log('console log di store:' + store.closeHouses)
+        this.getSponsoredHouses()
+    },
     computed: {
 
         sponsored() {
@@ -24,7 +26,14 @@ export default {
                 }
             })
             return this.sponsored_houses;
+
         },
+        sponsoredHouses() {
+            if (!this.sponsoredHousesData.data) {
+                return []
+            }
+            return this.sponsoredHousesData.data
+        }
     },
     methods: {
         showPrevSlide() {
@@ -33,6 +42,15 @@ export default {
         showNextSlide() {
             this.currentSlideIndex = (this.currentSlideIndex === this.sponsored_houses.length - 1) ? 0 : this.currentSlideIndex + 1;
         },
+        getSponsoredHouses(page = 1) {
+            axios.get(`/api/sponsoredHouses?page=${page}`).then((res) => {
+                console.log(res.data)
+                this.sponsoredHousesData = res.data
+
+            }).catch(() => {
+
+            })
+        }
 
     }
 }
@@ -85,9 +103,9 @@ export default {
     <section class="searchbar">
         <div class="container position-relative">
             <address-component></address-component>
-            <a class="search-link" :href="search_route" > &#x1F50D; Cerca</a>
-            
-            
+            <a class="search-link" :href="search_route"> &#x1F50D; Cerca</a>
+
+
         </div>
     </section>
     <section class="sponsored my-5">
@@ -123,6 +141,38 @@ export default {
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
+            </div>
+        </div>
+    </section>
+    <section>
+
+        <button v-for="i in sponsoredHousesData.last_page" @click="getSponsoredHouses(i)"> {{ i }}</button>
+    </section>
+    <section class="sponsored my-5">
+        <div class="container">
+            <div class="row row-gap-4 position-relative">
+
+
+                <div class="col-4 d-flex align-items-stretch" v-for="(sponsored_house, index) in sponsoredHouses"
+                    :key="sponsored_house.id">
+                    <div class="card flex-fill">
+                        <div class="card-header">
+                            <a href="" class="link-underline link-underline-opacity-0">
+                                {{ sponsored_house.title }}
+                            </a>
+                        </div>
+
+                        <div class="card-body">
+                            <img :src="'./img/' + sponsored_house.thumb" alt="Immagine Appartamento">
+                            <div>
+                                {{ sponsored_house.price_per_night }}€
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>

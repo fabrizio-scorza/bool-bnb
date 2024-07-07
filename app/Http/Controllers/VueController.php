@@ -30,4 +30,15 @@ class VueController extends Controller
         $houses = House::with('plans')->get();
         return view('advancedSearch', compact('logged_user_id', 'houses'));
     }
+
+    public function sponsoredHouses(Request $request)
+    {
+        $houses = House::whereHas('plans', function ($query) {
+            // $query->where('expires_at', '>=', now());
+        })
+            ->paginate(2);
+        // ->paginate(9);
+
+        return $houses;
+    }
 }

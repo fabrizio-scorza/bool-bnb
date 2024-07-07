@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\VueController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('get_ip', function (Request $request) {
     dd($request->ip());
 });
+
+Route::get('sponsoredHouses', [VueController::class, 'sponsoredHouses']);
 
 // ipconfig
 // copiare -> Indirizzo IPv4

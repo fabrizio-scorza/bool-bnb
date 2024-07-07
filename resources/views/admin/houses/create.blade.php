@@ -12,9 +12,12 @@
             <h3>Crea un nuovo annuncio</h3>
         </div>
         <div class="container">
-            <form id="create-form" action="{{route('admin.houses.store')}}" method="POST" onsubmit="return validateCheckboxes()">
-            <form action="{{route('admin.houses.store')}}" method="POST"
-            enctype="multipart/form-data">
+            <form 
+                id="create-form" 
+                action="{{route('admin.houses.store')}}" 
+                method="POST" 
+                {{-- onsubmit="validateCheckboxes"  --}}
+                enctype="multipart/form-data">
                 @csrf
         
                 <div class="form-group mb-4">
@@ -127,6 +130,7 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
+        // function validateCheckboxes(event) {
         function validateCheckboxes() {
             const checkboxes = document.querySelectorAll('input[name="services[]"]');
             const isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
@@ -134,6 +138,7 @@
             const errorSpan = document.getElementById('services-error');
 
             if (!isChecked) {
+                // event.preventDefault();
                 errorSpan.style.display = 'block';
                 return false;
             }else{

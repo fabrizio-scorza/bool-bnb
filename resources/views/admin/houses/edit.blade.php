@@ -10,7 +10,7 @@
            <h3>Modifica il tuo annuncio</h3>
        </div>
        <div class="container">
-           <form id="edit-form" action="{{route('admin.houses.update', $house)}}" method="POST">
+           <form id="edit-form" action="{{route('admin.houses.update', $house)}}" method="POST" enctype="multipart/form-data">
                @csrf
                @method('PUT')
        
