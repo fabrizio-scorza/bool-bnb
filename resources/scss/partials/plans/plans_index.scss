@@ -1,0 +1,23 @@
+    //CARDS
+.plans{
+    
+    .card{
+        --bs-card-border-color: var(--purple);
+        
+        strong{
+            color: var(--purple);
+        }
+        .card-header{
+            background-color: var(--purple);
+            color: var(--white);
+            a{
+                color: var(--white);
+            }
+        }
+
+        .card-footer{
+            background-color: var(--lavander);
+        }
+
+    }
+}

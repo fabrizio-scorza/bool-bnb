@@ -7,7 +7,7 @@
 
     <section class="edit">
        <div class="container">
-           <h3>Modifica il tuo Annuncio</h3>
+           <h3>Modifica il tuo annuncio</h3>
        </div>
        <div class="container">
            <form id="edit-form" action="{{route('admin.houses.update', $house)}}" method="POST">
@@ -15,7 +15,7 @@
                @method('PUT')
        
                <div class="form-group mb-4">
-                   <label for="title">Titolo Annuncio *</label>
+                   <label for="title">Titolo annuncio *</label>
                    <input type="text" required class="form-control" id="title" placeholder="Il titolo del tuo alloggio" name="title" value="{{ old('title', $house->title) }}" maxlength="255">
                </div>
        
@@ -25,24 +25,24 @@
                </div>
        
        
-               <div class="row row-cols-4 mb-4">
+               <div class="row row-cols-2 row-cols-lg-4 mb-4">
                    <div class="form-group mb-4">
-                       <label for="rooms">Inserisci il numero di stanze *</label>
+                       <label for="rooms">Numero di stanze *</label>
                        <input type="number" required min="1" max="30" class="form-control" id="rooms" name="rooms" placeholder="1-30" value="{{ old('rooms', $house->rooms) }}">
                    </div>
            
                    <div class="form-group mb-4">
-                       <label for="beds">Inserisci il numero di posti letto *</label>
+                       <label for="beds">Numero di posti letto *</label>
                        <input type="number" required min="1" max="90" class="form-control" id="beds" name="beds" placeholder="1-90" value="{{ old('beds', $house->beds) }}">
                    </div>
            
                    <div class="form-group mb-4">
-                       <label for="bathrooms">Inserisci il numero di bagni *</label>
+                       <label for="bathrooms">Numero di bagni *</label>
                        <input type="number" required min="1" max="10" class="form-control" id="bathrooms" name="bathrooms" placeholder="1-10" value="{{ old('bathrooms', $house->bathrooms) }}">
                    </div>
            
                    <div class="form-group mb-4">
-                       <label for="square_mt">Inserisci i metri quadri *</label>
+                       <label for="square_mt">Metri quadri *</label>
                        <input type="number" required min="30" max="1000" class="form-control" id="square_mt" name="square_mt" placeholder="30-1000" value="{{ old('square_mt', $house->square_mt) }}">
                    </div>
                </div>  
@@ -64,13 +64,13 @@
                </div> --}}
 
                <div class="form-group mb-4">
-                <label for="thumb" class="form-label">Inserisci l'immagine di copertina *</label>
+                <label for="thumb" class="form-label">Immagine annuncio *</label>
                 <input required class="form-control" type="file" id="thumb" name="thumb" >
               </div>
                
-               <div class="row row-cols-3">
+               <div class="row row-cols-2 row-cols-xl-3 row-gap-3">
                    <div class="form-group">
-                       <label for="price_per_night">Inserisci il prezzo per notte *</label>
+                       <label for="price_per_night">Prezzo per notte *</label>
                        <input type="number" required min="1" max="9999.99" step="0.01" class="form-control" id="price_per_night" name="price_per_night" placeholder="1-9999.99 €" value="{{ old('price_per_night', $house->price_per_night) }}">
                    </div>
            
@@ -84,9 +84,9 @@
                        </select>
                      </div>
            
-                   <div class="form-group" id="checklist">
+                   <div class="form-group col-10 m-auto m-xl-0 col-xl mb-4" id="checklist">
                        <label for="checklist">Servizi Aggiuntivi</label>
-                       <div class="row row-cols-3">
+                       <div class="row row-cols-2 row-cols-md-3 row-cols-xl-2 row-cols-xxl-3">
                          @foreach ($services as $service)
                              <div class="form-check">
                                <input @checked(in_array($service->id, old('services', $house->services->pluck('id')->all()))) name="services[]" class="form-check-input" type="checkbox" value="{{$service->id}}" id="service-{{$service->id}}">

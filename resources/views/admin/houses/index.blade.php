@@ -7,7 +7,7 @@
 <section class="index">
 
     <div class="container">
-        <div class="d-flex align-items-center py-5">
+        <div class="index_title  py-5">
             @if(request('trash'))
             <h2>
                 I Miei Appartamenti Eliminati
@@ -19,7 +19,7 @@
             @endif
         
             {{-- <button class="ms-auto"><a href="{{route('admin.houses.create')}}" class="link-underline link-underline-opacity-0">Crea Nuovo</a></button> --}}
-            <div class="ms-auto d-flex gap-3"> 
+            <div class=" d-flex justify-content-evenly gap-3"> 
                 @if(request('trash'))
                 <button><a href="{{route( 'admin.houses.index')}}" class="link-underline link-underline-opacity-0">Torna alla pagina</a></button>
                 @else 
@@ -33,9 +33,9 @@
         </div>
     </div>
     <div class="container py-4">
-        <div class="row row-cols-4 row-gap-4">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4  row-gap-4 center">
             @foreach ($houses as $house)
-            <div class="col d-flex align-items-stretch">
+            <div class="col-8 m-auto m-sm-0 d-flex align-items-stretch">
                 <div class="card flex-fill">
                     <div class="card-header">
                         @if(request('trash'))

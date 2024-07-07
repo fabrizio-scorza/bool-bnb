@@ -5,7 +5,7 @@
 @section('content')
 <section class="messages">
     <div class="container">
-        <h2 class="text-center mt-2 mb-4">
+        <h2 class="text-center my-5"></h2>
             I messaggi ai miei annunci
         </h2>
     </div>
@@ -17,7 +17,7 @@
                 </div>
             @else
                 @foreach ($messages as $message)
-                    <div class="col">
+                    <div class="col m-auto m-sm-0">
                         <div class="card mb-3">
                             <div class="card-header">
                             {{$message->house->title}}

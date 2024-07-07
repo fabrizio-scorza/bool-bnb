@@ -174,8 +174,9 @@ export default {
         position: absolute;
         transform: translateY(-50%);
         top: 25%;
-        left: 300px;
-        width: 500px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50%;
         background-color: rgba($color: #000000, $alpha: 0.6);
     }
 }
@@ -201,5 +202,7 @@ export default {
     top: 50%;
     transform: translateY(-50%);
     z-index: 1;
+    width: 5%;
+    height: 15%;
 }
 </style>
