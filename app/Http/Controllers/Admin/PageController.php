@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\House;
 use App\Models\Message;
 use App\Models\Plan;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
@@ -30,4 +29,6 @@ class PageController extends Controller
 
         return view('admin.messages.index', compact('messages'));
     }
+
+    
 }

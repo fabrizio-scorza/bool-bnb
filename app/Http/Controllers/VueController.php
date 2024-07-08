@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\House;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+
 
 class VueController extends Controller
 {
@@ -53,4 +55,6 @@ class VueController extends Controller
 
         return view('publicHouseShow', compact('logged_user_id', 'house'));
     }
+
+    
 }

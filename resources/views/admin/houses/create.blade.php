@@ -16,7 +16,6 @@
                 id="create-form" 
                 action="{{route('admin.houses.store')}}" 
                 method="POST" 
-                {{-- onsubmit="validateCheckboxes"  --}}
                 enctype="multipart/form-data">
                 @csrf
         
@@ -57,17 +56,7 @@
                     :initial-latitude="{{ old('latitude') }}"
                     :initial-longitude="{{ old('longitude') }}"
                 ></address-component>
-                {{-- <div class="form-group">
-                    <label for="address">Inserici l'indirizzo</label>
-                    <input type="text" class="form-control" id="address" placeholder="indirizzo del tuo alloggio" name="address" value="{{ old('address') }}" maxlength="255">
-                </div> --}}
-        
                 
-                {{-- <div class="form-group mb-4">
-                    <label for="thumb">Inserisci l'immagine di copertina *</label>
-                    <input type="url" required class="form-control" id="thumb" placeholder="http://..." name="thumb"
-                    value="{{ old('thumb') }}">
-                </div> --}}
                 <div class="form-group mb-4">
                     <label for="thumb" class="form-label">Immagine annuncio</label>
                     <input required class="form-control" type="file" id="thumb" name="thumb" value="{{ old('thumb') }}">
@@ -144,7 +133,7 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        // function validateCheckboxes(event) {
+        
         function validateCheckboxes() {
             const checkboxes = document.querySelectorAll('input[name="services[]"]');
             const isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
@@ -152,7 +141,7 @@
             const errorSpan = document.getElementById('services-error');
 
             if (!isChecked) {
-                // event.preventDefault();
+                
                 errorSpan.style.display = 'block';
                 return false;
             }else{

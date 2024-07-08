@@ -77,8 +77,59 @@
     <div class="container px-5 my-5">
         <p>{{$house->description}}</p>
     </div>
+
     <div>
         <map-component :house='@json($house)'><map-component/>
+    </div>
+
+    @if(session('conferma'))
+    <div class="alert alert-success">
+        {{ session('conferma') }}
+    </div>
+    @endif
+
+    <div class="container my-5">
+        <form action="{{route('store')}}" method="POST" >
+            @csrf
+
+            <div class="row">
+
+                <div class="mb-4 col-6">
+                    <label for="name" class=" col-form-label text-md-right">Nome</label>
+    
+                    <div >
+                        <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}">
+                    </div>
+                </div>
+    
+                <div class="mb-4 col-6">
+                    <label for="surname" class=" col-form-label text-md-right">Cognome</label>
+    
+                    <div >
+                        <input id="surname" type="text" class="form-control" name="surname" value="{{ old('surname') }}">
+                    </div>
+                </div>
+    
+                <div class="mb-4 col-12">
+                    <label for="email" class=" col-form-label text-md-right">Indirizzo email*</label>
+    
+                    <div>
+                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autocomplete="email">
+                    </div>
+                </div>
+    
+                <div class="form-group mb-4 col-12">
+                    <label for="text" class="col-form-label">Scrivi un messaggio</label>
+                    <div>
+                        <textarea name="text" id="text" cols="80" rows="5" placeholder="Scrivi qui il tuo messaggio" required class="form-control">{{ old('description') }}</textarea>
+                    </div>
+                </div>
+
+                <input type="hidden" id="house_id" name="house_id" readonly value="{{$house->id}}">
+
+            </div>
+            <button>Invia</button>
+        </form>
     </div>
     
 </section>
