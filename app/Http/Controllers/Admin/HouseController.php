@@ -128,6 +128,14 @@ class HouseController extends Controller
         // $form_data['latitude'] = 41.85698;
         // $form_data['longitude'] = 14.85698;
 
+        if ($request->hasFile('thumb')) {
+            $image_path = Storage::disk('public')->put('thumb_images', $request->thumb);
+            // dd($image_path);
+            //andiamo a salvare la nostra thumb
+            $form_data['thumb'] = $image_path;
+        }
+
+
         if ($request->has('category')) {
             $form_data['category_id'] = $request->category;
         }

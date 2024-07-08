@@ -22,11 +22,11 @@
         <div class="row">
             <div class="col-12 col-lg-8">
                 {{-- <img src="./img/{{$house->thumb}}" alt="Immagine Appartamento">   --}}
-                ($house->thumb)
+                {{-- ($house->thumb) --}}
                 <figure>
                     <img src="{{ asset('storage/' . $house->thumb)}}" alt="Immagine Appartamento">
                 </figure>
-                @endif
+                {{-- @endif --}}
             </div>
             <div class="col-12 col-lg-4">
                 <div class="card">
