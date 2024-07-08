@@ -177,9 +177,7 @@ export default {
 
                     <button class="m-1" @click="nextPage"
                         :disabled="sponsoredHousesData.current_page >= sponsoredHousesData.last_page">Avanti</button>
-                    <button v-if="currentPage == sponsoredHousesData.current_page" class="m-1 selected"
-                        @click="getSponsoredHouses(sponsoredHousesData.current_page)"> {{
-                            sponsoredHousesData.current_page }} </button>
+
                 </div>
 
             </div>
