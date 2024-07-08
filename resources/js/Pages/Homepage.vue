@@ -9,13 +9,10 @@ export default {
             currentSlideIndex: 0,
             sponsored_houses: [],
             sponsoredHousesData: {},
-            activeButton: 1,
-
-
         }
     },
     created() {
-        
+
         this.getSponsoredHouses()
     },
     computed: {
@@ -44,7 +41,6 @@ export default {
         //     this.currentSlideIndex = (this.currentSlideIndex === this.sponsored_houses.length - 1) ? 0 : this.currentSlideIndex + 1;
         // },
         getSponsoredHouses(page = 1) {
-            this.activeButton = page;
             axios.get(`/api/sponsoredHouses?page=${page}`).then((res) => {
                 console.log(res.data)
                 this.sponsoredHousesData = res.data
@@ -153,19 +149,21 @@ export default {
                     <button class="m-1" @click="prevPage"
                         :disabled="sponsoredHousesData.current_page <= 1">Indietro</button>
 
-                    <span v-if="sponsoredHousesData.current_page > 2">...</span>
+                    <button v-if="sponsoredHousesData.current_page > 2" class="m-1" @click="getSponsoredHouses(1)">
+                        {{ 1 }}
+                    </button>
+
+                    <span v-if="sponsoredHousesData.current_page > 3">...</span>
 
                     <button v-if="sponsoredHousesData.current_page > 1" class="m-1"
                         @click="getSponsoredHouses(sponsoredHousesData.current_page - 1)">
                         {{ sponsoredHousesData.current_page - 1 }}
                     </button>
-
-                    <button :class="{ 'm-1 selected active': currentPage == activeButton }"
-                        @click="getSponsoredHouses(sponsoredHousesData.current_page)">
+                    <button class="active-button" @click="getSponsoredHouses(sponsoredHousesData.current_page)">
                         {{ sponsoredHousesData.current_page }}
                     </button>
 
-                    <button v-if="sponsoredHousesData.current_page < sponsoredHousesData.last_page - 1" class="m-1"
+                    <button v-if="sponsoredHousesData.current_page < sponsoredHousesData.last_page" class="m-1"
                         @click="getSponsoredHouses(sponsoredHousesData.current_page + 1)">
                         {{ sponsoredHousesData.current_page + 1 }}
                     </button>
@@ -193,6 +191,10 @@ export default {
 <style lang="scss" scoped>
 .show {
     display: inline;
+}
+
+.active-button {
+    background-color: var(--yellow);
 }
 
 .hidden {
