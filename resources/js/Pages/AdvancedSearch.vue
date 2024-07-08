@@ -2,7 +2,7 @@
     <section class="searchbar py-4">
         <div class="container position-relative">
             <address-component></address-component>
-            <a class="search-link" href="#" @click="searchHouses(houses, store.addresses[0].position.lat, store.addresses[0].position.lon, kms)"> 
+            <a class="search-link" href="#" @click="filteredHouses()"> 
                 &#x1F50D; Cerca
             </a>
         </div>
@@ -78,19 +78,22 @@ export default {
         return {
             store,
             noResult: false, 
-            rooms: 1,
-            beds: 1,
-            kms: 20,
+            rooms: null,
+            beds: null,
+            kms: null,
             is_checked: [],
-            filters: [],
+            housesArray: this.houses,
+            // filters: [],
+            services_id:[],
+            firstSearch: true
             
         }
     },
-    mounted() {
+    created() {
         const session_latitude = sessionStorage.getItem('latitude');
         const session_longitude = sessionStorage.getItem('longitude');
 
-        this.searchHouses(this.houses, session_latitude, session_longitude, this.kms);
+        this.searchHouses(this.houses, session_latitude, session_longitude, 20);
         
         
         if (store.closeHouses.length === 0) {
@@ -103,13 +106,63 @@ export default {
         isHidden(sponsored_house) {
             return !(sponsored_house.plans && sponsored_house.plans.length);
         },
-        filteredHouses(){
-            if(this.filters.length = 0){
-                this.searchHouses(this.houses, store.addresses[0].position.lat, store.addresses[0].position.lon, this.kms)
-            }else{
 
+        // putInFilters(){
+        //     this.is_checked.forEach((service, index) => {
+        //         if(service[index] == true){
+        //             this.services_id.push(servive[index] + 1);
+        //         }
+        //     });
+            
+        //     if(this.services_id.length != 0){
+        //         filter.push({services: this.services_id});
+        //     }
+
+            // if(this.rooms != null){
+            //     filter.push({rooms: this.rooms});
+            // }
+
+        //     if(this.beds != null){
+        //         filter.push({beds: this.beds});
+        //     }
+
+        // },
+
+        filteredHouses(){
+            // this.putInFilters();
+            if(this.firstSearch){
+                this.searchHouses(this.houses, store.addresses[0].position.lat, store.addresses[0].position.lon, 20);
+                this.firstSearch = false;
+            }else{
+                if(this.rooms != null){
+                    
+                    this.housesArray = this.housesArray.filter(el => el.rooms  >= this.rooms);
+
+                }
+                if(this.beds != null){
+                
+                this.housesArray = this.housesArray.filter(el => el.beds  >= this.beds);
+            }
+            
+                console.log(this.housesArray, store.addresses[0].position.lat, store.addresses[0].position.lon, this.kms)
+                // if(this.filters[rooms]){
+                //     this.houses = this.houses.filter(this.houses.rooms >= this.filters[rooms])
+                // }
+
+                // if(this.filters[beds]){
+                //     this.houses = this.houses.filter(this.houses.beds >= this.filters[beds])
+                // }
+
+                // // if(this.filters[services]){
+                //     this.filters[services].forEach(service => {
+                //         this.house = this.house.filter(service)
+                //     });
+                // }
+
+                this.searchHouses(this.housesArray, store.addresses[0].position.lat, store.addresses[0].position.lon, this.kms)
             }
         },
+
         searchHouses(houses, lat, lon, km) {
             store.closeHouses = [];
             let latitude = lat;
