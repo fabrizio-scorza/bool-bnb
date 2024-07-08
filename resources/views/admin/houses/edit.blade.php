@@ -98,7 +98,7 @@
                      </div>
                </div>
        
-                 <div class="form-group mb-4">
+                <div class="form-group mb-4">
                    <h4>Visibilità annuncio nella ricerca</h4>
                    <div class="d-flex gap-3">
                     <div class="d-flex gap-1">
@@ -110,7 +110,7 @@
                         <label for="0">Non Visibile</label>            
                     </div>
                    </div>
-               </div>
+                </div>
        
                <div class="mb-4 fw-lighter">
                    <p>

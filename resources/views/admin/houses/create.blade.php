@@ -102,6 +102,20 @@
                     </div>
                 </div>
                 
+                <div class="form-group mb-4">
+                    <h4>Visibilità annuncio nella ricerca</h4>
+                    <div class="d-flex gap-3">
+                     <div class="d-flex gap-1">
+                         <input type="radio"  id="1" name="available" value="1" {{ old('available') == '1' ? 'checked' : '' }}>
+                         <label for="1">Visibile</label>
+                     </div>
+                     <div class="d-flex gap-1">
+                         <input type="radio"  id="0" name="available" value="0" {{ old('available') == '0' ? 'checked' : '' }}>
+                         <label for="0">Non Visibile</label>            
+                     </div>
+                    </div>
+                </div>
+
                 <div class="mb-4 fw-lighter">
                     <p>
                         I campi contrassegnati con l'asterisco (*) sono obbligatori

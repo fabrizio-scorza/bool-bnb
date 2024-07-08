@@ -34,6 +34,7 @@ class StoreHouseRequest extends FormRequest
                 'thumb' => 'nullable|image',
                 'latitude' => 'required|numeric',
                 'longitude' => 'required|numeric',
+                'available' => 'required|boolean',
                 'price_per_night' => 'required|numeric|min:1|max:9999.99',
                 'user_id' => 'exist:users,id',
                 'category_id' => 'nullable|exists:categories,id',

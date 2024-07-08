@@ -18,8 +18,8 @@
                 La ricerca non ha prodotto risultati.
             </h3>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4  row-gap-4 center">
-                <div id="search" class="col-8 m-auto m-sm-0 d-flex align-items-stretch" v-for="house in store.closeHouses" :key="house.id"
-                    :class="house.plans.length ? 'order-1' : 'order-2'">
+                <div id="search" class="col-8 m-auto m-sm-0 d-flex align-items-stretch" v-for="house in visible" :key="house.id"
+                :class="house.plans.length ? 'order-1' : 'order-2'" >
                     <div class="card flex-fill">
                         <div class="card-header">
                             <a href="" class="link-underline link-underline-opacity-0">
@@ -48,6 +48,7 @@ export default {
         return {
             store,
             noResult: false, 
+            visible_houses: [],
         }
     },
     created() {
@@ -60,6 +61,8 @@ export default {
         if (store.closeHouses.length === 0) {
             this.noResult = true;
         }
+
+        
     },
     methods: {
         isHidden(sponsored_house) {
@@ -90,8 +93,20 @@ export default {
             const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
             return R * c; // Distanza in km
         }
-    }
-}
+    },
+    computed: {
+
+        visible() {
+            this.store.closeHouses.forEach(house => {
+                if (house.available === 1) {
+                    this.visible_houses.push(house)
+                }
+            })
+             return this.visible_houses;
+        },
+    },
+
+}    
 </script>
 
 <style lang="scss" scoped>
