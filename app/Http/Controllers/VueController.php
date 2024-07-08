@@ -36,7 +36,7 @@ class VueController extends Controller
         $houses = House::whereHas('plans', function ($query) {
             // $query->where('expires_at', '>=', now());
         })
-            ->paginate(2);
+            ->paginate(1);
         // ->paginate(9);
 
         return $houses;

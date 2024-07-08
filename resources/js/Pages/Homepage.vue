@@ -9,6 +9,7 @@ export default {
             currentSlideIndex: 0,
             sponsored_houses: [],
             sponsoredHousesData: {},
+            activeButton: 1,
 
 
         }
@@ -36,13 +37,14 @@ export default {
         }
     },
     methods: {
-        showPrevSlide() {
-            this.currentSlideIndex = (this.currentSlideIndex === 0) ? this.sponsored_houses.length - 1 : this.currentSlideIndex - 1;
-        },
-        showNextSlide() {
-            this.currentSlideIndex = (this.currentSlideIndex === this.sponsored_houses.length - 1) ? 0 : this.currentSlideIndex + 1;
-        },
+        // showPrevSlide() {
+        //     this.currentSlideIndex = (this.currentSlideIndex === 0) ? this.sponsored_houses.length - 1 : this.currentSlideIndex - 1;
+        // },
+        // showNextSlide() {
+        //     this.currentSlideIndex = (this.currentSlideIndex === this.sponsored_houses.length - 1) ? 0 : this.currentSlideIndex + 1;
+        // },
         getSponsoredHouses(page = 1) {
+            this.activeButton = page;
             axios.get(`/api/sponsoredHouses?page=${page}`).then((res) => {
                 console.log(res.data)
                 this.sponsoredHousesData = res.data
@@ -50,6 +52,16 @@ export default {
             }).catch(() => {
 
             })
+        },
+        prevPage() {
+            if (this.sponsoredHousesData.current_page > 1) {
+                this.getSponsoredHouses(this.sponsoredHousesData.current_page - 1);
+            }
+        },
+        nextPage() {
+            if (this.sponsoredHousesData.current_page < this.sponsoredHousesData.last_page) {
+                this.getSponsoredHouses(this.sponsoredHousesData.current_page + 1);
+            }
         }
 
     }
@@ -108,100 +120,74 @@ export default {
 
         </div>
     </section>
+
+
     <section class="sponsored my-5">
-        <div class="container">
-            <div class="row row-gap-4 position-relative">
+        <div class="px-5">
+            <div class="card p-3 bg-personal border border-dark">
+                <h2 class="mb-5 text-white text-center">Appartamenti in evidenza</h2>
 
+                <div class="row row-gap-4 position-relative">
+                    <div class="col-md-4 col-12 d-flex align-items-stretch"
+                        v-for="(sponsored_house, index) in sponsoredHouses" :key="sponsored_house.id">
+                        <div class="card flex-fill">
+                            <div class="card-header">
+                                <a href="" class="link-underline link-underline-opacity-0 text-white">
+                                    {{ sponsored_house.title }}
+                                </a>
+                            </div>
 
-                <div class="col-4 d-flex align-items-stretch" v-for="(sponsored_house, index) in sponsored"
-                    :key="sponsored_house.id"
-                    :class="(index === currentSlideIndex || index === currentSlideIndex + 1 || index === currentSlideIndex + 2) ? 'active' : 'hidden'">
-                    <div class="card flex-fill">
-                        <div class="card-header">
-                            <a href="" class="link-underline link-underline-opacity-0">
-                                {{ sponsored_house.title }}
-                            </a>
-                        </div>
-
-                        <div class="card-body">
-                            <img :src="'./img/' + sponsored_house.thumb" alt="Immagine Appartamento">
-                            <div>
-                                {{ sponsored_house.price_per_night }}€
+                            <div class="card-body">
+                                <img :src="'./img/' + sponsored_house.thumb" alt="Immagine Appartamento"
+                                    class="img-fluid">
+                                <div>
+                                    {{ sponsored_house.price_per_night }}€
+                                </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
-                <button class="carousel-control-prev z-0" @click="showPrevSlide">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next z-0" @click="showNextSlide">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </div>
-    </section>
-    <section>
-
-        <button v-for="i in sponsoredHousesData.last_page" @click="getSponsoredHouses(i)"> {{ i }}</button>
-    </section>
-    <section class="sponsored my-5">
-        <div class="container">
-            <div class="row row-gap-4 position-relative">
 
 
-                <div class="col-4 d-flex align-items-stretch" v-for="(sponsored_house, index) in sponsoredHouses"
-                    :key="sponsored_house.id">
-                    <div class="card flex-fill">
-                        <div class="card-header">
-                            <a href="" class="link-underline link-underline-opacity-0">
-                                {{ sponsored_house.title }}
-                            </a>
-                        </div>
+                <div class="mt-3 d-flex justify-content-center align-items-baseline ">
+                    <button class="m-1" @click="prevPage"
+                        :disabled="sponsoredHousesData.current_page <= 1">Indietro</button>
 
-                        <div class="card-body">
-                            <img :src="'./img/' + sponsored_house.thumb" alt="Immagine Appartamento">
-                            <div>
-                                {{ sponsored_house.price_per_night }}€
-                            </div>
-                        </div>
+                    <span v-if="sponsoredHousesData.current_page > 2">...</span>
 
+                    <button v-if="sponsoredHousesData.current_page > 1" class="m-1"
+                        @click="getSponsoredHouses(sponsoredHousesData.current_page - 1)">
+                        {{ sponsoredHousesData.current_page - 1 }}
+                    </button>
 
-                    </div>
+                    <button :class="{ 'm-1 selected active': currentPage == activeButton }"
+                        @click="getSponsoredHouses(sponsoredHousesData.current_page)">
+                        {{ sponsoredHousesData.current_page }}
+                    </button>
+
+                    <button v-if="sponsoredHousesData.current_page < sponsoredHousesData.last_page - 1" class="m-1"
+                        @click="getSponsoredHouses(sponsoredHousesData.current_page + 1)">
+                        {{ sponsoredHousesData.current_page + 1 }}
+                    </button>
+
+                    <span v-if="sponsoredHousesData.current_page < sponsoredHousesData.last_page - 2">...</span>
+
+                    <button v-if="sponsoredHousesData.current_page < sponsoredHousesData.last_page - 1" class="m-1"
+                        @click="getSponsoredHouses(sponsoredHousesData.last_page)">
+                        {{ sponsoredHousesData.last_page }}
+                    </button>
+
+                    <button class="m-1" @click="nextPage"
+                        :disabled="sponsoredHousesData.current_page >= sponsoredHousesData.last_page">Avanti</button>
+                    <button v-if="currentPage == sponsoredHousesData.current_page" class="m-1 selected"
+                        @click="getSponsoredHouses(sponsoredHousesData.current_page)"> {{
+                            sponsoredHousesData.current_page }} </button>
                 </div>
 
             </div>
         </div>
     </section>
-    <!-- <section class="searched pt-5">
-        <div class="container">
-            <div class="row row-gap-4">
-                <div id="#search" class="col-3 d-flex align-items-stretch" v-for="house in closeHouses" :key="house.id"
-                    :class="house.plans.length ? 'order-1' : 'order-2'">
-                    <div class="card flex-fill">
-                        <div class="card-header">
-                            <a href="" class="link-underline link-underline-opacity-0">
-                                {{ house.title }}
-                            </a>
-                        </div>
 
-                        <div class="card-body">
-                            <img :src="'./storage/' + house.thumb" alt="Immagine Appartamento">
-                            <div>
-                                {{ house.price_per_night }}€
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </section> -->
 </template>
 
 <style lang="scss" scoped>
@@ -254,5 +240,9 @@ export default {
     z-index: 1;
     width: 5%;
     height: 15%;
+}
+
+.bg-personal {
+    background-color: var(--lavander);
 }
 </style>
