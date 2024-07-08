@@ -12,16 +12,12 @@
             <h2>
                 {{$house->title}}
             </h2>
-            <div class=" d-flex justify-content-evenly gap-3">
-                <button><a href="{{route('admin.houses.edit',$house)}}">Modifica</a></button>
-                <button data-bs-toggle="modal" data-bs-target="#modal-{{$house->id}}" class="bg_orange">Elimina</button>
-            </div>
         </div>
     </div>
     <div class="container">
         <div class="row">
             <div class="col-12 col-lg-8">
-                {{-- <img src="./img/{{$house->thumb}}" alt="Immagine Appartamento">   --}}
+                
                 
                 <figure>
                     <img src="{{ asset('storage/' . $house->thumb)}}" alt="Immagine Appartamento">
@@ -71,11 +67,6 @@
                             </p>
                             <p class="d-flex justify-content-between">
                                 {{$house->price_per_night}}€ / a notte
-                                <span>
-                                    <a href="" class="me-3 link-underline link-underline-opacity-0">Messaggi</a>
-                                    <a href="" class="me-3 link-underline link-underline-opacity-0">St</a>
-                                    <a href="" class="me-3 link-underline link-underline-opacity-0">Sp</a>
-                                </span>
                             </p>
                         </div>
                     </div>
@@ -90,29 +81,5 @@
         <map-component :house='@json($house)'><map-component/>
     </div>
     
-    <div class="modal" id="modal-{{$house->id}}" tabindex="-1" aria-labelledby="modal-label" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Elimina</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body ">
-              <p>Vuoi spostare questo annuncio nel cestino?</p>
-            </div>
-            <div class="modal-footer border-0">
-              <button type="button" class="" data-bs-dismiss="modal">No</button>
-              <form action="{{ route('admin.houses.destroy', $house) }}" method="POST">
-                        
-                @csrf
-                @method('DELETE')
-    
-                <button class="bg_orange">Si</button>
-            
-                </form> 
-            </div>
-          </div>
-        </div>
-    </div>
 </section>
 @endsection

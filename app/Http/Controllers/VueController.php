@@ -22,6 +22,7 @@ class VueController extends Controller
     }
     public function advancedSearch()
     {
+        
         $logged_user_id = null;
         if (Auth::user() != null) {
             $logged_user_id = Auth::user()->id;
@@ -40,5 +41,16 @@ class VueController extends Controller
         // ->paginate(9);
 
         return $houses;
+    }
+
+    public function publicHouseShow(House $house){
+
+        $logged_user_id = null;
+        if (Auth::user() != null) {
+            $logged_user_id = Auth::user()->id;
+        }
+        
+
+        return view('publicHouseShow', compact('logged_user_id', 'house'));
     }
 }

@@ -22,12 +22,12 @@
                 :class="house.plans.length ? 'order-1' : 'order-2'" >
                     <div class="card flex-fill">
                         <div class="card-header">
-                            <a href="" class="link-underline link-underline-opacity-0">
+                            <a :href="callShow(house)" class="link-underline link-underline-opacity-0">
                                 {{ house.title }}
                             </a>
                         </div>
                         <div class="card-body">
-                            <img :src="'./img/' + house.thumb" alt="Immagine Appartamento">
+                            <img :src="'./storage/app/public/' + house.thumb" alt="Immagine Appartamento">
                             <div>
                                 {{ house.price_per_night }}€
                             </div>
@@ -43,7 +43,7 @@
 import { store } from '../store';
 
 export default {
-    props: ['houses', 'logged_user'],
+    props: ['houses', 'logged_user', 'show_route', 'admin_show_route'],
     data() {
         return {
             store,
@@ -92,7 +92,18 @@ export default {
                       Math.sin(dLon / 2) * Math.sin(dLon / 2);
             const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
             return R * c; // Distanza in km
-        }
+        },
+        callShow(house){
+            const houseId = house.id;
+            
+            if(house.user_id == this.logged_user){
+
+                return `${this.admin_show_route}/${houseId}`;
+            }else{
+                return `${this.show_route}/${houseId}`;
+            }
+            
+        },
     },
     computed: {
 
