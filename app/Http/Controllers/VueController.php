@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\House;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -30,8 +31,9 @@ class VueController extends Controller
             $logged_user_id = Auth::user()->id;
         }
 
-        $houses = House::with('plans')->get();
-        return view('advancedSearch', compact('logged_user_id', 'houses'));
+        $houses = House::with('plans', 'services')->get();
+        $services = Service::all();
+        return view('advancedSearch', compact('logged_user_id', 'houses', 'services'));
     }
 
     public function sponsoredHouses(Request $request)
