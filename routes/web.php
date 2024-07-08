@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\HouseController;
 use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\VueController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [VueController::class, 'homepage'])->name('homepage');
 Route::get('/advanced-search', [VueController::class, 'advancedSearch'])->name('advanced');
+Route::get('/public/{house}', [VueController::class, 'publicHouseShow'])->name('public');
+Route::post('/public/store', [MessageController::class, 'store'])->name('store');
+
 
 Route::middleware(['auth', 'verified'])
     ->name('admin.')

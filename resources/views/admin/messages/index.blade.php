@@ -5,7 +5,7 @@
 @section('content')
 <section class="messages">
     <div class="container">
-        <h2 class="text-center my-5"></h2>
+        <h2 class="text-center my-5">
             I messaggi ai miei annunci
         </h2>
     </div>

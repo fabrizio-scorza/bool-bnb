@@ -12,10 +12,6 @@
             <h2>
                 {{$house->title}}
             </h2>
-            <div class=" d-flex justify-content-evenly gap-3">
-                <button><a href="{{route('admin.houses.edit',$house)}}">Modifica</a></button>
-                <button data-bs-toggle="modal" data-bs-target="#modal-{{$house->id}}" class="bg_orange">Elimina</button>
-            </div>
         </div>
     </div>
     <div class="container">
@@ -71,11 +67,6 @@
                             </p>
                             <p class="d-flex justify-content-between">
                                 {{$house->price_per_night}}€ / a notte
-                                <span>
-                                    <a href="" class="me-3 link-underline link-underline-opacity-0">Messaggi</a>
-                                    <a href="" class="me-3 link-underline link-underline-opacity-0">St</a>
-                                    <a href="" class="me-3 link-underline link-underline-opacity-0">Sp</a>
-                                </span>
                             </p>
                         </div>
                     </div>
@@ -86,33 +77,60 @@
     <div class="container px-5 my-5">
         <p>{{$house->description}}</p>
     </div>
+
     <div>
         <map-component :house='@json($house)'><map-component/>
     </div>
-    
-    <div class="modal" id="modal-{{$house->id}}" tabindex="-1" aria-labelledby="modal-label" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Elimina</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body ">
-              <p>Vuoi spostare questo annuncio nel cestino?</p>
-            </div>
-            <div class="modal-footer border-0">
-              <button type="button" class="" data-bs-dismiss="modal">No</button>
-              <form action="{{ route('admin.houses.destroy', $house) }}" method="POST">
-                        
-                @csrf
-                @method('DELETE')
-    
-                <button class="bg_orange">Si</button>
-            
-                </form> 
-            </div>
-          </div>
-        </div>
+
+    @if(session('conferma'))
+    <div class="alert alert-success">
+        {{ session('conferma') }}
     </div>
+    @endif
+
+    <div class="container my-5">
+        <form action="{{route('store')}}" method="POST" >
+            @csrf
+
+            <div class="row">
+
+                <div class="mb-4 col-6">
+                    <label for="name" class=" col-form-label text-md-right">Nome</label>
+    
+                    <div >
+                        <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}">
+                    </div>
+                </div>
+    
+                <div class="mb-4 col-6">
+                    <label for="surname" class=" col-form-label text-md-right">Cognome</label>
+    
+                    <div >
+                        <input id="surname" type="text" class="form-control" name="surname" value="{{ old('surname') }}">
+                    </div>
+                </div>
+    
+                <div class="mb-4 col-12">
+                    <label for="email" class=" col-form-label text-md-right">Indirizzo email*</label>
+    
+                    <div>
+                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autocomplete="email">
+                    </div>
+                </div>
+    
+                <div class="form-group mb-4 col-12">
+                    <label for="text" class="col-form-label">Scrivi un messaggio</label>
+                    <div>
+                        <textarea name="text" id="text" cols="80" rows="5" placeholder="Scrivi qui il tuo messaggio" required class="form-control">{{ old('description') }}</textarea>
+                    </div>
+                </div>
+
+                <input type="hidden" id="house_id" name="house_id" readonly value="{{$house->id}}">
+
+            </div>
+            <button>Invia</button>
+        </form>
+    </div>
+    
 </section>
 @endsection
