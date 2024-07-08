@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col-12 col-lg-8">
                 {{-- <img src="./img/{{$house->thumb}}" alt="Immagine Appartamento">   --}}
-                @if($house->thumb)
+                ($house->thumb)
                 <figure>
                     <img src="{{ asset('storage/' . $house->thumb)}}" alt="Immagine Appartamento">
                 </figure>
