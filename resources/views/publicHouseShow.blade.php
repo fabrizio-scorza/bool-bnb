@@ -6,6 +6,12 @@
 
 @section('content')
 
+@if(session('conferma'))
+    <div class="alert alert-success container fs-3 mt-5">
+        {{ session('conferma') }}
+    </div>
+@endif
+
 <section class="show">
     <div class="container">
         <div class="show_title my-5">
@@ -31,22 +37,19 @@
                             <h5>Dettagli</h5>
                             <ul class="list-unstyled">
                                 <li>
-                                    {{$house->category->name ?? ''}}
-                                </li>
-                                <li>
-                                    <span>R</span>
+                                    <span><i class="fa-solid fa-door-closed"></i></span>
                                     {{$house->rooms}}
                                 </li>
                                 <li>
-                                    <span>L</span>
+                                    <span><i class="fa-solid fa-bed"></i></span>
                                     {{$house->beds}}
                                 </li>
                                 <li>
-                                    <span>B</span>
+                                    <span><i class="fa-solid fa-toilet"></i></span>
                                     {{$house->bathrooms}}
                                 </li>
                                 <li>
-                                    <span>Mq</span>
+                                    <span><i class="fa-solid fa-ruler-combined"></i></span>
                                     {{$house->square_mt}}
                                 </li>                       
                             </ul>
@@ -55,9 +58,28 @@
                             <h5>Servizi Aggiuntivi</h5>
                             <ul class="list-unstyled">
                                 @foreach ($house->services as $service)
-                                    <li>
-                                        {{$service->name}}
-                                    </li>                                    
+                                <li>                                
+                                    @if($service->id === 1)
+                                        <i class="fa-solid fa-wifi"></i>
+                                    @elseif($service->id === 2)                                
+                                        <i class="fa-solid fa-car"></i>                                
+                                    @elseif($service->id === 3)                                
+                                        <i class="fa-solid fa-person-swimming"></i>                                
+                                    @elseif($service->id === 4)                                
+                                        <i class="fa-solid fa-bell-concierge"></i>                                
+                                    @elseif($service->id === 5)                                
+                                        <i class="fa-solid fa-temperature-full"></i>                                
+                                    @elseif($service->id === 6)                                
+                                        <i class="fa-solid fa-umbrella-beach"></i>                               
+                                    @elseif($service->id === 7)                                
+                                        <i class="fa-regular fa-snowflake"></i>                               
+                                    @elseif($service->id === 8)                                
+                                        <i class="fa-solid fa-hot-tub-person"></i>                                
+                                    @elseif($service->id === 9)                                
+                                        <i class="fa-solid fa-martini-glass"></i>                                
+                                    @endif
+                                    {{$service->name}}
+                                </li>                                     
                                 @endforeach
                             </ul>
                         </div>
@@ -65,9 +87,14 @@
                             <p>
                                 {{$house->address}}
                             </p>
-                            <p class="d-flex justify-content-between">
-                                {{$house->price_per_night}}€ / a notte
-                            </p>
+                            <div class="d-flex justify-content-between">
+                                <div><strong>{{$house->price_per_night}}€</strong> notte</div>
+                                <div>
+                                    <a href="" class="me-3 link-underline link-underline-opacity-0">Messaggi</a>
+                                    <a href="" class="me-3 link-underline link-underline-opacity-0"><i class="fa-solid fa-chart-line fs-5"></i></a>
+                                    <a href="" class="link-underline link-underline-opacity-0"><i class="fa-regular fa-credit-card fs-5"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -81,12 +108,6 @@
     <div>
         <map-component :house='@json($house)'><map-component/>
     </div>
-
-    @if(session('conferma'))
-    <div class="alert alert-success">
-        {{ session('conferma') }}
-    </div>
-    @endif
 
     <div class="container my-5">
         <form action="{{route('store')}}" method="POST" >
@@ -119,7 +140,7 @@
                 </div>
     
                 <div class="form-group mb-4 col-12">
-                    <label for="text" class="col-form-label">Scrivi un messaggio</label>
+                    <label for="text" class="col-form-label">Scrivi un messaggio* </label>
                     <div>
                         <textarea name="text" id="text" cols="80" rows="5" placeholder="Scrivi qui il tuo messaggio" required class="form-control">{{ old('description') }}</textarea>
                     </div>
