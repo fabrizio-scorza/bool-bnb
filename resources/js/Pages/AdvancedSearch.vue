@@ -1,7 +1,7 @@
 <template>
     <section class="searchbar py-4">
         <div class="container position-relative">
-            <address-component></address-component>
+            <address-component :initial-address=this.initialAddress></address-component>
             <a class="search-link" href="#" @click="filteredHouses()"> 
                 &#x1F50D; Cerca
             </a>
@@ -118,12 +118,11 @@ export default {
             noResult: false, 
             rooms: null,
             beds: null,
-            kms: null,
+            kms: 20,
             is_checked: [],
-            housesArray: this.houses,
-            // filters: [],
+            housesArray: [],
             services_id:[],
-            firstSearch: true
+            initialAddress: sessionStorage.getItem('address')
             
         }
     },
@@ -131,13 +130,23 @@ export default {
         const session_latitude = sessionStorage.getItem('latitude');
         const session_longitude = sessionStorage.getItem('longitude');
 
-        this.searchHouses(this.houses, session_latitude, session_longitude, 20);
+        store.addresses[0] = {
+            'position': {
+                'lat': session_latitude, 
+                'lon': session_longitude
+            },
+            'address':{
+                'freeformAddress': this.initialAddress,
+            }
+        }
         
+        
+
+        this.searchHouses(this.houses, session_latitude, session_longitude, 20);
         
         if (store.closeHouses.length === 0) {
             this.noResult = true;
         }
-
         
     },
     methods: {
@@ -145,43 +154,37 @@ export default {
             return !(sponsored_house.plans && sponsored_house.plans.length);
         },
 
-        
-
         filteredHouses(){
-            // this.putInFilters();
-            // this.searchHouses = this.houses
-            if(this.firstSearch){
-                this.searchHouses(this.houses, store.addresses[0].position.lat, store.addresses[0].position.lon, 20);
-                this.firstSearch = false;
-            }else{
-                if(this.rooms != null){
-                    
-                    this.housesArray = this.housesArray.filter(el => el.rooms  >= this.rooms);
-
-                }
-                if(this.beds != null){
-                
-                this.housesArray = this.housesArray.filter(el => el.beds  >= this.beds);
-            }
+            this.housesArray = this.houses
             
-                console.log(this.housesArray, store.addresses[0].position.lat, store.addresses[0].position.lon, this.kms)
-                // if(this.filters[rooms]){
-                //     this.houses = this.houses.filter(this.houses.rooms >= this.filters[rooms])
-                // }
-
-                // if(this.filters[beds]){
-                //     this.houses = this.houses.filter(this.houses.beds >= this.filters[beds])
-                // }
-
-                // // if(this.filters[services]){
-                //     this.filters[services].forEach(service => {
-                //         this.house = this.house.filter(service)
-                //     });
-                // }
-
-                this.searchHouses(this.housesArray, store.addresses[0].position.lat, store.addresses[0].position.lon, this.kms)
+           
+            if(this.rooms != null){
                 
+                this.housesArray = this.housesArray.filter(el => el.rooms  >= this.rooms);
+
             }
+            if(this.beds != null){
+            
+                this.housesArray = this.housesArray.filter(el => el.beds  >= this.beds);
+        
+        
+            }
+            // if(this.filters[rooms]){
+            //     this.houses = this.houses.filter(this.houses.rooms >= this.filters[rooms])
+            // }
+
+            // if(this.filters[beds]){
+            //     this.houses = this.houses.filter(this.houses.beds >= this.filters[beds])
+            // }
+
+            // // if(this.filters[services]){
+            //     this.filters[services].forEach(service => {
+            //         this.house = this.house.filter(service)
+            //     });
+            // }
+
+           
+            this.searchHouses(this.housesArray, store.addresses[0].position.lat, store.addresses[0].position.lon, this.kms)
         },
 
         searchHouses(houses, lat, lon, km) {
