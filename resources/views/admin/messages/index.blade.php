@@ -20,7 +20,13 @@
                     <div class="col m-auto m-sm-0">
                         <div class="card mb-3">
                             <div class="card-header">
-                            {{$message->house->title}}
+                                <div class="fw-bold fs-3">
+                                    {{$message->house->title}}
+                                </div>
+                                <div>
+                                    {{substr($message->created_at, 8, 2) . '-' . substr($message->created_at, 5, 2) . '-' . substr($message->created_at, 0, 4)}}
+                                    {{substr($message->created_at, 11, 5)}}
+                                </div>
                             </div>
                             <div class="card-body">
                             <blockquote class="blockquote mb-0">
