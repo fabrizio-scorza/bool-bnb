@@ -38,19 +38,19 @@
 
     
 .messages{
-    max-height: 500px;
+    max-height: 450px;
     overflow-y: auto;
 }
 
 @media screen and (max-width: 1399px) {
     .messages{
-        max-height: 400px ;
+        max-height: 350px ;
     }
 }
 
 @media screen and (max-width: 1199px) {
     .messages{
-        max-height: 250px ;
+        max-height: 200px ;
     }
 }
 }
