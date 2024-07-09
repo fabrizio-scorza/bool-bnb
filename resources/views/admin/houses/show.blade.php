@@ -18,17 +18,19 @@
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-lg-8">
-                
-                
+    <div class="container ">
+        <div class="row ">
+            <div class="col-12 col-lg-8">     
                 <figure>
                     <img src="{{ asset('storage/' . $house->thumb)}}" alt="Immagine Appartamento">
-                </figure>
-                
+                </figure> 
+                <div class="card my-5">
+                    <div class="card-body">
+                            <p>{{$house->description}}</p>
+                    </div>
+                </div>               
             </div>
-            <div class="col-12 col-lg-4">
+            <div class="col-12 col-lg-4 group">
                 <div class="card">
                     <div class="card-body row">
                         <div class="col-6">
@@ -72,7 +74,6 @@
                             <p class="d-flex justify-content-between">
                                 {{$house->price_per_night}}€ / a notte
                                 <span>
-                                    <a href="" class="me-3 link-underline link-underline-opacity-0">Messaggi</a>
                                     <a href="" class="me-3 link-underline link-underline-opacity-0">St</a>
                                     <a href="" class="me-3 link-underline link-underline-opacity-0">Sp</a>
                                 </span>
@@ -80,13 +81,28 @@
                         </div>
                     </div>
                 </div>
+                <div class="messages mt-5">
+                    @foreach ($house->messages as $message) 
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <div>
+                                {{$message->name}} {{$message->surname}} {{substr($message->created_at, 8, 2) . '/' . substr($message->created_at, 5, 2) . '/' . substr($message->created_at, 0, 4) . ' - ' . substr($message->created_at, 11, 5)}}  
+                            </div>
+                            <div>
+                                {{$message->email}}
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p>{{$message->text}}</p>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>
-    <div class="container px-5 my-5">
-        <p>{{$house->description}}</p>
-    </div>
-    <div>
+    
+    <div class="my-4">
         <map-component :house='@json($house)'><map-component/>
     </div>
     
