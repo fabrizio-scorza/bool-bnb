@@ -104,7 +104,7 @@
                         </div>
                         
                     </div>
-                    <div class="card-footer d-flex justify-content-between">
+                    <div class="card-footer d-flex justify-content-between align-items-center">
                         <div class="d-flex gap-2 ">
                             @auth
                                 @if($house->user_id === Auth::id() && !$house ->trashed())
@@ -125,9 +125,9 @@
                             
                             
                         </div>
-                        <div>
-                            <a href="" class="me-3 link-underline link-underline-opacity-0">St</a>
-                            <a href="" class="link-underline link-underline-opacity-0">Sp</a>
+                        <div class="fs-4">
+                            <a href="" class="me-3 link-underline link-underline-opacity-0"><i class="fa-solid fa-chart-line"></i></a>
+                            <a href="" class="link-underline link-underline-opacity-0"><i class="fa-regular fa-credit-card"></i></a>
                         </div>    
                     </div>
                 </div>
