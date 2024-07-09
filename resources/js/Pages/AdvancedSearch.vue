@@ -58,8 +58,46 @@
                         </div>
                         <div class="card-body">
                             <img :src="'storage/' + house.thumb" alt="Immagine Appartamento">
-                            <div>
-                                {{ house.price_per_night }}€
+                            <div class="mt-3">
+                                {{ house.address }}
+                            </div>
+                            <div class="d-flex gap-5 mt-1">
+                                <span>Stanze: {{ house.rooms }}</span>
+                                <span><i class="fa-solid fa-bed"></i> {{ house.beds }}</span>
+                            </div>
+                            <div class="mt-1">
+                                <strong>{{ house.price_per_night }}€</strong> notte
+                            </div>
+                            <div class="d-flex gap-2 mt-3">
+                                <div v-for="service in house.services" :key="service.id">
+                                    <div v-if="service.id === 1">
+                                        <i class="fa-solid fa-wifi"></i>
+                                    </div>
+                                    <div v-else-if="service.id === 2">
+                                        <i class="fa-solid fa-car"></i>
+                                    </div>
+                                    <div v-else-if="service.id === 3">
+                                        <i class="fa-solid fa-person-swimming"></i>
+                                    </div>
+                                    <div v-else-if="service.id === 4">
+                                        <i class="fa-solid fa-bell-concierge"></i>
+                                    </div>
+                                    <div v-else-if="service.id === 5">
+                                        <i class="fa-solid fa-temperature-full"></i>
+                                    </div>
+                                    <div v-else-if="service.id === 6">
+                                        <i class="fa-solid fa-umbrella-beach"></i>
+                                    </div>
+                                    <div v-else-if="service.id === 7">
+                                        <i class="fa-regular fa-snowflake"></i>
+                                    </div>
+                                    <div v-else-if="service.id === 8">
+                                        <i class="fa-solid fa-hot-tub-person"></i>
+                                    </div>
+                                    <div v-else-if="service.id === 9">
+                                        <i class="fa-solid fa-martini-glass"></i>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -211,4 +249,6 @@ export default {
     margin-top: 20px;
     text-align: center;
 }
+
+
 </style>

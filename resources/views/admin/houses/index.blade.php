@@ -18,7 +18,6 @@
             </h2>
             @endif
         
-            {{-- <button class="ms-auto"><a href="{{route('admin.houses.create')}}" class="link-underline link-underline-opacity-0">Crea Nuovo</a></button> --}}
             <div class=" d-flex justify-content-evenly gap-3"> 
                 @if(request('trash'))
                 <button><a href="{{route( 'admin.houses.index')}}" class="link-underline link-underline-opacity-0">Torna alla pagina</a></button>
@@ -45,15 +44,65 @@
                         @endif
                         
                     </div>                
-                    <div class="card-body text-center">
+                    <div class="card-body">
                         @if($house->thumb)
                         <figure>
                             <img src="{{ asset('storage/' . $house->thumb)}}" alt="Immagine Appartamento">
                         </figure>
                         @endif
-                        <div class="text-start my-1">
-                            {{$house->price_per_night}}€ a notte
+                        <div class="mt-3">
+                            {{ $house->address }}
                         </div>
+                        <div class="d-flex gap-5 mt-1">
+                            <span>Stanze: {{ $house->rooms }}</span>
+                            <span><i class="fa-solid fa-bed"></i> {{ $house->beds }}</span>
+                        </div>
+                        <div class="mt-1">
+                            <strong>{{ $house->price_per_night }}€</strong> notte
+                        </div>
+
+                        <div class="d-flex gap-2 mt-3">
+                            @foreach ($house->services as $service)
+                            @if($service->id === 1)
+                            <div>
+                                <i class="fa-solid fa-wifi"></i>
+                            </div>
+                            @elseif($service->id === 2)
+                            <div>
+                                <i class="fa-solid fa-car"></i>
+                            </div>
+                            @elseif($service->id === 3)
+                            <div>
+                                <i class="fa-solid fa-person-swimming"></i>
+                            </div>
+                            @elseif($service->id === 4)
+                            <div>
+                                <i class="fa-solid fa-bell-concierge"></i>
+                            </div>
+                            @elseif($service->id === 5)
+                            <div>
+                                <i class="fa-solid fa-temperature-full"></i>
+                            </div>
+                            @elseif($service->id === 6)
+                            <div>
+                                <i class="fa-solid fa-umbrella-beach"></i>
+                            </div>
+                            @elseif($service->id === 7)
+                            <div>
+                                <i class="fa-regular fa-snowflake"></i>
+                            </div>
+                            @elseif($service->id === 8)
+                            <div>
+                                <i class="fa-solid fa-hot-tub-person"></i>
+                            </div>
+                            @elseif($service->id === 9)
+                            <div>
+                                <i class="fa-solid fa-martini-glass"></i>
+                            </div>
+                            @endif
+                            @endforeach
+                        </div>
+                        
                     </div>
                     <div class="card-footer d-flex justify-content-between">
                         <div class="d-flex gap-2 ">
@@ -71,8 +120,6 @@
                             @auth
                                 @if($house->user_id === Auth::id() && !$house ->trashed())
                                     <button class="bg_orange" data-bs-toggle="modal" data-bs-target="#modal-{{$house->id}}" class="">Elimina</button>
-                                {{-- @elseif($house->user_id === Auth::id() && $house ->trashed())
-                                    <button class="bg_orange" data-bs-toggle="modal" data-bs-target="#trash_house-{{$house->id}}" class="text-start">Elimina</button> --}}
                                 @endif    
                             @endauth
                             
@@ -111,30 +158,7 @@
                 </div>
             </div>
 
-            {{-- <div class="modal" id="trash_house-{{$house->id}}" tabindex="-1" aria-labelledby="modal-label" aria-hidden="true">
-                <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title">Elimina</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body ">
-                    <p>Cliccando su "Si" cancellerai DEFINITIVAMENTE il tuo annuncio, confermi? </p>
-                    </div>
-                    <div class="modal-footer border-0">
-                    <button type="button" class="" data-bs-dismiss="modal">No</button>
-                    <form action="{{ route('admin.houses.forceDestroy', $house) }}" method="POST">
-                                
-                        @csrf
-                        @method('DELETE')
-        
-                        <button class="bg_orange">Si</button>
-                    
-                        </form> 
-                    </div>
-                </div>
-                </div>
-            </div> --}}
+            
             @endforeach        
         </div>
     </div>
