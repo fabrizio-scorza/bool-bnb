@@ -35,4 +35,22 @@
             color: var(--purple);
         }
     }
+
+    
+.messages{
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+@media screen and (max-width: 1399px) {
+    .messages{
+        max-height: 400px ;
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .messages{
+        max-height: 250px ;
+    }
+}
 }
