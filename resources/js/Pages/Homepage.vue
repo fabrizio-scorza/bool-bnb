@@ -2,7 +2,7 @@
 import { store } from '../store';
 import axios from 'axios';
 export default {
-    props: ['houses', 'logged_user', 'search_route'],
+    props: ['houses', 'logged_user', 'search_route', 'show_route', 'admin_show_route'],
     data() {
         return {
             store,
@@ -42,7 +42,7 @@ export default {
         // },
         getSponsoredHouses(page = 1) {
             axios.get(`/api/sponsoredHouses?page=${page}`).then((res) => {
-                console.log(res.data)
+                
                 this.sponsoredHousesData = res.data
 
             }).catch(() => {
@@ -58,7 +58,18 @@ export default {
             if (this.sponsoredHousesData.current_page < this.sponsoredHousesData.last_page) {
                 this.getSponsoredHouses(this.sponsoredHousesData.current_page + 1);
             }
-        }
+        },
+        callShow(house){
+            const houseId = house.id;
+            
+            if(house.user_id == this.logged_user){
+
+                return `${this.admin_show_route}/${houseId}`;
+            }else{
+                return `${this.show_route}/${houseId}`;
+            }
+            
+        },
 
     }
 }
@@ -128,7 +139,7 @@ export default {
                         v-for="(sponsored_house, index) in sponsoredHouses" :key="sponsored_house.id">
                         <div class="card flex-fill">
                             <div class="card-header">
-                                <a href="" class="link-underline link-underline-opacity-0 text-white">
+                                <a :href="callShow(sponsored_house)" class="link-underline link-underline-opacity-0 text-white">
                                     {{ sponsored_house.title }}
                                 </a>
                             </div>

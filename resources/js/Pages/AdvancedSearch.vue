@@ -107,26 +107,7 @@ export default {
             return !(sponsored_house.plans && sponsored_house.plans.length);
         },
 
-        // putInFilters(){
-        //     this.is_checked.forEach((service, index) => {
-        //         if(service[index] == true){
-        //             this.services_id.push(servive[index] + 1);
-        //         }
-        //     });
-            
-        //     if(this.services_id.length != 0){
-        //         filter.push({services: this.services_id});
-        //     }
-
-            // if(this.rooms != null){
-            //     filter.push({rooms: this.rooms});
-            // }
-
-        //     if(this.beds != null){
-        //         filter.push({beds: this.beds});
-        //     }
-
-        // },
+        
 
         filteredHouses(){
             // this.putInFilters();
