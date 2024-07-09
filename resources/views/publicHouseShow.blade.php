@@ -119,7 +119,7 @@
                 </div>
     
                 <div class="form-group mb-4 col-12">
-                    <label for="text" class="col-form-label">Scrivi un messaggio</label>
+                    <label for="text" class="col-form-label">Scrivi un messaggio </label>
                     <div>
                         <textarea name="text" id="text" cols="80" rows="5" placeholder="Scrivi qui il tuo messaggio" required class="form-control">{{ old('description') }}</textarea>
                     </div>
