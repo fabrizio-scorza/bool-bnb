@@ -134,7 +134,7 @@ export default {
                             </div>
 
                             <div class="card-body">
-                                <img :src="'./img/' + sponsored_house.thumb" alt="Immagine Appartamento"
+                                <img :src="'storage/' + sponsored_house.thumb" alt="Immagine Appartamento"
                                     class="img-fluid">
                                 <div>
                                     {{ sponsored_house.price_per_night }}€

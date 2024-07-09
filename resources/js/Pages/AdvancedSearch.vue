@@ -10,22 +10,22 @@
     <section class="filter">
         <div class="container mb-4">
             <div class="card p-3">
-                <div class="row row-cols-3 mb-4">
+                <div class="row row-cols-1 row-cols-lg-3 mb-4">
                     <div>
-                        <label for="km" class="form-label mb-4">Stabilisci il raggio di km: {{ kms }}</label>
+                        <label for="km" class="form-label mb-4">Raggio di ricerca: {{ kms }} km</label>
                         <input type="range" class="form-range" min="1" max="50" step="1" id="km" v-model="kms">
                     </div>
                     <div>
-                        <label for="rooms" class="form-label mb-4">Stabilisci il numero minimo di stanze: {{ rooms }}</label>
+                        <label for="rooms" class="form-label mb-4">Numero minimo di stanze: {{ rooms }}</label>
                         <input type="range" class="form-range" min="1" max="30" step="1" id="rooms" v-model="rooms">
                     </div>
                     <div>
-                        <label for="beds" class="form-label mb-4">Stabilisci il numero minimo di posti letto: {{ beds }}</label>
+                        <label for="beds" class="form-label mb-4">Numero minimo di posti letto: {{ beds }}</label>
                         <input type="range" class="form-range" min="1" max="90" step="1" id="beds" v-model="beds">
                     </div>
                 </div>
                 
-                <div class="d-flex gap-3 mt-2">
+                <div class=" d-flex flex-wrap gap-3 mt-2">
                     <div v-for="service in services" :key="service.id">
                         <div class="form-check">
                             <input name="services[]" class="form-check-input me-2" type="checkbox" id="service-{{service.id}}" v-model="is_checked[service.id - 1]">
@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <button class="ms-auto">
-                        <a href="#" @click="searchHouses(houses, store.addresses[0].position.lat, store.addresses[0].position.lon, kms)"> 
+                        <a href="#" @click="filteredHouses()"> 
                         &#x1F50D; Cerca
                         </a>
                     </button>
@@ -57,7 +57,7 @@
                             </a>
                         </div>
                         <div class="card-body">
-                            <img :src="'./storage/app/public/' + house.thumb" alt="Immagine Appartamento">
+                            <img :src="'storage/' + house.thumb" alt="Immagine Appartamento">
                             <div>
                                 {{ house.price_per_night }}€
                             </div>
@@ -130,6 +130,7 @@ export default {
 
         filteredHouses(){
             // this.putInFilters();
+            // this.searchHouses = this.houses
             if(this.firstSearch){
                 this.searchHouses(this.houses, store.addresses[0].position.lat, store.addresses[0].position.lon, 20);
                 this.firstSearch = false;
@@ -160,6 +161,7 @@ export default {
                 // }
 
                 this.searchHouses(this.housesArray, store.addresses[0].position.lat, store.addresses[0].position.lon, this.kms)
+                
             }
         },
 
