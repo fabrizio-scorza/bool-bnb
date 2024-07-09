@@ -6,6 +6,12 @@
 
 @section('content')
 
+@if(session('conferma'))
+    <div class="alert alert-success container fs-3 mt-5">
+        {{ session('conferma') }}
+    </div>
+@endif
+
 <section class="show">
     <div class="container">
         <div class="show_title my-5">
@@ -82,12 +88,6 @@
         <map-component :house='@json($house)'><map-component/>
     </div>
 
-    @if(session('conferma'))
-    <div class="alert alert-success">
-        {{ session('conferma') }}
-    </div>
-    @endif
-
     <div class="container my-5">
         <form action="{{route('store')}}" method="POST" >
             @csrf
@@ -119,7 +119,7 @@
                 </div>
     
                 <div class="form-group mb-4 col-12">
-                    <label for="text" class="col-form-label">Scrivi un messaggio </label>
+                    <label for="text" class="col-form-label">Scrivi un messaggio* </label>
                     <div>
                         <textarea name="text" id="text" cols="80" rows="5" placeholder="Scrivi qui il tuo messaggio" required class="form-control">{{ old('description') }}</textarea>
                     </div>
