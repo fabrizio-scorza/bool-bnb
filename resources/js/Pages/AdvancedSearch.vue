@@ -29,7 +29,7 @@
                     <div v-for="service in services" :key="service.id">
                         <div class="form-check">
                             <input name="services[]" class="form-check-input me-2" type="checkbox" id="service-{{service.id}}" v-model="is_checked[service.id - 1]">
-                            <label class="form-check-label" for="service-{{service.id}}"> {{service.name}}</label>
+                            <label class="form-check-label"> {{service.name}}</label>
                         </div>
                     </div>
                     <button class="ms-auto">
