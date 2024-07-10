@@ -1,7 +1,9 @@
 <template>
-    <div>
-        <div id="dropin-container"></div>
-        <button @click="pay" :disabled="isProcessing">Pay {{ amount }}</button>
+    <div  class="container d-flex justify-content-center">
+        <div class="text-center">
+            <div  id="dropin-container"></div>
+            <button v-if="amount > 0 " @click="pay" :disabled="isProcessing">Paga {{ amount }}€</button>
+        </div>
     </div>
 </template>
 
@@ -40,13 +42,79 @@ export default {
             dropin.create({
                 authorization: this.clientToken,
                 container: '#dropin-container',
+                translations: {
+                    'it_IT': {
+                        'card': {
+                            'cardholderName': 'Nome sulla carta',
+                            'cardNumber': 'Numero di carta',
+                            'cvv': 'CVV',
+                            'expirationDate': 'Data di scadenza',
+                            'submit': 'Paga adesso'
+                        },
+                        'paypal': {
+                            'payWithPayPal': 'Paga con PayPal'
+                        },
+                        'applePay': {
+                            'payWithApplePay': 'Paga con Apple Pay'
+                        }
+                    }
+                },
+                locale: 'it_IT',
+                card: {
+                    cardholderName: {
+                        required: true
+                    },
+                    overrides: {
+                        fields: {
+                            number: {
+                                styles: {
+                                    'input': {
+                                        'font-size': '16px',
+                                        'color': '#333'
+                                    },
+                                    ':focus': {
+                                        'color': '#333'
+                                    }
+                                }
+                            },
+                            cvv: {
+                                styles: {
+                                    'input': {
+                                        'font-size': '16px',
+                                        'color': '#333'
+                                    }
+                                }
+                            },
+                            expirationDate: {
+                                styles: {
+                                    'input': {
+                                        'font-size': '16px',
+                                        'color': '#333'
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }, (err, instance) => {
                 if (err) {
                     console.error('Error creating Drop-in:', err);
                     return;
                 }
                 this.dropinInstance = instance;
+                this.addPrivacyStatement();
             });
+        },
+        addPrivacyStatement() {
+            const expirationDateField = document.querySelector('.braintree-expiration');
+            if (expirationDateField) {
+                const privacyStatement = document.createElement('p');
+                privacyStatement.textContent = "Pagando con la carta, accetto la Dichiarazione sulla privacy di PayPal.";
+                privacyStatement.style.fontSize = '12px';
+                privacyStatement.style.color = '#666';
+                privacyStatement.style.marginTop = '10px';
+                expirationDateField.parentNode.insertBefore(privacyStatement, expirationDateField.nextSibling);
+            }
         },
         async pay() {
             if (!this.dropinInstance) return;
@@ -67,13 +135,13 @@ export default {
                 });
                 const data = await response.json();
                 if (data.success) {
-                    alert('Payment successful!');
+                    alert('Pagamento andato a buon fine');
                 } else {
-                    alert(`Payment failed: ${data.error}`);
+                    alert(`Non è stato possibile effettuare il pagamento: ${data.error}`);
                 }
             } catch (error) {
                 console.error('Payment error:', error);
-                alert('Payment failed');
+                alert('Non è stato possibile effettuare il pagamento');
             } finally {
                 this.isProcessing = false;
             }
@@ -81,3 +149,11 @@ export default {
     }
 };
 </script>
+
+<style>
+
+    #dropin-container{
+        max-width: 500px;
+    }
+
+</style>

@@ -13,21 +13,18 @@ import Homepage from './Pages/Homepage.vue';
 import AdvancedSearch from './Pages/AdvancedSearch.vue';
 import PaymentComponent from './Components/PaymentComponent.vue';
 
-// Crea l'istanza Vue e definisci i dati
 const app = createApp({
     data() {
         return {
-            selectedAmount: 0 // Definisci il dato che vuoi condividere
+            selectedAmount: 0 
         }
     }
 });
 
-// Registra i componenti globalmente
 app.component("map-component", MapComponent);
 app.component("address-component", AddressComponent);
 app.component("homepage", Homepage);
 app.component("advanced-search", AdvancedSearch);
 app.component("payment-component", PaymentComponent);
 
-// Monta l'app Vue
 app.mount("#app");

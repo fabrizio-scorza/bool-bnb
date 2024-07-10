@@ -29,11 +29,18 @@
                 @endforeach
             </div>
         </div>
+        <div class="form-group">
+            <label class="mb-4" for="house_id">Seleziona l'appartamento da sponsorizzare</label>
+            <select class="form-control" name="house_id" id="house_id">
+            <option value="">-- Appartamento--</option>
+            @foreach($houses as $house) 
+                <option @selected( $house->id == old('house_id') ) value="{{ $house->id }}"> {{ $house->title }}</option>
+            @endforeach
+            </select>
+        </div>
     </div>
 
-    <div id="app">
         <payment-component :amount="selectedAmount"></payment-component>
-    </div>
 </section>
 
 
