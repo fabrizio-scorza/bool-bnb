@@ -14,8 +14,11 @@ class PageController extends Controller
     public function plans()
     {
         $plans = Plan::all();
+        $logged_user_id = Auth::user()->id;
+        // $house_ids = $house_plan->pluck('house_id');
+        $houses = House::where('user_id', $logged_user_id)->get();
 
-        return view('admin.plans.index', compact('plans'));
+        return view('admin.plans.index', compact('plans', 'houses', ));
     }
 
     public function messages()
