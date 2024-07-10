@@ -122,7 +122,7 @@ export default {
             is_checked: [],
             housesArray: [],
             services_id:[],
-            initialAddress: sessionStorage.getItem('address')
+            initialAddress: sessionStorage.getItem('address'),
             
         }
     },
@@ -155,37 +155,43 @@ export default {
         },
 
         filteredHouses(){
+            this.services_id = [];
+
             this.housesArray = this.houses
             
            
             if(this.rooms != null){
                 
                 this.housesArray = this.housesArray.filter(el => el.rooms  >= this.rooms);
-
             }
             if(this.beds != null){
             
-                this.housesArray = this.housesArray.filter(el => el.beds  >= this.beds);
-        
-        
+                this.housesArray = this.housesArray.filter(el => el.beds  >= this.beds);        
             }
-            // if(this.filters[rooms]){
-            //     this.houses = this.houses.filter(this.houses.rooms >= this.filters[rooms])
-            // }
 
-            // if(this.filters[beds]){
-            //     this.houses = this.houses.filter(this.houses.beds >= this.filters[beds])
-            // }
 
-            // // if(this.filters[services]){
-            //     this.filters[services].forEach(service => {
-            //         this.house = this.house.filter(service)
-            //     });
-            // }
+            this.is_checked.forEach((service, index) => {
+                if(service == true){
+                    this.services_id.push(index + 1);
+                }
+            });            
+
+
+
+            if (this.services_id.length !== 0) {
+            this.housesArray = this.housesArray.filter(house => {
+                // Verifica se la casa ha tutti i servizi selezionati
+                const houseServiceIds = house.services.map(service => service.id);
+                return this.services_id.every(serviceId => houseServiceIds.includes(serviceId));
+            });
+            }
+
+           
 
            
             this.searchHouses(this.housesArray, store.addresses[0].position.lat, store.addresses[0].position.lon, this.kms)
         },
+       
 
         searchHouses(houses, lat, lon, km) {
             store.closeHouses = [];
