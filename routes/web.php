@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\VueController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,8 @@ Route::get('/', [VueController::class, 'homepage'])->name('homepage');
 Route::get('/advanced-search', [VueController::class, 'advancedSearch'])->name('advanced');
 Route::get('/public/{house}', [VueController::class, 'publicHouseShow'])->name('public');
 Route::post('/public/store', [MessageController::class, 'store'])->name('store');
-
+Route::get('/braintree/token', [PaymentController::class, 'token']);
+Route::post('/braintree/checkout', [PaymentController::class, 'checkout']);
 
 Route::middleware(['auth', 'verified'])
     ->name('admin.')
