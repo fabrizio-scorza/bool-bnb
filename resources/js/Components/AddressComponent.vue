@@ -34,18 +34,21 @@ export default {
             this.setVisible = true;
             axios.get(`https://api.tomtom.com/search/2/geocode/${fetchAdderess}.json?key=${store.api_key}&typehead=true`).then((res) => {
                 store.addresses = res.data.results
+                sessionStorage.setItem('addresses', store.addresses);
+
+                
 
                 if (res.data.results.length > 0) {
 
                     this.latitude = res.data.results[0].position.lat
                     this.longitude = res.data.results[0].position.lon
-                    sessionStorage.setItem('latitude', JSON.stringify(this.latitude));
-                    sessionStorage.setItem('longitude', JSON.stringify(this.longitude));
+                    sessionStorage.setItem('latitude', this.latitude);
+                    sessionStorage.setItem('longitude', this.longitude);
                 }
             });
         },
         setValue(value_address) {
-            sessionStorage.setItem('address', JSON.stringify(value_address));
+            sessionStorage.setItem('address', value_address);
             this.address = value_address;
             this.fetchData(value_address);
             this.setVisible = false;

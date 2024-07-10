@@ -2,7 +2,7 @@
 import { store } from '../store';
 import axios from 'axios';
 export default {
-    props: ['houses', 'logged_user', 'search_route'],
+    props: ['houses', 'logged_user', 'search_route', 'show_route', 'admin_show_route'],
     data() {
         return {
             store,
@@ -17,15 +17,15 @@ export default {
     },
     computed: {
 
-        sponsored() {
-            this.houses.forEach(house => {
-                if (house.plans && house.plans.length) {
-                    this.sponsored_houses.push(house)
-                }
-            })
-            return this.sponsored_houses;
+        // sponsored() {
+        //     this.houses.forEach(house => {
+        //         if (house.plans && house.plans.length) {
+        //             this.sponsored_houses.push(house)
+        //         }
+        //     })
+        //     return this.sponsored_houses;
 
-        },
+        // },
         sponsoredHouses() {
             if (!this.sponsoredHousesData.data) {
                 return []
@@ -34,15 +34,9 @@ export default {
         }
     },
     methods: {
-        // showPrevSlide() {
-        //     this.currentSlideIndex = (this.currentSlideIndex === 0) ? this.sponsored_houses.length - 1 : this.currentSlideIndex - 1;
-        // },
-        // showNextSlide() {
-        //     this.currentSlideIndex = (this.currentSlideIndex === this.sponsored_houses.length - 1) ? 0 : this.currentSlideIndex + 1;
-        // },
         getSponsoredHouses(page = 1) {
             axios.get(`/api/sponsoredHouses?page=${page}`).then((res) => {
-                console.log(res.data)
+                
                 this.sponsoredHousesData = res.data
 
             }).catch(() => {
@@ -58,7 +52,18 @@ export default {
             if (this.sponsoredHousesData.current_page < this.sponsoredHousesData.last_page) {
                 this.getSponsoredHouses(this.sponsoredHousesData.current_page + 1);
             }
-        }
+        },
+        callShow(house){
+            const houseId = house.id;
+            
+            if(house.user_id == this.logged_user){
+
+                return `${this.admin_show_route}/${houseId}`;
+            }else{
+                return `${this.show_route}/${houseId}`;
+            }
+            
+        },
 
     }
 }
@@ -128,16 +133,61 @@ export default {
                         v-for="(sponsored_house, index) in sponsoredHouses" :key="sponsored_house.id">
                         <div class="card flex-fill">
                             <div class="card-header">
-                                <a href="" class="link-underline link-underline-opacity-0 text-white">
+                                <a :href="callShow(sponsored_house)" class="link-underline link-underline-opacity-0 text-white">
                                     {{ sponsored_house.title }}
                                 </a>
                             </div>
 
                             <div class="card-body">
-                                <img :src="'storage/' + sponsored_house.thumb" alt="Immagine Appartamento"
-                                    class="img-fluid">
-                                <div>
-                                    {{ sponsored_house.price_per_night }}€
+                                <img :src="'storage/' + sponsored_house.thumb" alt="Immagine Appartamento" class="img-fluid">
+                                
+                                <div class="mt-3">
+                                {{ sponsored_house.address }}
+                                </div>
+                                <div class="d-flex gap-5 mt-1">
+                                    <span>Stanze: {{ sponsored_house.rooms }}</span>
+                                    <span><i class="fa-solid fa-bed"></i> {{ sponsored_house.beds }}</span>
+                                </div>
+                                <div class="mt-1">
+                                    <strong>{{ sponsored_house.price_per_night }}€</strong> notte
+                                </div>
+                                
+                                <div v-for="house in houses">
+                                    <div v-if="house.id === sponsored_house.id">
+                                        <div class="d-flex gap-2 mt-3">
+                                            <div v-for="service in house.services" :key="service.id">
+
+                                                <div v-if="service.id === 1">
+                                                    <i class="fa-solid fa-wifi"></i>
+                                                </div>
+                                                <div v-else-if="service.id === 2">
+                                                    <i class="fa-solid fa-car"></i>
+                                                </div>
+                                                <div v-else-if="service.id === 3">
+                                                    <i class="fa-solid fa-person-swimming"></i>
+                                                </div>
+                                                <div v-else-if="service.id === 4">
+                                                    <i class="fa-solid fa-bell-concierge"></i>
+                                                </div>
+                                                <div v-else-if="service.id === 5">
+                                                    <i class="fa-solid fa-temperature-full"></i>
+                                                </div>
+                                                <div v-else-if="service.id === 6">
+                                                    <i class="fa-solid fa-umbrella-beach"></i>
+                                                </div>
+                                                <div v-else-if="service.id === 7">
+                                                    <i class="fa-regular fa-snowflake"></i>
+                                                </div>
+                                                <div v-else-if="service.id === 8">
+                                                    <i class="fa-solid fa-hot-tub-person"></i>
+                                                </div>
+                                                <div v-else-if="service.id === 9">
+                                                    <i class="fa-solid fa-martini-glass"></i>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

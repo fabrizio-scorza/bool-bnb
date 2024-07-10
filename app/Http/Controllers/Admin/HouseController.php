@@ -22,10 +22,10 @@ class HouseController extends Controller
     {
         if ($request->has('trash')) {
             $logged_user_id = Auth::user()->id;
-            $houses = House::onlyTrashed()->where('user_id', $logged_user_id)->get();
+            $houses = House::with('plans', 'services')->onlyTrashed()->where('user_id', $logged_user_id)->get();
         } else {
             $logged_user_id = Auth::user()->id;
-            $houses = House::where('user_id', $logged_user_id)->get();
+            $houses = House::with('plans', 'services')->where('user_id', $logged_user_id)->get();
         }
 
         $trashed = House::onlyTrashed()->count();
