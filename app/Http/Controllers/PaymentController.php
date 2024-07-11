@@ -53,6 +53,7 @@ class PaymentController extends Controller
                     'expires_at' => now()->addHours($plan->length),
                 ]
             );
+            
             return response()->json(['success' => true, 'transaction' => $result->transaction]);
         } else {
             return response()->json(['success' => false, 'error' => $result->message]);
