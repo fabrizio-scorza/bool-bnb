@@ -13,13 +13,7 @@ import Homepage from './Pages/Homepage.vue';
 import AdvancedSearch from './Pages/AdvancedSearch.vue';
 import PaymentComponent from './Components/PaymentComponent.vue';
 
-const app = createApp({
-    data() {
-        return {
-            selectedAmount: 0 
-        }
-    }
-});
+const app = createApp();
 
 app.component("map-component", MapComponent);
 app.component("address-component", AddressComponent);

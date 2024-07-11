@@ -15,8 +15,8 @@ class PageController extends Controller
     {
         $plans = Plan::all();
         $logged_user_id = Auth::user()->id;
-        // $house_ids = $house_plan->pluck('house_id');
-        $houses = House::where('user_id', $logged_user_id)->get();
+       
+        $houses = House::where('user_id', $logged_user_id)->doesntHave('plans')->get();
 
         return view('admin.plans.index', compact('plans', 'houses', ));
     }

@@ -1,4 +1,32 @@
 <template>
+
+    <div class="container">
+        <div class="form-group mb-4">
+            <div class="row row-cols-1 row-cols-md-3 d-flex justify-content-center">
+                <div class="col" v-for="plan in plans" :key="plan.id">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            Piano n°{{ plan.id }}
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Livello <strong class="plan_name">{{ plan.name }}</strong></h5>
+                            <p class="card-text my-1"><strong>Prezzo: </strong>{{ plan.price }} €</p>
+                            <p class="card-text"><strong>Durata: </strong>{{ plan.length }} ore</p>
+                            <input type="radio" :id="'plan-' + plan.id" name="plan" :value="plan.price" v-model="amount">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="mb-4" for="house_id">Seleziona l'appartamento da sponsorizzare</label>
+            <select class="form-control" name="house_id" id="house_id" v-model="houseId">
+            <option value="">-- Appartamento--</option>
+                <option :value="house.id" v-for="house in houses" :key="house.id">{{ house.title }}</option>
+            </select>
+        </div>
+    </div>
+
     <div  class="container d-flex justify-content-center">
         <div class="text-center">
             <div  id="dropin-container"></div>
@@ -11,17 +39,14 @@
 import dropin from 'braintree-web-drop-in';
 
 export default {
-    props: {
-        amount: {
-            type: Number,
-            required: true
-        }
-    },
+    props: ['houses', 'plans'],
     data() {
         return {
             clientToken: null,
             dropinInstance: null,
             isProcessing: false,
+            houseId: 0,
+            amount: null,
         };
     },
     mounted() {
@@ -130,7 +155,9 @@ export default {
                     },
                     body: JSON.stringify({
                         payment_method_nonce: payload.nonce,
-                        amount: this.amount // Utilizza la prop amount
+                        amount: this.amount,
+                        houseId: this.houseId,
+
                     }),
                 });
                 const data = await response.json();
