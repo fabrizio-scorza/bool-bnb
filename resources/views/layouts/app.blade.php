@@ -58,7 +58,7 @@
                     @else
 
                     <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.houses.index') }}">{{__('I Miei appartamenti')}}</a>
+                            <a class="nav-link" href="{{ route('admin.houses.index') }}">{{__('I miei annunci')}}</a>
                     </li>                       
 
                     <li class="nav-item">

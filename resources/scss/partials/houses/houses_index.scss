@@ -45,6 +45,15 @@
             img{
                 background-size: cover;
             }
+            .my_sponsor{
+                background-color: var(--purple);
+                color: var(--yellow);
+                border: 2px solid var(--yellow);
+                padding: 8px 9px;
+                font-size: 22px;
+                top: 25px;
+                right: 20px;
+            }
         }
 
         .card-footer{
