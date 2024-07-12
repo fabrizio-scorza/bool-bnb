@@ -66,24 +66,24 @@ export default {
             <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active" data-bs-interval="8000">
-                        <img src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg"
+                        <img src="/public/img/banner1.jpg"
                             class="d-block w-100" alt="...">
                         <h2 class="text-white carousel-text">Questo è il nostro sito. Vi offriamo la possibilità di
                             cercare alloggi per godervi le vostre vacanze!</h2>
                     </div>
                     <div class="carousel-item" data-bs-interval="8000">
-                        <img src="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg"
+                        <img src="/public/img/banner2.jpg"
                             class="d-block w-100" alt="...">
                         <h2 class="text-white carousel-text">Potrai beneficiare di tutti i tipi di servizi offerti.</h2>
                     </div>
                     <div class="carousel-item" data-bs-interval="8000">
-                        <img src="https://images.pexels.com/photos/1438832/pexels-photo-1438832.jpeg"
+                        <img src="/public/img/banner3.jpg"
                             class="d-block w-100" alt="...">
                         <h2 class="text-white carousel-text">Cerca l'alloggio più adatto alle tue esigenze, troverai
                             tutte le categorie che desideri.</h2>
                     </div>
                     <div class="carousel-item" data-bs-interval="8000">
-                        <img src="https://images.pexels.com/photos/1396132/pexels-photo-1396132.jpeg"
+                        <img src="/public/img/banner4.jpg"
                             class="d-block w-100" alt="...">
                         <h2 class="text-white carousel-text">Siamo presenti in tutto il mondo. Inizia la tua ricerca
                             adesso!</h2>
@@ -243,7 +243,7 @@ export default {
 
 .slide {
     img {
-        height: 450px;
+        height: 480px;
         object-fit: cover;
         position: relative;
     }
