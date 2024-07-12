@@ -48,7 +48,7 @@
                 La ricerca non ha prodotto risultati.
             </h3>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4  row-gap-4 center">
-                <div id="search" class="col-8 m-auto m-sm-0 d-flex align-items-stretch" v-for="house in store.closeHouses" :key="house.id" :class="house.plans.length ? 'order-1' : 'order-2'" >
+                <div id="search" class="col-8 m-auto m-sm-0 d-flex align-items-stretch" v-for="house in sortedHouses" :key="house.id">
                     <div class="card flex-fill">
                         <div class="card-header">
                             <a :href="callShow(house)" class="link-underline link-underline-opacity-0">
@@ -57,7 +57,7 @@
                         </div>
                         <div class="card-body position-relative">
                             <img :src="'storage/' + house.thumb" alt="Immagine Appartamento">
-                            <div v-if="house.plans.length > 0" class="position-absolute badge rounded-pill my_sponsor">
+                            <div v-if="notExpired(house)" class="position-absolute badge rounded-pill my_sponsor">
                                 <i class="fa-solid fa-trophy"></i>
                             </div>
                             <div v-if="house.user_id === logged_user" class="position-absolute badge rounded-pill my_house">
@@ -128,7 +128,20 @@ export default {
             housesArray: [],
             services_id:[],
             initialAddress: sessionStorage.getItem('address'),
+            now : new Date()
             
+        }
+    },
+    computed:{
+        sortedHouses(){
+            return store.closeHouses.sort((a,b)=>{
+                const aHouse = a.plans.some(plan => new Date(plan.pivot.expires_at) > this.now);
+                const bHouse = b.plans.some(plan => new Date(plan.pivot.expires_at) > this.now);
+
+                if (aHouse && !bHouse) return -1;
+                if(!aHouse && bHouse) return 1;
+                return 0;
+            });
         }
     },
     created() {
@@ -155,9 +168,12 @@ export default {
         
     },
     methods: {
-        isHidden(sponsored_house) {
-            return !(sponsored_house.plans && sponsored_house.plans.length);
-        },
+
+       notExpired(house){
+        const isSponsored = house.plans.some(plan => new Date(plan.pivot.expires_at) > this.now);
+
+        return isSponsored
+       },
 
         filteredHouses(){
             this.services_id = [];
@@ -209,6 +225,7 @@ export default {
                     }
                 }
             });
+            console.log(store.closeHouses)
             // Aggiorna noResult dopo aver cercato le case
             this.noResult = store.closeHouses.length === 0;
         },
@@ -264,7 +281,7 @@ export default {
     text-align: center;
 }
 
-.my_sponsor{
+.my_sponsor {
     background-color: var(--purple);
     color: var(--yellow);
     border: 2px solid var(--yellow);
@@ -273,6 +290,7 @@ export default {
     top: 25px;
     right: 20px;
 }
+
 
 .my_house{
     background-color: var(--orange);

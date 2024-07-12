@@ -16,16 +16,6 @@ export default {
         this.getSponsoredHouses()
     },
     computed: {
-
-        // sponsored() {
-        //     this.houses.forEach(house => {
-        //         if (house.plans && house.plans.length) {
-        //             this.sponsored_houses.push(house)
-        //         }
-        //     })
-        //     return this.sponsored_houses;
-
-        // },
         sponsoredHouses() {
             if (!this.sponsoredHousesData.data) {
                 return []
