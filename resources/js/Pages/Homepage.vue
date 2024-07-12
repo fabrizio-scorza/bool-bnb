@@ -60,7 +60,7 @@ export default {
 </script>
 
 <template>
-    <section class="carousel py-5">
+    <section class="carousel pb-5">
 
         <div>
             <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
@@ -68,25 +68,22 @@ export default {
                     <div class="carousel-item active" data-bs-interval="8000">
                         <img src="/public/img/banner1.jpg"
                             class="d-block w-100" alt="...">
-                        <h2 class="text-white carousel-text">Questo è il nostro sito. Vi offriamo la possibilità di
-                            cercare alloggi per godervi le vostre vacanze!</h2>
+                        <h2 class="text-white carousel-text">Trova il tuo rifugio ideale per una fuga perfetta!</h2>
                     </div>
                     <div class="carousel-item" data-bs-interval="8000">
                         <img src="/public/img/banner2.jpg"
                             class="d-block w-100" alt="...">
-                        <h2 class="text-white carousel-text">Potrai beneficiare di tutti i tipi di servizi offerti.</h2>
+                        <h2 class="text-white carousel-text">Vivi esperienze autentiche e scopri nuove tradizioni!</h2>
                     </div>
                     <div class="carousel-item" data-bs-interval="8000">
                         <img src="/public/img/banner3.jpg"
                             class="d-block w-100" alt="...">
-                        <h2 class="text-white carousel-text">Cerca l'alloggio più adatto alle tue esigenze, troverai
-                            tutte le categorie che desideri.</h2>
+                        <h2 class="text-white carousel-text">Dalle case sugli alberi agli appartamenti di lusso, c'è qualcosa per tutti!</h2>
                     </div>
                     <div class="carousel-item" data-bs-interval="8000">
                         <img src="/public/img/banner4.jpg"
                             class="d-block w-100" alt="...">
-                        <h2 class="text-white carousel-text">Siamo presenti in tutto il mondo. Inizia la tua ricerca
-                            adesso!</h2>
+                        <h2 class="text-white carousel-text">Trova l'alloggio ideale con pochi semplici click!</h2>
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
@@ -243,19 +240,23 @@ export default {
 
 .slide {
     img {
-        height: 480px;
+        height: 650px;
         object-fit: cover;
         position: relative;
     }
 
     .carousel-text {
         position: absolute;
-        transform: translateY(-50%);
-        top: 25%;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 50%;
-        background-color: rgba($color: #000000, $alpha: 0.6);
+        bottom: 25px;
+        right: 25px;
+        padding: 3px 12px;
+        background-color: rgba($color: #a290b8, $alpha: 0.8);
+        font-size: 38px;
+
+        @media screen and (max-width:576px) {
+            right: 0;
+            text-align: center;
+        }
     }
 }
 
