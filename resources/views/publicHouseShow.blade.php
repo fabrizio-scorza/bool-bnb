@@ -23,14 +23,20 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-lg-8">
-                <div class="card mb-5">               
+                @if($house->description) 
+                <div class="card mb-5">     
                     <figure>
                         <img src="{{ asset('storage/' . $house->thumb)}}" alt="Immagine Appartamento">
-                    </figure>                
+                    </figure>                                    
                     <div class="card-body">
-                            <p>{{$house->description}}</p>
+                        <p>{{$house->description}}</p>
                     </div>
-                </div>              
+                </div>  
+            @else                
+            <figure>
+                <img src="{{ asset('storage/' . $house->thumb)}}" alt="Immagine Appartamento">
+            </figure>
+            @endif                  
             </div>
             <div class="col-12 col-lg-4">
                 <div class="card mb-5">
