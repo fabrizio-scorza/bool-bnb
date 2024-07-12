@@ -12,9 +12,28 @@
             <h2>
                 {{$house->title}}
             </h2>
-            <div class=" d-flex justify-content-evenly gap-3">
-                <button><a href="{{route('admin.houses.edit',$house)}}">Modifica</a></button>
-                <button data-bs-toggle="modal" data-bs-target="#modal-{{$house->id}}" class="bg_orange">Elimina</button>
+            <div class=" d-flex justify-content-evenly  align-items-center gap-3 flex-wrap">
+                <div>
+                    {{-- <a href="" class="me-3 link-underline link-underline-opacity-0"><i class="fa-solid fa-chart-line fs-5"></i></a> --}}
+                    @if(count($house->plans) > 0)
+                        @foreach ($house->plans as $plan)
+                            @if ($plan->pivot->expires_at >$now)
+                                <strong class="countdown fs-5">
+                                    <i class="fa-solid fa-hourglass-end"></i>  Il tuo piano scade tra: 
+                                    <span class="hours fs-4">{{$now->diffInHours($plan->pivot->expires_at)}}</span>  ore
+                                </strong>                                            
+                            @endif
+                        @endforeach                                        
+                    @else
+                        <button>
+                            <a href="{{route('admin.plans')}}" class="link-underline link-underline-opacity-0"><i class="fa-regular fa-credit-card fs-5"></i></a>
+                        </button> 
+                    @endif
+                </div>
+                <div class="d-flex justify-content-evenly  align-items-center gap-3">
+                    <button><a href="{{route('admin.houses.edit',$house)}}">Modifica</a></button>
+                    <button data-bs-toggle="modal" data-bs-target="#modal-{{$house->id}}" class="bg_orange">Elimina</button>
+                </div>
             </div>
         </div>
     </div>
@@ -92,10 +111,6 @@
                             </p>
                             <div class="d-flex justify-content-between">
                                 <div><strong>{{$house->price_per_night}}€</strong> notte</div>
-                                <div>
-                                    {{-- <a href="" class="me-3 link-underline link-underline-opacity-0"><i class="fa-solid fa-chart-line fs-5"></i></a> --}}
-                                    <a href="{{route('admin.plans')}}" class="link-underline link-underline-opacity-0"><i class="fa-regular fa-credit-card fs-5"></i></a>
-                                </div>
                             </div>
                         </div>
                     </div>

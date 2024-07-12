@@ -93,11 +93,12 @@ class HouseController extends Controller
     public function show(House $house)
     {
         //
+        $now = Carbon::now();
         if ($house->user_id !== Auth::id()) {
             return to_route('admin.houses.index');
         }
 
-        return view('admin.houses.show', compact('house'));
+        return view('admin.houses.show', compact('house', 'now'));
     }
 
     /**
