@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\House;
 use App\Models\Message;
 use App\Models\Plan;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
@@ -16,9 +17,13 @@ class PageController extends Controller
         $plans = Plan::all();
         $logged_user_id = Auth::user()->id;
        
-        $houses = House::where('user_id', $logged_user_id)->doesntHave('plans')->get();
+        $houses = House::where('user_id', $logged_user_id)->where(function ($query) {
+            $query->whereHas('plans', function ($subQuery) {
+                $subQuery->where('expires_at', '<', Carbon::now());
+            })->orDoesntHave('plans');
+        })->with('plans')->get();
 
-        return view('admin.plans.index', compact('plans', 'houses', ));
+        return view('admin.plans.index', compact('plans', 'houses'));
     }
 
     public function messages()
