@@ -50,11 +50,13 @@
                             <img src="{{ asset('storage/' . $house->thumb)}}" alt="Immagine Appartamento">
                         </figure>
                         @endif
-                        @if(count($house->plans) > 0)
+                        @foreach ($house->plans as $plan)
+                        @if($plan->pivot->expires_at > $now)
                         <div class="position-absolute badge rounded-pill my_sponsor">
                             <i class="fa-solid fa-trophy"></i>
                         </div>
                         @endif
+                        @endforeach
                         <div class="mt-3">
                             {{ $house->address }}
                         </div>

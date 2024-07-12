@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateHouseRequest;
 use App\Models\Category;
 use App\Models\House;
 use App\Models\Service;
+use Carbon\Carbon;
 use Dotenv\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,7 +31,9 @@ class HouseController extends Controller
 
         $trashed = House::onlyTrashed()->count();
 
-        return view('admin.houses.index', compact('houses', 'trashed'));
+        $now = Carbon::now();
+
+        return view('admin.houses.index', compact('houses', 'trashed', 'now'));
     }
 
     /**
