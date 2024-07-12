@@ -34,12 +34,14 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url('/') }}">{{ __('Homepage') }}</a>
+                <ul class="navbar-nav me-auto d-lg-flex align-items-lg-center">
+                    <li class="nav-item ">
+                        <a class="nav-link mb-lg-1" href="{{url('/') }}">
+                            <img src="{{asset('/img/Logo_BoolBnB.png')}}" alt="">
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('/advanced-search') }}">{{ __('Ricerca Avanzata') }}</a>
+                        <a class="nav-link" href="{{url('/advanced-search') }}">{{ __('Ricerca avanzata') }}</a>
                     </li>
                 </ul>
 
@@ -90,6 +92,20 @@
     <main class="flex-grow-1 pb-5" id="app">
         @yield('content')
     </main>
+    
+    <footer>
+        <div class="container">
+            <div class="d-flex justify-content-center align-items-baseline gap-4 flex-wrap">
+                <p>Sviluppato per Boolean - Team #4 :</p>
+                <a href="https://www.linkedin.com/in/domenico-de-salvo-3328a0192"> Domenico De Salvo </a>
+                <a href="https://www.linkedin.com/in/fabrizio-antonio-scorza-76b570100"> Fabrizio Scorza </a>
+                <a href="https://www.linkedin.com/in/francesco-matteucci-44a120315"> Francesco Matteucci </a>
+                <a href="https://www.linkedin.com/in/mattia-angelo-turini-40211a315/"> Mattia Turini </a>
+                <a href="https://www.linkedin.com/in/vincenzo-speciale-1a2119315/"> Vincenzo Speciale </a>
+            </div>   
+        </div>
+        
+    </footer>
 </body>
 
 </html>

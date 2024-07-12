@@ -1,20 +1,14 @@
-.navbar{
+footer{
     background-color: var(--purple);
-    
-
-    img{
-        width: 130px;
-    }
-
-    button{
-        color: var(--white);
-        border: var(--white);
-    }
+    color: var(--white);
+    padding-top: 15px;
+    font-size: 18px;
 
     a{
         color: var(--white);
         &:hover{
             color: var(--yellow);
         }
+
     }
 }
