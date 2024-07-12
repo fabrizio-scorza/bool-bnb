@@ -125,11 +125,13 @@ export default {
                                 </a>
                             </div>
 
-                            <div class="card-body position-relative">
-                                <img :src="'storage/' + sponsored_house.thumb" alt="Immagine Appartamento" class="img-fluid">
-                                <div v-if="sponsored_house.user_id === logged_user" class="position-absolute badge rounded-pill my_house">
-                                Tuo annuncio
-                                </div>
+                            <div class="card-body">
+                                <div class="position-relative">
+                                    <img :src="'storage/' + sponsored_house.thumb" alt="Immagine Appartamento" class="img-fluid">
+                                    <div v-if="sponsored_house.user_id === logged_user" class="position-absolute badge rounded-pill my_house">
+                                        Mio annuncio
+                                    </div>       
+                                </div>                                                             
                                 <div class="mt-3">
                                 {{ sponsored_house.address }}
                                 </div>
@@ -304,8 +306,8 @@ export default {
     border: 2px solid var(--white);
     padding: 5px 15px;
     font-size: 16px;
-    bottom: 157px;
-    left: 20px;
+    bottom: 8px;
+    left: 8px;
 
 }
 </style>
