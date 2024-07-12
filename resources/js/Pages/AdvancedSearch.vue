@@ -48,16 +48,21 @@
                 La ricerca non ha prodotto risultati.
             </h3>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4  row-gap-4 center">
-                <div id="search" class="col-8 m-auto m-sm-0 d-flex align-items-stretch" v-for="house in store.closeHouses" :key="house.id"
-                :class="house.plans.length ? 'order-1' : 'order-2'" >
+                <div id="search" class="col-8 m-auto m-sm-0 d-flex align-items-stretch" v-for="house in store.closeHouses" :key="house.id" :class="house.plans.length ? 'order-1' : 'order-2'" >
                     <div class="card flex-fill">
                         <div class="card-header">
                             <a :href="callShow(house)" class="link-underline link-underline-opacity-0">
                                 {{ house.title }}
                             </a>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body position-relative">
                             <img :src="'storage/' + house.thumb" alt="Immagine Appartamento">
+                            <div v-if="house.plans.length > 0" class="position-absolute badge rounded-pill my_sponsor">
+                                <i class="fa-solid fa-trophy"></i>
+                            </div>
+                            <div v-if="house.user_id === logged_user" class="position-absolute badge rounded-pill my_house">
+                                Tuo annuncio
+                            </div>
                             <div class="mt-3">
                                 {{ house.address }}
                             </div>
@@ -259,5 +264,25 @@ export default {
     text-align: center;
 }
 
+.my_sponsor{
+    background-color: var(--purple);
+    color: var(--yellow);
+    border: 2px solid var(--yellow);
+    padding: 8px 9px;
+    font-size: 22px;
+    top: 25px;
+    right: 20px;
+}
+
+.my_house{
+    background-color: var(--orange);
+    color: var(--white);
+    border: 2px solid var(--white);
+    padding: 5px 15px;
+    font-size: 16px;
+    bottom: 157px;
+    left: 20px;
+
+}
 
 </style>

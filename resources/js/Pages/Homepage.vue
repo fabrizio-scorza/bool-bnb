@@ -132,15 +132,17 @@ export default {
                     <div class="col-md-4 col-12 d-flex align-items-stretch"
                         v-for="(sponsored_house, index) in sponsoredHouses" :key="sponsored_house.id">
                         <div class="card flex-fill">
-                            <div class="card-header">
-                                <a :href="callShow(sponsored_house)" class="link-underline link-underline-opacity-0 text-white">
+                            <div class="card-header yellow">
+                                <a :href="callShow(sponsored_house)" class="link-underline link-underline-opacity-0">
                                     {{ sponsored_house.title }}
                                 </a>
                             </div>
 
-                            <div class="card-body">
+                            <div class="card-body position-relative">
                                 <img :src="'storage/' + sponsored_house.thumb" alt="Immagine Appartamento" class="img-fluid">
-                                
+                                <div v-if="sponsored_house.user_id === logged_user" class="position-absolute badge rounded-pill my_house">
+                                Tuo annuncio
+                                </div>
                                 <div class="mt-3">
                                 {{ sponsored_house.address }}
                                 </div>
@@ -294,5 +296,25 @@ export default {
 
 .bg-personal {
     background-color: var(--lavander);
+}
+
+.yellow{
+    background-color: var(--yellow);
+    a{
+        color: #56456b;
+        font-size: 28px;
+        font-weight: 600;
+    }
+}
+
+.my_house{
+    background-color: var(--orange);
+    color: var(--white);
+    border: 2px solid var(--white);
+    padding: 5px 15px;
+    font-size: 16px;
+    bottom: 157px;
+    left: 20px;
+
 }
 </style>

@@ -94,7 +94,7 @@
                                 <div><strong>{{$house->price_per_night}}€</strong> notte</div>
                                 <div>
                                     <a href="" class="me-3 link-underline link-underline-opacity-0"><i class="fa-solid fa-chart-line fs-5"></i></a>
-                                    <a href="" class="link-underline link-underline-opacity-0"><i class="fa-regular fa-credit-card fs-5"></i></a>
+                                    <a href="{{route('admin.plans')}}" class="link-underline link-underline-opacity-0"><i class="fa-regular fa-credit-card fs-5"></i></a>
                                 </div>
                             </div>
                         </div>

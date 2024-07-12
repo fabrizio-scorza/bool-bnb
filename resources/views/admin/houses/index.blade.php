@@ -10,11 +10,11 @@
         <div class="index_title  py-5">
             @if(request('trash'))
             <h2>
-                I Miei Appartamenti Eliminati
+                I miei annunci eliminati
             </h2>
             @else
             <h2>
-                I Miei Appartamenti
+                I miei annunci
             </h2>
             @endif
         
@@ -44,11 +44,16 @@
                         @endif
                         
                     </div>                
-                    <div class="card-body">
+                    <div class="card-body position-relative">
                         @if($house->thumb)
                         <figure>
                             <img src="{{ asset('storage/' . $house->thumb)}}" alt="Immagine Appartamento">
                         </figure>
+                        @endif
+                        @if(count($house->plans) > 0)
+                        <div class="position-absolute badge rounded-pill my_sponsor">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
                         @endif
                         <div class="mt-3">
                             {{ $house->address }}
@@ -127,7 +132,7 @@
                         </div>
                         <div class="fs-4">
                             <a href="" class="me-3 link-underline link-underline-opacity-0"><i class="fa-solid fa-chart-line"></i></a>
-                            <a href="" class="link-underline link-underline-opacity-0"><i class="fa-regular fa-credit-card"></i></a>
+                            <a href="{{route('admin.plans')}}" class="link-underline link-underline-opacity-0"><i class="fa-regular fa-credit-card"></i></a>
                         </div>    
                     </div>
                 </div>
