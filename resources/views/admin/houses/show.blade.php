@@ -20,18 +20,18 @@
     </div>
     <div class="container ">
         <div class="row ">
-            <div class="col-12 col-lg-8">     
-                <figure>
-                    <img src="{{ asset('storage/' . $house->thumb)}}" alt="Immagine Appartamento">
-                </figure> 
-                <div class="card my-5">
+            <div class="col-12 col-lg-8">
+                <div class="card mb-5">     
+                    <figure>
+                        <img src="{{ asset('storage/' . $house->thumb)}}" alt="Immagine Appartamento">
+                    </figure>                
                     <div class="card-body">
                             <p>{{$house->description}}</p>
                     </div>
                 </div>               
             </div>
             <div class="col-12 col-lg-4 group">
-                <div class="card">
+                <div class="card mb-5">
                     <div class="card-body row">
                         <div class="col-6">
                             <h5>Dettagli</h5>
@@ -93,7 +93,7 @@
                             <div class="d-flex justify-content-between">
                                 <div><strong>{{$house->price_per_night}}€</strong> notte</div>
                                 <div>
-                                    <a href="" class="me-3 link-underline link-underline-opacity-0"><i class="fa-solid fa-chart-line fs-5"></i></a>
+                                    {{-- <a href="" class="me-3 link-underline link-underline-opacity-0"><i class="fa-solid fa-chart-line fs-5"></i></a> --}}
                                     <a href="{{route('admin.plans')}}" class="link-underline link-underline-opacity-0"><i class="fa-regular fa-credit-card fs-5"></i></a>
                                 </div>
                             </div>

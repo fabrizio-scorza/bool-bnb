@@ -23,15 +23,17 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-lg-8">
-                
-                
-                <figure>
-                    <img src="{{ asset('storage/' . $house->thumb)}}" alt="Immagine Appartamento">
-                </figure>
-                
+                <div class="card mb-5">               
+                    <figure>
+                        <img src="{{ asset('storage/' . $house->thumb)}}" alt="Immagine Appartamento">
+                    </figure>                
+                    <div class="card-body">
+                            <p>{{$house->description}}</p>
+                    </div>
+                </div>              
             </div>
             <div class="col-12 col-lg-4">
-                <div class="card">
+                <div class="card mb-5">
                     <div class="card-body row">
                         <div class="col-6">
                             <h5>Dettagli</h5>
@@ -95,9 +97,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container px-5 my-5">
-        <p>{{$house->description}}</p>
     </div>
 
     <div>

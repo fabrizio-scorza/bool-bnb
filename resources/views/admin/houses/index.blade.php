@@ -133,7 +133,7 @@
                             
                         </div>
                         <div class="fs-4">
-                            <a href="" class="me-3 link-underline link-underline-opacity-0"><i class="fa-solid fa-chart-line"></i></a>
+                            {{-- <a href="" class="me-3 link-underline link-underline-opacity-0"><i class="fa-solid fa-chart-line"></i></a> --}}
                             <a href="{{route('admin.plans')}}" class="link-underline link-underline-opacity-0"><i class="fa-regular fa-credit-card"></i></a>
                         </div>    
                     </div>
