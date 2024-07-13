@@ -23,7 +23,7 @@
                 <button><a href="{{route( 'admin.houses.index')}}" class="link-underline link-underline-opacity-0">Torna alla pagina</a></button>
                 @else 
                 <button><a href="{{route( 'admin.houses.index', ['trash' => 1 ])}}" class="link-underline link-underline-opacity-0">Cestino ({{$trashed}})</a></button>
-                <button class=""><a href="{{route('admin.houses.create')}}" class="link-underline link-underline-opacity-0">Crea Nuovo</a></button>
+                <button class=""><a href="{{route('admin.houses.create')}}" class="link-underline link-underline-opacity-0">Crea nuovo</a></button>
                 @endif
             </div>
         
@@ -148,7 +148,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body ">
-                    <p>Cliccando su "Si" sposterai l'annuncio nel cestino, confermi? </p>
+                    <p>Cliccando su "Sì" sposterai l'annuncio nel cestino, confermi? </p>
                     </div>
                     <div class="modal-footer border-0">
                     <button type="button" class="" data-bs-dismiss="modal">No</button>
@@ -157,7 +157,7 @@
                         @csrf
                         @method('DELETE')
         
-                        <button class="bg_orange">Si</button>
+                        <button class="bg_orange">Sì</button>
                     
                         </form> 
                     </div>

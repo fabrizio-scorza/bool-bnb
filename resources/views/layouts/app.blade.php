@@ -93,7 +93,7 @@
         @yield('content')
     </main>
     
-    <footer>
+    <footer class="credits">
         <div class="container">
             <div class="d-flex justify-content-center align-items-baseline gap-4 flex-wrap">
                 <p>Sviluppato per Boolean - Team #4 :</p>

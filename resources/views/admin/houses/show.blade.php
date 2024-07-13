@@ -65,7 +65,7 @@
                             </ul>
                         </div>                    
                         <div class="col-6">
-                            <h5>Servizi Aggiuntivi</h5>
+                            <h5>Servizi aggiuntivi</h5>
                             <ul class="list-unstyled">
                                 @foreach ($house->services as $service)
                                 <li>                                
@@ -149,7 +149,7 @@
                 @csrf
                 @method('DELETE')
     
-                <button class="bg_orange">Si</button>
+                <button class="bg_orange">Sì</button>
             
                 </form> 
             </div>

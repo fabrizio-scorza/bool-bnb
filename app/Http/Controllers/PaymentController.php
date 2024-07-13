@@ -53,7 +53,7 @@ class PaymentController extends Controller
         ]);
 
     // Imposta il messaggio di conferma nella sessione
-    Session::flash('conferma', 'Pagamento avvenuto con successo per questa casa!');
+    Session::flash('conferma', 'Pagamento avvenuto con successo!');
 
     // Costruisci l'URL di reindirizzamento alla pagina della casa
     $houseUrl = route('admin.houses.show', ['house' => $houseId]);
