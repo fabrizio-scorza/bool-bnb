@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Piani')
+@section('title', ' - Piani')
 
 @section('content')
 <section class="plans">

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-- {{Str::limit($house->title, 10)}} 
+- {{Str::limit($house->title, 30)}} 
 @endsection   
 
 @section('content')

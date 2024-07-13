@@ -1,6 +1,6 @@
 @extends('layouts.app')
 {{-- I miei appartamenti --}}
-@section('title', '- I Miei Appartamenti')    
+@section('title', '- I miei annunci')    
 
 @section('content')
 
