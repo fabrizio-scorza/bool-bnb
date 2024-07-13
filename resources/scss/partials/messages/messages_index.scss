@@ -1,14 +1,15 @@
-h2{
-    color: var(--purple);
-}
 
-//CARDS
-.card{
-    --bs-card-border-color: var(--purple);
-    
-    .card-header{
-        background-color: var(--purple);
-        color: var(--white);
+    h2, h3{
+        color: var(--purple);
     }
-
-}
+    
+    //CARDS
+    .card{
+        --bs-card-border-color: var(--purple);
+        
+        .card-header{
+            background-color: var(--purple);
+            color: var(--white);
+        }
+    
+    }
