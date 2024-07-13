@@ -65,7 +65,7 @@
 
                <div class="form-group mb-4">
                 <label for="thumb" class="form-label">Immagine annuncio *</label>
-                <input required class="form-control" type="file" id="thumb" name="thumb" >
+                <input class="form-control" type="file" id="thumb" name="thumb" >
               </div>
                
                <div class="row row-cols-2 row-cols-xl-3 row-gap-3">
