@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\House;
 use App\Models\Plan;
+use App\Models\Message;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreMessageRequest;
 use Braintree\Gateway as BraintreeGateway;
+use Illuminate\Support\Facades\Session;
 
 class PaymentController extends Controller
 {
@@ -31,7 +34,7 @@ class PaymentController extends Controller
     {
         $amount = $request->amount;
         $nonce = $request->payment_method_nonce;
-        $house = House::find($request->houseId);
+        $houseId = $request->houseId;
         $plan = Plan::where('price', $amount)->first();
 
         $result = $this->gateway->transaction()->sale([
@@ -42,23 +45,24 @@ class PaymentController extends Controller
             ],
         ]);
 
-        
-        // $house->plans()->attach($plan, ['created_at' => now(), 'expires_at' => now()->addHours($plan->length)]);
-        
         if ($result->success) {
-            $house->plans()->attach(
-                $plan->id,
-                [
-                    'created_at' => now(),
-                    'expires_at' => now()->addHours($plan->length),
-                ]
-            );
-            
-            return response()->json(['success' => true, 'transaction' => $result->transaction]);
+            $house = House::find($houseId);
+            $house->plans()->attach($plan->id, [
+            'created_at' => now(),
+            'expires_at' => now()->addHours($plan->length),
+        ]);
+
+    // Imposta il messaggio di conferma nella sessione
+    Session::flash('conferma', 'Pagamento avvenuto con successo per questa casa!');
+
+    // Costruisci l'URL di reindirizzamento alla pagina della casa
+    $houseUrl = route('admin.houses.show', ['house' => $houseId]);
+
+    // Ritorna un JSON con l'URL di reindirizzamento
+    return response()->json(['success' => true, 'redirectUrl' => $houseUrl]);
+
         } else {
             return response()->json(['success' => false, 'error' => $result->message]);
         }
-        
     }
 }
-

@@ -157,12 +157,12 @@ export default {
                         payment_method_nonce: payload.nonce,
                         amount: this.amount,
                         houseId: this.houseId,
-
                     }),
                 });
                 const data = await response.json();
                 if (data.success) {
-                    alert('Pagamento andato a buon fine');
+                    // Reindirizza alla pagina della casa dopo un pagamento avvenuto con successo
+                    window.location.href = data.redirectUrl;
                 } else {
                     alert(`Non è stato possibile effettuare il pagamento: ${data.error}`);
                 }
@@ -178,9 +178,7 @@ export default {
 </script>
 
 <style>
-
-    #dropin-container{
+    #dropin-container {
         max-width: 500px;
     }
-
 </style>

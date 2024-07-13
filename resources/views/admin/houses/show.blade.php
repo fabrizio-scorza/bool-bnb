@@ -8,6 +8,13 @@
 
 <section class="show">
     <div class="container">
+        @if(session('conferma'))
+        <div class="alert alert-success container fs-3 mt-5">
+            {{ session('conferma') }}
+        </div>
+        @endif
+        
+
         <div class="show_title my-5">
             <h2>
                 {{$house->title}}
