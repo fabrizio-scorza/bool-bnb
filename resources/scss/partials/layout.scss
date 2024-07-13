@@ -8,6 +8,21 @@
     --white:#f5f5f5;
 }
 
+h2, h3{
+    color: var(--purple);
+}
+
+//CARDS
+.card{
+    --bs-card-border-color: var(--purple);
+    
+    .card-header{
+        background-color: var(--purple);
+        color: var(--white);
+    }
+
+}
+
 //RESET
 img{
     max-width: 100%;
@@ -25,11 +40,6 @@ body{
 }
 
 //INPUT
-
-// .form-control::placeholder { 
-//     color: #E79B28;
-//     opacity: 1; 
-// }
 
 .form-control:focus {
     //background-color: var(--lavander);
