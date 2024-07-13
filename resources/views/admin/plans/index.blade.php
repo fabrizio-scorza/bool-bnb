@@ -9,7 +9,7 @@
             I nostri piani di sponsorizzazione
         </h2>
     </div>
-        <payment-component :houses='@json($houses)' :plans='@json($plans)'></payment-component>
+        <payment-component :houses='@json($houses)' :plans='@json($plans)' :house_id='@json($house_id)'></payment-component>
 </section>
 
 

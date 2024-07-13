@@ -8,11 +8,12 @@ use App\Models\Message;
 use App\Models\Plan;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
     //
-    public function plans()
+    public function plans(Request $request)
     {
         $plans = Plan::all();
         $logged_user_id = Auth::user()->id;
@@ -23,7 +24,9 @@ class PageController extends Controller
             })->orDoesntHave('plans');
         })->with('plans')->get();
 
-        return view('admin.plans.index', compact('plans', 'houses'));
+        $house_id = $request->input('house_id');
+
+        return view('admin.plans.index', compact('plans', 'houses', 'house_id'));
     }
 
     public function messages()
