@@ -25,6 +25,8 @@ class StoreMessageRequest extends FormRequest
             //
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255'],
             'text' => ['required'],
+            'name' => ['max:100'],
+            'surname' => ['max:100'],
             'house_id' => ['required', 'exists:houses,id']
         ];
     }
