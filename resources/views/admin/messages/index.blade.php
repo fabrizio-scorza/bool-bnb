@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Messaggi')
+@section('title',' - I miei messaggi')
 
 @section('content')
 <section class="messages">

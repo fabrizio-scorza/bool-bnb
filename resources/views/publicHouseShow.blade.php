@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-- {{Str::limit($house->title, 10)}} 
+- {{Str::limit($house->title, 30)}} 
 @endsection   
 
 @section('content')
@@ -23,20 +23,16 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-lg-8">
-                @if($house->description) 
                 <div class="card mb-5">     
-                    <figure>
+                    <figure class="mb-0">
                         <img src="{{ asset('storage/' . $house->thumb)}}" alt="Immagine Appartamento">
-                    </figure>                                    
+                    </figure>
+                    @if($house->description)               
                     <div class="card-body">
                         <p>{{$house->description}}</p>
                     </div>
-                </div>  
-            @else                
-            <figure>
-                <img src="{{ asset('storage/' . $house->thumb)}}" alt="Immagine Appartamento">
-            </figure>
-            @endif                  
+                    @endif
+                </div>           
             </div>
             <div class="col-12 col-lg-4">
                 <div class="card mb-5">

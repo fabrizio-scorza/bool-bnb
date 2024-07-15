@@ -39,13 +39,13 @@
 import dropin from 'braintree-web-drop-in';
 
 export default {
-    props: ['houses', 'plans'],
+    props: ['houses', 'plans', 'house_id'],
     data() {
         return {
             clientToken: null,
             dropinInstance: null,
             isProcessing: false,
-            houseId: 0,
+            houseId: this.house_id || 0,
             amount: null,
         };
     },

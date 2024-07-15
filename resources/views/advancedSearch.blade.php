@@ -1,4 +1,7 @@
 @extends('layouts.app')
+
+@section('title', ' - Ricerca avanzata')
+
 @section('content')
 
 

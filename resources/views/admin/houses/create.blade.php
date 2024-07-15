@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', '- Nuovo Annuncio')
+@section('title', '- Nuovo annuncio')
 
 
 @section('content')
@@ -73,14 +73,14 @@
                     <div class="form-group">
                         <label for="category_id">Categoria</label>
                         <select class="form-control" name="category_id" id="category_id">
-                        <option value="">-- Seleziona Categoria--</option>
+                        <option value="">-- Seleziona categoria--</option>
                         @foreach($categories as $category) 
                             <option @selected( $category->id == old('category_id') ) value="{{ $category->id }}"> {{ $category->name }}</option>
                         @endforeach
                         </select>
                     </div>
                     <div class="form-group col-10 m-auto m-xl-0 col-xl mb-4" id="checklist">
-                        <label for="checklist">Servizi Aggiuntivi</label>
+                        <label for="checklist">Servizi aggiuntivi</label>
                         <div class="row row-cols-2 row-cols-md-3 row-cols-xl-2 row-cols-xxl-3">
                           @foreach ($services as $service)
                               <div class="form-check">
@@ -102,7 +102,7 @@
                      </div>
                      <div class="d-flex gap-1">
                          <input type="radio"  id="0" name="available" value="0" {{ old('available') == '0' ? 'checked' : '' }}>
-                         <label for="0">Non Visibile</label>            
+                         <label for="0">Non visibile</label>            
                      </div>
                     </div>
                 </div>

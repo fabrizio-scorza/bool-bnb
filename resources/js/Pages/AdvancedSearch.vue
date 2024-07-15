@@ -68,6 +68,9 @@
                             <div class="mt-3">
                                 {{ house.address }}
                             </div>
+                            <div class="mt-1">
+                                <span>Distanza: {{ house.distance }} km </span>
+                            </div>
                             <div class="d-flex gap-5 mt-1">
                                 <span>Stanze: {{ house.rooms }}</span>
                                 <span><i class="fa-solid fa-bed"></i> {{ house.beds }}</span>
@@ -142,7 +145,7 @@ export default {
 
                 if (aHouse && !bHouse) return -1;
                 if(!aHouse && bHouse) return 1;
-                return 0;
+                return a.distance - b.distance;
             });
         }
     },
@@ -222,7 +225,9 @@ export default {
             let longitude = lon;
             houses.forEach((house) => {
                 if(house.available === 1){
-                    if (this.distanceFromCenter(latitude, longitude, house.latitude, house.longitude) < km) {
+                    const distance = this.distanceFromCenter(latitude, longitude, house.latitude, house.longitude);
+                    if (distance < km) {
+                        house.distance = distance.toFixed(2);
                         store.closeHouses.push(house);
                     }
                 }
