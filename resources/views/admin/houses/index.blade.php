@@ -144,7 +144,8 @@
                                     @if ($plan->pivot->expires_at >$now)
                                         <strong class="d-flex align-items-center gap-2">
                                             <i class="fa-solid fa-hourglass-end"></i>
-                                            <span class="hours fs-5">{{$now->diffInHours($plan->pivot->expires_at)}}</span>  ore
+                                            <span class="hours fs-5">{{$now->diffInHours($plan->pivot->expires_at)}}</span>
+                                            <span class="d-none d-md-inline">ore</span> 
                                         </strong>                                            
                                     @endif
                                 @endforeach                                        

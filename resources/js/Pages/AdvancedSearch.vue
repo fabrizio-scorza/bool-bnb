@@ -232,7 +232,6 @@ export default {
                     }
                 }
             });
-            console.log(store.closeHouses)
             // Aggiorna noResult dopo aver cercato le case
             this.noResult = store.closeHouses.length === 0;
         },
