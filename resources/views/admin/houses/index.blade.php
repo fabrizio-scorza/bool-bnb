@@ -132,10 +132,23 @@
                             
                             
                         </div>
-                        <div class="fs-4">
-                            {{-- <a href="" class="me-3 link-underline link-underline-opacity-0"><i class="fa-solid fa-chart-line"></i></a> --}}
-                            <a href="{{route('admin.plans')}}" class="link-underline link-underline-opacity-0"><i class="fa-regular fa-credit-card"></i></a>
-                        </div>    
+                        <div>
+                            {{-- <a href="" class="me-3 link-underline link-underline-opacity-0"><i class="fa-solid fa-chart-line fs-5"></i></a> --}}
+                            @if(count($house->plans) > 0)
+                                @foreach ($house->plans as $plan)
+                                    @if ($plan->pivot->expires_at >$now)
+                                        <strong class="d-flex align-items-center gap-2">
+                                            <i class="fa-solid fa-hourglass-end"></i>
+                                            <span class="hours fs-5">{{$now->diffInHours($plan->pivot->expires_at)}}</span>  ore
+                                        </strong>                                            
+                                    @endif
+                                @endforeach                                        
+                            @else
+                                <button>
+                                    <a href="{{route('admin.plans')}}" class="link-underline link-underline-opacity-0"><i class="fa-regular fa-credit-card fs-5"></i></a>
+                                </button> 
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>   

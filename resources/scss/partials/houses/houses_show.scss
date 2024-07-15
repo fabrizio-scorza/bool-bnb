@@ -28,6 +28,13 @@
         }
     }
 
+    .countdown{
+        color: var(--purple);
+    }
+    .hours{
+        color: var(--orange);   
+    }
+
     .card{
         --bs-card-border-color: var(--purple);
 
