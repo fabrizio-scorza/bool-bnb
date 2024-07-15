@@ -46,22 +46,14 @@
                        <input type="number" required min="30" max="1000" class="form-control" id="square_mt" name="square_mt" placeholder="30-1000" value="{{ old('square_mt', $house->square_mt) }}">
                    </div>
                </div>  
-       
-                <address-component
-                    :initial-address="'{{ old('address', $house->address) }}'"
-                    :initial-latitude="{{ old('latitude', $house->latitude) }}"
-                    :initial-longitude="{{ old('longitude', $house->longitude) }}"
-                ></address-component>
-               {{-- <div class="form-group">
-                   <label for="address">Inserici l'indirizzo</label>
-                   <input type="text" class="form-control" id="address" placeholder="indirizzo del tuo alloggio" name="address" value="{{ old('address', $house->address) }}" maxlength="255">
-               </div> --}}
-       
-               {{-- <div class="form-group mb-4">
-                   <label for="thumb">Inserisci l'immagine di copertina *</label>
-                   <input type="url" required class="form-control" id="thumb" placeholder="http://..." name="thumb"
-                   value="{{ old('thumb', $house->thumb) }}">
-               </div> --}}
+               <div class="form-group mb-4">
+                    <label for="address">Indirizzo *</label>
+                    <address-component
+                        :initial-address="'{{ old('address', $house->address) }}'"
+                        :initial-latitude="{{ old('latitude', $house->latitude) }}"
+                        :initial-longitude="{{ old('longitude', $house->longitude) }}"
+                    ></address-component>
+                </div>
 
                <div class="form-group mb-4">
                 <label for="thumb" class="form-label">Immagine annuncio *</label>

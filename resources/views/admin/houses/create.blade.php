@@ -50,12 +50,14 @@
                         <input type="number" required min="30" max="1000" class="form-control" id="square_mt" name="square_mt" placeholder="30-1000" value="{{ old('square_mt') }}">
                     </div>
                 </div>
-        
-                <address-component
-                    :initial-address="'{{ old('address') }}'"
-                    :initial-latitude="{{ old('latitude') }}"
-                    :initial-longitude="{{ old('longitude') }}"
-                ></address-component>
+                <div class="form-group mb-4">
+                    <label for="address">Indirizzo *</label>
+                    <address-component
+                        :initial-address="'{{ old('address') }}'"
+                        :initial-latitude="{{ old('latitude') }}"
+                        :initial-longitude="{{ old('longitude') }}"
+                    ></address-component>
+                </div>
                 
                 <div class="form-group mb-4">
                     <label for="thumb" class="form-label">Immagine annuncio</label>
