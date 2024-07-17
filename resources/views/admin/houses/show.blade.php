@@ -33,7 +33,7 @@
                         @endforeach                                        
                     @else
                         <button>
-                            <a href="{{route('admin.plans')}}" class="link-underline link-underline-opacity-0"><i class="fa-regular fa-credit-card fs-5"></i></a>
+                            <a href="{{ route('admin.plans', ['house_id' => $house->id]) }}" class="link-underline link-underline-opacity-0"><i class="fa-regular fa-credit-card fs-5"></i></a>
                         </button> 
                     @endif
                 </div>
